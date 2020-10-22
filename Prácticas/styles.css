@@ -1,0 +1,275 @@
+/* Importar fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Miss+Fajardose&family=Roboto&family=Roboto+Mono&family=Roboto+Slab&display=swap');
+
+/* Variables */
+:root {
+  --main-bg-highlight: #ffcccc;
+  --main-border-black: 1px solid black;
+  --main-border-gray: 1px solid #b4b4b4;
+}
+
+/* Texto subrayado */
+::-moz-selection { /* Code for Firefox */
+    background: var(--main-bg-highlight);
+}
+
+::selection {
+    background: var(--main-bg-highlight);
+}
+
+/* Background pattern */
+/*body {
+	background-color: hsl(34, 53%, 82%);
+	background-image: repeating-linear-gradient(45deg, transparent 5px, hsla(197, 62%, 11%, 0.5) 5px, hsla(197, 62%, 11%, 0.5) 10px,                  
+	hsla(5, 53%, 63%, 0) 10px, hsla(5, 53%, 63%, 0) 35px, hsla(5, 53%, 63%, 0.5) 35px, hsla(5, 53%, 63%, 0.5) 40px,
+	hsla(197, 62%, 11%, 0.5) 40px, hsla(197, 62%, 11%, 0.5) 50px, hsla(197, 62%, 11%, 0) 50px, hsla(197, 62%, 11%, 0) 60px,                
+	hsla(5, 53%, 63%, 0.5) 60px, hsla(5, 53%, 63%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 80px,
+	hsla(35, 91%, 65%, 0) 80px, hsla(35, 91%, 65%, 0) 90px, hsla(5, 53%, 63%, 0.5) 90px, hsla(5, 53%, 63%, 0.5) 110px,
+	hsla(5, 53%, 63%, 0) 110px, hsla(5, 53%, 63%, 0) 120px, hsla(197, 62%, 11%, 0.5) 120px, hsla(197, 62%, 11%, 0.5) 140px       
+	),
+	repeating-linear-gradient(135deg, transparent 5px, hsla(197, 62%, 11%, 0.5) 5px, hsla(197, 62%, 11%, 0.5) 10px, 
+	hsla(5, 53%, 63%, 0) 10px, hsla(5, 53%, 63%, 0) 35px, hsla(5, 53%, 63%, 0.5) 35px, hsla(5, 53%, 63%, 0.5) 40px,
+	hsla(197, 62%, 11%, 0.5) 40px, hsla(197, 62%, 11%, 0.5) 50px, hsla(197, 62%, 11%, 0) 50px, hsla(197, 62%, 11%, 0) 60px,                
+	hsla(5, 53%, 63%, 0.5) 60px, hsla(5, 53%, 63%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 80px,
+	hsla(35, 91%, 65%, 0) 80px, hsla(35, 91%, 65%, 0) 90px, hsla(5, 53%, 63%, 0.5) 90px, hsla(5, 53%, 63%, 0.5) 110px,
+	hsla(5, 53%, 63%, 0) 110px, hsla(5, 53%, 63%, 0) 140px, hsla(197, 62%, 11%, 0.5) 140px, hsla(197, 62%, 11%, 0.5) 160px       
+	);
+	background-attachment: fixed;
+}*/
+
+/* Flower background */
+body {
+    background-image: url('vintage-floral-wallpaper-pattern-2.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+div.pagina {
+    padding: 0.4cm 1.4cm 0.6cm 1.4cm;   /*Top, right, bottom, left*/    
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    max-width: 174mm;   /*210mm (DIN A4) - Margins right and left (1.8cm each). HTML length is not accurate */
+    /* To centre page on screen. Source: https://stackoverflow.com/a/3341581*/
+    margin-left: auto;
+    margin-right: auto;
+    border: var(--main-border-black);
+    background-color: white;
+}
+
+@media screen and (max-width:830px) {
+  div.pagina {
+    padding: 0.3cm 1cm 0.4cm 1cm;   /*Top, right, bottom, left*/    
+  }
+}
+
+header h6 {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Roboto Mono', monospace;
+    border-bottom: var(--main-border-black);
+    font-weight: normal;
+}
+
+h1 {
+     text-align: center;
+}
+
+h1, h2 {
+    font-family: 'Roboto Slab', serif;
+    -webkit-hyphens: auto; /* Texto dividido con guiones al final de línea */
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+
+h2:not(:first-of-type) {
+    padding-top: 20px;
+}
+
+h2:first-of-type {
+    padding-top: 10px;
+}
+
+p {
+    text-indent: 48px;
+    -webkit-hyphens: auto;  /* Texto dividido con guiones al final de línea */
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+
+p a, li a, #toc a {
+	color: #ff4d94;
+	text-decoration: none;
+}
+
+p a:hover, li a:hover, #toc a:hover {
+	text-decoration: underline;
+}
+
+p a:visited, li a:visited, #toc a:visited {
+	color: #cb4d80;
+}
+
+figure {
+    display: table;
+    margin: 0px;
+    margin-bottom: 30px;
+    border: var(--main-border-gray);
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+figure figcaption {
+    display: table-caption;
+    caption-side: bottom;
+    border: var(--main-border-gray);
+    border-top: none;
+    font-style: italic;
+    font-size: 12px;
+    padding: 5px;
+    text-align: center;
+}
+
+figure img {
+    vertical-align: top;
+    width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width:1200px) {
+  img {
+    width:80%;
+  }
+}
+
+@media only screen and (max-width:620px) {
+  /* For mobile phones: */
+  img {
+    width:80%;
+  }
+}
+
+div.comando-linux {
+    border: var(--main-border-gray);
+    background-color: #fff4a0;
+}
+
+div.comando-windows {
+    border: var(--main-border-gray);
+    background-color: #99ddff;
+}
+
+div.comando-linux pre code span.highlight {
+    color: #fff4a0;
+    background-color: #ff5454;
+}
+
+div.comando-windows pre code span.highlight {
+    color: white;
+    background-color: #0066cc;
+}
+
+div.comando {
+    margin-bottom: 30px;
+}
+
+div.comando pre {
+    padding: 0px 15px 0px 15px;   /*Top, right, bottom, left*/
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+div.comando pre code {
+    display: inline-block;
+    font-family: monospace;
+    font-size: 14px;
+    width: 100%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: justify;
+}
+
+div.comando-linux pre code::first-line {
+    color: #ff5454;
+    font-weight: bold;
+}
+
+div.comando-windows pre code::first-line {
+    color: #0066cc;
+    font-weight: bold;
+}
+
+ol li ul {
+    margin-top: 10px;
+}
+
+ul li {
+    list-style: disc;
+    margin-bottom: 5px;
+}
+
+li.no_dot {
+    list-style-type: none;
+}
+
+li.pro {
+  list-style-type: none;
+}
+
+li.pro:before {
+  content: '✓ ';
+}
+
+li.contra {
+  list-style-type: none;
+}
+
+li.contra:before {
+  content: '✗ ';
+}
+
+span.codigo {
+    font-family: monospace;
+    font-weight: lighter;
+    color: #2fb687;
+}
+
+kbd {
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 2px 9px;
+    border: var(--main-border-gray);
+    font-size: 12px;
+    color: #b30000;
+    margin: 2px 2px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, tr, td {
+    border: 1px solid black;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+    border-top: var(--main-border-black);
+}
+
+footer span.author {
+	font-family: 'Miss Fajardose', cursive;
+	font-size: 1.9em;
+}
+
+footer span.last-modified {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: normal;
+	font-size: 12px;
+	font-style: italic;
+}

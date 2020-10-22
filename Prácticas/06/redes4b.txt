@@ -1,0 +1,7 @@
+State    Recv-Q    Send-Q       Local Address:Port         Peer Address:Port                                                                                    
+LISTEN   0         5                127.0.0.1:631               0.0.0.0:*        users:(("cupsd",pid=1048,fd=7))                                                
+LISTEN   0         100              127.0.0.1:25                0.0.0.0:*        users:(("master",pid=1435,fd=13))                                              
+ESTAB    0         0            192.168.1.136:50606       192.168.1.134:60093    users:(("nc",pid=6709,fd=3))                                                   
+LISTEN   0         50                       *:1716                    *:*        users:(("kdeconnectd",pid=2097,fd=13))                                         
+LISTEN   0         5                    [::1]:631                  [::]:*        users:(("cupsd",pid=1048,fd=6))                                                
+LISTEN   0         100                  [::1]:25                   [::]:*        users:(("master",pid=1435,fd=14))                                              

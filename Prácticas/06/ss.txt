@@ -1,0 +1,12 @@
+
+       -n, --numeric
+              Do not try to resolve service names.
+
+       -a, --all
+              Display both listening and non-listening (for TCP this means established connections) sockets.
+
+       -p, --processes
+              Show process using socket.
+
+       -t, --tcp
+              Display TCP sockets.

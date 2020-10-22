@@ -1,0 +1,94 @@
+
+Desactivar NAT: iptables -t nat -F && iptables -t nat -Z
+Añadir entrada NAT: iptables -t nat -A POSTROUTING -s 128.0.0.0/24 -o eth0 -j MASQUERADE
+Mostrar tabla NAT: iptables -t nat -L -n -v
+IP en vez de nombre (-n), interfaz (-i), mostrar solo tramas icmp (icmp): tcpdump icmp -n -i eth0
+Guardar configuración: iptables-save
+
+Resolver nombres por DNS: En Windows, añadir el 8.8.8.8 y alternativo el 8.8.4.4
+En Debian /etc/resolv.conf
+
+
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+
+PREROUTING: iptables -t nat -A PREROUTING -p tcp --dport 3389 -i eth0 -j DNAT --to 172.16.0.1:3389
+
+Puerto RDP: 3389
+
+-- Ejercicio 3
+iptables -t nat -A PREROUTING -p tcp --dport 3389 -i eth1 -j DNAT --to 172.16.0.1:3389
+
+Para conectarte:
+En el cuadro de búsqueda, escribe «Conexión a Escritorio remoto».
+En el cuadro Equipo, escribe el nombre del equipo al que deseas conectarte y después haz clic en Conectar. (También puedes escribir la dirección IP en lugar del nombre del equipo). 
+
+
+-- Ejercicio 4
+Puertos del 135 al 139 (UDP y TCP).
+Puerto 389 (TCP y UDP).
+Puerto 445 (TCP y UDP).
+Desde 0.0.0.0.
+
+iptables -t nat -A PREROUTING -p tcp --dport 135 -i eth0 -j DNAT --to 172.16.0.1:135
+iptables -t nat -A PREROUTING -p tcp --dport 136 -i eth0 -j DNAT --to 172.16.0.1:136
+iptables -t nat -A PREROUTING -p tcp --dport 137 -i eth0 -j DNAT --to 172.16.0.1:137
+iptables -t nat -A PREROUTING -p tcp --dport 138 -i eth0 -j DNAT --to 172.16.0.1:138
+iptables -t nat -A PREROUTING -p tcp --dport 139 -i eth0 -j DNAT --to 172.16.0.1:139
+iptables -t nat -A PREROUTING -p tcp --dport 389 -i eth0 -j DNAT --to 172.16.0.1:389
+iptables -t nat -A PREROUTING -p tcp --dport 445 -i eth0 -j DNAT --to 172.16.0.1:445
+iptables -t nat -A PREROUTING -p udp --dport 135 -i eth0 -j DNAT --to 172.16.0.1:135
+iptables -t nat -A PREROUTING -p udp --dport 136 -i eth0 -j DNAT --to 172.16.0.1:136
+iptables -t nat -A PREROUTING -p udp --dport 137 -i eth0 -j DNAT --to 172.16.0.1:137
+iptables -t nat -A PREROUTING -p udp --dport 138 -i eth0 -j DNAT --to 172.16.0.1:138
+iptables -t nat -A PREROUTING -p udp --dport 139 -i eth0 -j DNAT --to 172.16.0.1:139
+iptables -t nat -A PREROUTING -p udp --dport 389 -i eth0 -j DNAT --to 172.16.0.1:389
+iptables -t nat -A PREROUTING -p udp --dport 445 -i eth0 -j DNAT --to 172.16.0.1:445
+
+iptables -t nat -A PREROUTING -p tcp --dport 135 -i eth1 -j DNAT --to 172.16.0.1:135
+iptables -t nat -A PREROUTING -p tcp --dport 136 -i eth1 -j DNAT --to 172.16.0.1:136
+iptables -t nat -A PREROUTING -p tcp --dport 137 -i eth1 -j DNAT --to 172.16.0.1:137
+iptables -t nat -A PREROUTING -p tcp --dport 138 -i eth1 -j DNAT --to 172.16.0.1:138
+iptables -t nat -A PREROUTING -p tcp --dport 139 -i eth1 -j DNAT --to 172.16.0.1:139
+iptables -t nat -A PREROUTING -p tcp --dport 389 -i eth1 -j DNAT --to 172.16.0.1:389
+iptables -t nat -A PREROUTING -p tcp --dport 445 -i eth1 -j DNAT --to 172.16.0.1:445
+iptables -t nat -A PREROUTING -p udp --dport 135 -i eth1 -j DNAT --to 172.16.0.1:135
+iptables -t nat -A PREROUTING -p udp --dport 136 -i eth1 -j DNAT --to 172.16.0.1:136
+iptables -t nat -A PREROUTING -p udp --dport 137 -i eth1 -j DNAT --to 172.16.0.1:137
+iptables -t nat -A PREROUTING -p udp --dport 138 -i eth1 -j DNAT --to 172.16.0.1:138
+iptables -t nat -A PREROUTING -p udp --dport 139 -i eth1 -j DNAT --to 172.16.0.1:139
+iptables -t nat -A PREROUTING -p udp --dport 389 -i eth1 -j DNAT --to 172.16.0.1:389
+iptables -t nat -A PREROUTING -p udp --dport 445 -i eth1 -j DNAT --to 172.16.0.1:445
+
+
+Desactivar «Utilizar el uso compartido simple de archivos».
+
+
+-- Ejercicio 5
+Instalar «openssh-server».
+Puerto SSH: 22.
+iptables -t nat -A PREROUTING -p tcp --dport 22 -i eth0 -j DNAT --to 172.16.0.2:22
+iptables -t nat -A PREROUTING -p tcp --dport 22 -i eth0 -j DNAT --to 172.16.0.254:22
+iptables -t nat -A PREROUTING -p tcp --dport 22 -i eth1 -j DNAT --to 172.16.0.2:22
+iptables -t nat -A PREROUTING -p tcp --dport 22 -i eth1 -j DNAT --to 172.16.0.254:22
+
+-- Probar con este
+iptables -t nat -A PREROUTING -p tcp --dport 22022 -j DNAT --to 172.16.0.254:22
+
+-- Este sí va
+iptables -t nat -A PREROUTING -p tcp --dport 22022 -j DNAT --to 172.16.0.2:22
+
+-- Conectarse con
+ssh alumno@10.1.X.X
+ssh -p 22022 alumno@10.1.X.X
+
+-- Ejercicio 6
+Instalar «tmux».
+Enrutador:
+    tcpdump icmp -n -i eth0     /*Adaptador de internet*/
+    tcpdump icmp -n -i eth2     /*Adaptador red interna*/
+Windows: Ping a 8.8.8.8
+
+
+-- Quehaceres
+1. Captura de mtr cliente Debian a 8.8.8.8 y pathping cliente Windows a 8.8.8.8

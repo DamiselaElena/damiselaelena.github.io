@@ -1,0 +1,26 @@
+
+101 - Gig 0/0/0:
+access-list 101 deny ip any 10.8.0.254 0.0.0.0
+access-list 101 deny ip any 10.8.0.254 0.0.0.0
+access-list 101 permit tcp any any established
+access-list 101 deny ip any any
+
+
+102 - Gig 0/0/1.10:
+access-list 102 deny ip 10.8.0.254 0.0.0.0 8.8.8.8 0.255.255.255
+access-list 102 permit tcp any 8.8.8.8 0.255.255.255
+access-list 102 deny ip any 8.8.8.8 0.255.255.255
+access-list 102 permit ip 10.8.0.254 0.0.0.0 10.8.1.0 0.0.0.255
+access-list 102 deny ip 10.8.0.0 0.0.0.255 10.8.1.254 0.0.0.0
+access-list 102 permit ip any 10.8.1.0 0.0.0.255
+access-list 102 deny ip any any
+
+
+103 - Gig 0/0/1.20:
+access-list 103 deny ip 10.8.1.254 0.0.0.0 8.8.8.8 0.255.255.255
+access-list 103 permit tcp any 8.8.8.8 0.255.255.255
+access-list 103 deny ip any 8.8.8.8 0.255.255.255
+access-list 103 permit ip 10.8.1.254 0.0.0.0 10.8.0.254 0.0.0.0
+access-list 103 deny ip 10.8.1.254 0.0.0.0 10.8.0.0 0.0.0.255
+access-list 103 permit ip any 10.8.0.0 0.0.0.255
+access-list 103 deny ip any any

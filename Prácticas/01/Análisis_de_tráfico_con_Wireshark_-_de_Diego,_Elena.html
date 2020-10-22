@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="de Diego, Elena">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Práctica 1: Análisis de tráfico con Wireshark</title>
+</head>
+<body>
+<div class="pagina">
+<header>
+    <h6>
+        <span id="asignatura"></span>
+        <span>Análisis de tráfico con Wireshark</span>
+    </h6>
+</header>
+<h1>Práctica 1: Análisis de tráfico con Wireshark</h1>
+<div id="console"></div>
+<div id="toc">
+	<h3>Índice</h3>
+	<noscript>Para poder visualizar el índice y que la página tenga plena funcionalidad, por favor, habilite el uso de JavaScript en su navegador.</noscript>
+</div>
+<hr/>
+<div id="contents">
+<h2>Introducción</h2>
+<p>La siguiente práctica realizada en la asignatura de planificación y administración de redes trata sobre analizar el tráfico de la red (del instituto y del hogar) capturado por medio del programa <b>Wireshark</b>. Así pues, se trata de que el alumno tenga una primera toma de contacto con dicho programa y se familiarice con su interfaz, así como también de la encapsulación de protocolos que se establece en la red y pueda encontrar aquella información más relevante en ella.</p>
+<p>En el instituto se ha empleado una máquina virtual de Linux Mint 19 para realizar la práctica, mientras que en el hogar también se ha empleado Linux Mint 19, pero sin una virtualización de por medio. Para poder usar el analizador de red <b>Wireshark</b>, se ha instalado esta herramienta a través de la terminal, escribiendo el siguiente comando:</p>
+<div class="comando comando-linux"><pre><code>$ sudo apt-get install wireshark</code></pre></div>
+<p>Y para ejecutarlo (con derechos de administrador), el siguiente:</p>
+<div class="comando comando-linux"><pre><code>$ sudo wireshark</code></pre></div>
+<p>Ya instalado y ejecutado como administrador, se ha procedido a capturar la red con la primera opción del menú superior, la del símbolo azul que parece una aleta de tiburón y, tras el paso de unos minutos, se ha pausado la captura con el cuadrado que se torna rojo de su derecha:</p>
+<figure id="figura1">
+    <a href="pictures/01.png" target="_blank"><img src="pictures/01.png" title="Menú de Wireshark" alt="Menú de Wireshark" /></a>
+    <figcaption><b>Figura 1</b>: Menú de Wireshark con las opciones de captura de paquetes, pausa de la captura, reinicio de captura y opciones de captura, entre otros</figcaption>
+</figure>
+<p>Hecha esta breve introducción, vamos a proceder a la resolución de los ejercicios mandados.</p>
+<p>Los ejercicios de esta práctica pueden consultarse en <a href="par-1-trabajo-wireshark.pdf" target="_blank">este enlace</a>.</p>
+<h2>Ejercicio 1: Protocolos de nivel 2</h2>
+<ul>
+    <li>Monitoriza la red durante uno o dos minutos.</li>
+    <li>Haz una lista de los protocolos de nivel 2 que encuentres.</li>
+    <li>Compara esos protocolos entre sí:</li>
+</ul>
+<ul>
+    <li>¿Cuáles son más modernos?</li>
+    <li>Compara los datos de su cabecera, ¿qué informaciones incluye cada uno?</li>
+</ul>
+<p>Los protocolos de segundo nivel que he podido encontrar han sido los siguientes (el primero, tanto en la red del hogar como en la del instituto; el segundo, solo en la del instituto):</p>
+<ul>
+    <li><b>Ethernet II</b>, que fue publicado en 1982<a href="cambiar"><sup>1</sup></a>.</li>
+    <li><p><b>IEEE 802.3 Ethernet</b>, que fue creado un año más tarde, en 1983<a href="cambiar"><sup>1</sup></a>.</p></li>
+</ul>
+<p>Tanto <b>Ethernet II</b> como <b>IEEE 802.3 Ethernet</b> incluyen una cabecera MAC<a href="cambiar">²</a> (<i>Media Access Control</i>, un identificador único de una tarjeta o dispositivo en red), que a su vez contiene la dirección MAC del destinatario de la trama (6 bytes), la dirección MAC del origen de la trama (6 bytes) y el protocolo encapsulado (2 bytes), en el caso de <b>Ethernet II,</b> o la longitud (2 bytes) en el caso de <b>IEEE 802.3 Ethernet</b>; en este orden.</p>
+<p>He aquí un ejemplo de una trama <b>Ethernet II</b> recogida en el hogar (<i>ZTE</i> es la marca del <i>router</i> y <i>Giga-Byt </i>se refiere a la tarjeta de red incluida en la placa base del ordenador empleado):</p>
+<div class="trama"><pre><code>Ethernet II, Src: Zte_d8:23:ef (9c:6f:52:d8:23:ef), Dst: Giga-Byt_07:f5:22 (1c:1b:0d:07:f5:22)</code></pre></div>
+<p>Viendo la trama en el conjunto del paquete recibido, <b>Ethernet II</b> se compone de los siguientes 14 bytes (los cuatro primeros <i>0000</i> se refieren a la línea de los valores hexadecimales donde se encuentran estos bytes):</p>
+<div class="trama"><pre><code>0000   1c 1b 0d 07 f5 22 9c 6f 52 d8 23 ef 08 00</code></pre></div>
+<p>Como bien hemos dicho, los primeros 6 bytes (<i>1c 1b 0d 07 f5 22</i>) se refieren a la dirección MAC del receptor, los 6 siguientes (<i>9c 6f 52 d8 23 ef</i>) se refieren a la dirección MAC del emisor y, los 2 últimos bytes (<i>08 00</i>), especifican el protocolo de la capa superior que recibe los datos (en este caso, el protocolo que recibe los datos es <b>IPv4</b>, pero en la red del hogar también pueden aparecer <b>IPv6</b> [<i>86 dd</i>] o <b>ARP</b> [<i>08 06</i>]).</p>
+<p>Ahora vamos a ver una trama del otro protocolo encontrado, el <b>IEEE 802.3 Ethernet</b>. Así aparece el nombre del segundo nivel, algo más escueto que nuestro ejemplo anterior:</p>
+<div class="trama"><pre><code>IEEE 802.3 Ethernet</code></pre></div>
+<p>Si miramos en su valor hexadecimal, su cabecera también está compuesta por 14 bytes:</p>
+<div class="trama"><pre><code>0000   01 80 c2 00 00 00 00 1a c1 ac 58 97 00 27</code></pre></div>
+<p>La estructura es muy similar a la anterior: en primer lugar tenemos la dirección MAC del receptor (<i>01 80 c2 00 00 00</i>), en segundo lugar, la dirección MAC del emisor (<i>00 1a c1 ac 58 97</i>) y, por último, la longitud (cantidad de bytes) de los datos que siguen a continuación (<i>00 27</i>).</p>
+<p>Nota: la trama del protocolo <i><b>Ethernet II</b></i> fue capturada en la red del hogar, mientras que la trama <i><b>IEEE 802.3</b></i> fue tomada en la red del instituto, por eso varían las direcciones.</p>
+<h2>Ejercicio 2: Tramas de broadcast</h2>
+<p>Las tramas de <i>broadcast</i> son las que tienen la dirección del nivel de enlace <span class="codigo">FF:FF:FF:FF:FF:FF</span>.</p>
+<p>Monitoriza la red durante uno o dos minutos y determina qué tramas de las recibidas son de <i>broadcast</i>. Haz una lista de las pilas de protocolos que <i>viajan</i> sobre tramas de <i>broadcast</i>, e incluye al menos 3 pantallazos de estas pilas como ejemplo.</p>
+<p>En la red del hogar no he podido encontrar ninguna trama de tipo <i>broadcast</i>, ni revisándolas manualmente ni estableciendo el filtro <span class="codigo">eth.addr == ff:ff:ff:ff:ff:ff</span>:</p>
+<p><b>Filtro activado: <span class="codigo">eth.addr == ff:ff:ff:ff:ff:ff</span></b> en la red del hogar. Sirve para extraer aquellas tramas que sean de tipo broadcast, pero no se ha encontrado ninguna de entre 15 000. (Hacer zoom para agrandar)</p>
+<p>Sin embargo, en la red del instituto sí había podido encontrar varias, pero solo he podido recuperar una de ellas, en la que se puede observar la pila de protocolos que hay sobre la trama:</p>
+<figure id="figura2">
+    <a href="pictures/02.png" target="_blank"><img src="pictures/02.png" title="Pila de protocolos" alt="Pila de protocolos" /></a>
+    <figcaption><b>Figura 2</b>: Trama broadcast y pila de protocolos sobre esta en la red del instituto. (Hacer zoom para agrandar)</figcaption>
+</figure>
+<p>La pila de protocolos que <i>viajan</i> por encima de esta trama son <b>Internet Protocol Version 4</b> (<b>IPv4</b>), <b>User Datagram Protocol</b> (<b>UDP</b>) y <b>NetBIOS</b> (<b>Network Basic Input/Output System</b>).</p>
+<h2>Ejercicio 3: ¿Qué protocolos viajan sobre el nivel 2?</h2>
+<p>Captura el tráfico de la red durante uno o dos minutos. Haz una lista de los protocolos que viajen sobre un nivel 2 que encuentres, y crea una tabla con el nombre de protocolo y su código. Como ejemplo:</p>
+<ul>
+    <li>Hay tramas <i>Ethernet</i> que llevan <i>IP</i> (0x0800). Hay que apuntar <i>IP</i>.</li>
+    <li>Pero no apuntes el Transmission Control Protocol, porque no va directamente sobre el nivel 2 (<i>ethernet</i>), sino dentro de un nivel 3 (<i>IP</i>).</li>
+</ul>
+<p>Nota: puede que alguno de los protocolos que viajen sobre el nivel 2 no sean de nivel 3 OSI.</p>
+<p>Los protocolos que van sobre el nivel 2 se pueden localizar desglosando la trama de este mismo nivel, en mi caso la de <b>Ethernet II</b> (en la red del hogar). Desglosada, aparecen tres apartados, que son el destino, el origen y el tipo:</p>
+<div class="trama trama_gris_primera"><pre><code>▶  Frame 534: 149 bytes on wire (1192 bits), 149 bytes captured (1192 bits) on
+    interface 0</code></pre></div>
+<div class="trama trama_gris"><pre><code><span class="triangulo">▼</span>  Ethernet II, Src: Zte_d8:23:ef (9c:6f:52:d8:23:ef), Dst: Giga-Byt_07:f5:22
+    (1c:1b:0d:07:f5:22)</code></pre></div>
+<div class="trama trama_blanca"><pre><code>    ▶  Destination: Giga-Byt_07:f5:22 (1c:1b:0d:07:f5:22)</code></pre></div>
+<div class="trama trama_blanca"><pre><code>    ▶  Source: Zte_d8:23:ef (9c:6f:52:d8:23:ef)</code></pre></div>
+<div class="trama trama_highlight"><pre><code>        Type: IPv6 (0x86dd)</code></pre></div>
+<div class="trama trama_gris"><pre><code>▶  Internet Protocol Version 6, Src: fe80::1, Dst: fe80::24c3:f725:8807:4cbd</code></pre></div>
+<div class="trama trama_gris"><pre><code>▶  User Datagram Protocol, Src Port: 53, Dst Port: 55593</code></pre></div>
+<div class="trama trama_gris_ultima"><pre><code>▶  Domain Name System (response)</code></pre></div>
+<p>Hay que fijarse en el tercero, el de <i>Type</i>, ya que es aquí donde se nos indica qué protocolo es el que viaja por encima de esta trama. Los protocolos que he podido encontrar en la red del hogar han sido los siguientes:</p>
+<table>
+    <tbody>
+        <tr>
+            <td>Protocolo</td>
+            <td>Código</td>
+        </tr>
+        <tr>
+            <td>IPv4<a href="cambiar"><sup>3</sup></a></td>
+            <td><span class="codigo">0x0800</span></td>
+        </tr>
+        <tr>
+            <td>IPv6<a href="cambiar"><sup>3</sup></a></td>
+            <td><span class="codigo">0x86dd</span></td>
+        </tr>
+        <tr>
+            <td>ARP<a href="cambiar"><sup>3</sup></a></td>
+            <td><span class="codigo">0x0806</span></td>
+        </tr>
+    </tbody>
+</table>
+<p>Nota: <i>0x</i> indica que los siguientes números están en base hexadecimal.</p>
+<h2>Ejercicio 4 (opcional): Haz una redacción alternativa del ejercicio anterior</h2>
+<p>Si el tercer ejercicio lo he hecho de la manera correcta, creo que su enunciado está bien explicado, ya que también el profesor en clase lo detalla un poco más. Yo únicamente especificaría que es en el apartado <i>Type</i> del nivel 2 en el que se encuentra dicha información, pero gracias al ejemplo que hay puesto de <i>IP</i>, esto es más intuitivo. Aparte, esto se refuerza con que no hay que apuntar el <i>Transmission Control Protocol</i>.</p>
+<h2>Referencias</h2>
+<ol>
+    <li><a href="https://en.wikipedia.org/wiki/IEEE_802.3#Communication_standards">Tabla de estándares ethernet y sus fechas</a>.</li>
+    <li><a href="http://www.wikiwand.com/en/Ethernet_frame#/Ethernet_II">Cabecera MAC de Ethernet II</a>.</li>
+    <li><a href="https://en.wikipedia.org/wiki/EtherType#Examples">Tabla de protocolos que viajan sobre el nivel 2</a>.</li>
+</ol>
+<footer>
+	<span class="last-modified"><span id="modify"></span></span>
+    <span class="author">Elena de Diego</span>
+</footer>
+</div>
+</div>
+<script src="../functions.js"></script>
+</body>
+</html>

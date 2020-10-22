@@ -1,0 +1,20 @@
+Every 2,0s: ls -l                                               192.168.1.136: Sat Mar  9 17:07:35 2019
+
+total 1407540
+drwxr-xr-x 2 alumno users       4096 mar  4 13:48 bin
+drwxr-xr-x 2 alumno users       4096 mar  4 13:50 Descargas
+drwxr-xr-x 2 alumno users       4096 mar  4 13:50 Documentos
+drwxr-xr-x 2 alumno users       4096 mar  4 13:51 Escritorio
+drwxr-xr-x 2 alumno users       4096 mar  4 13:50 Imágenes
+-rw-r--r-- 1 root   root      135470 mar  9 16:47 imagen.jpg
+-rw-r--r-- 1 root   root  1441121280 mar  9 17:03 maquina.iso
+drwxr-xr-x 2 alumno users       4096 mar  4 13:50 Música
+drwxr-xr-x 2 alumno users       4096 mar  4 13:50 Plantillas
+drwxr-xr-x 2 alumno users       4096 mar  4 13:50 Público
+-rw-r--r-- 1 root   root           0 mar  9 16:06 redes
+-rw-r--r-- 1 root   root        1288 mar  9 16:04 redes1-2.txt
+-rw-r--r-- 1 root   root        1288 mar  9 16:10 redes2-2.txt
+-rw-r--r-- 1 root   root        1288 mar  9 16:27 redes3-2.txt
+-rw-r--r-- 1 root   root        1127 mar  9 16:35 redes4-2.txt
+drwxr-xr-x 2 alumno users       4096 mar  4 13:50 Vídeos
+

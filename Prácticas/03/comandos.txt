@@ -1,0 +1,255 @@
+
++ Servidor Debian:
+
+- Activar el enrutamiento, achivo /etc/sysctl.conf:
+
+root@servidor:~# cat /etc/sysctl.conf
+# Uncomment the next two lines to enable Spoof protection (reverse-path filter)
+# Turn on Source Address Verification in all interfaces to
+# prevent some spoofing attacks
+#net.ipv4.conf.default.rp_filter=1
+#net.ipv4.conf.all.rp_filter=1
+
+# Uncomment the next line to enable TCP/IP SYN cookies
+# See http://lwn.net/Articles/277146/
+# Note: This may impact IPv6 TCP sessions too
+#net.ipv4.tcp_syncookies=1
+
+# Uncomment the next line to enable packet forwarding for IPv4
+#net.ipv4.ip_forward=1
+
+# Uncomment the next line to enable packet forwarding for IPv6
+#  Enabling this option disables Stateless Address Autoconfiguration
+#  based on Router Advertisements for this host
+#net.ipv6.conf.all.forwarding=1
+
+- Mostrar las interfaces de red sin haber configurado la interfaz interna:
+
+root@servidor:~# ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:31:69:71 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.254/24 brd 192.168.1.255 scope global enp0s3
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fe31:6971/64 scope link 
+       valid_lft forever preferred_lft forever
+3: enp0s8: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+    link/ether 08:00:27:86:da:8c brd ff:ff:ff:ff:ff:ff
+
+    
+- Archivo /etc/network/interfaces configurado:
+root@servidor:~# cat /etc/network/interfaces
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto enp0s3
+iface enp0s3 inet static
+    address 192.168.1.254
+    netmask 255.255.255.0
+
+auto enp0s8
+iface enp0s8 inet static
+    address 10.1.37.254
+    netmask 255.255.255.0
+
+
+- Reiniciar el servicio de red:
+root@servidor:~# systemctl restart networking.service
+
+
+- Comprobar que la configuración de red ha cambiado exitosamente:
+root@servidor:~# ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:31:69:71 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.254/24 brd 192.168.1.255 scope global enp0s3
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fe31:6971/64 scope link 
+       valid_lft forever preferred_lft forever
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:86:da:8c brd ff:ff:ff:ff:ff:ff
+    inet 10.1.37.254/24 brd 10.1.37.255 scope global enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fe86:da8c/64 scope link 
+       valid_lft forever preferred_lft forever
+
+
++ Cliente Debian:
+
+- Archivo /etc/network/interfaces configurado:
+
+root@cliente:~# cat /etc/network/interfaces
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto enp0s3
+iface enp0s3 inet static
+    address 10.1.37.13
+    netmask 255.255.255.0
+    
+
+- Comprobar que la configuración de red ha cambiado exitosamente:
+
+root@cliente:~# ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:1c:f2:11 brd ff:ff:ff:ff:ff:ff
+    inet 10.1.37.13/24 brd 10.1.37.255 scope global enp0s3
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fe1c:f211/64 scope link 
+       valid_lft forever preferred_lft forever
+       
+
++ Cliente Windows:
+
+- Mostrar las interfaces de red sin haber configurado la interfaz interna:
+
+C:\Users\alumno>ipconfig
+Configuración IP de Windows
+
+
+Adaptador de Ethernet Ethernet:
+
+   Sufijo DNS específico para la conexión. . : 
+   Vínculo: dirección IPv6 local. . . : fe80::81b5:8031:1d37:9a9b%3
+   Dirección IPv4 de configuración autom tica: 169.254.154.155
+   Máscara de subred . . . . . . . . . . . . : 255.255.0.0
+   Puerta de enlace predeterminada . . . . . : 
+
+Adaptador de túnel isatap.{718BB488-35D3-4052-9123-76914B801677}:
+
+   Estado de los medios. . . . . . . . . . . : medios desconectados
+   Sufijo DNS específico para la conexión. . : 
+
+
+- Comprobar que la configuración de red ha cambiado exitosamente:
+
+C:\Users\alumno>ipconfig
+Configuración IP de Windows
+
+
+Adaptador de Ethernet Ethernet:
+
+   Sufijo DNS específico para la conexión. . : 
+   Vínculo: dirección IPv6 local. . . : fe80::81b5:8031:1d37:9a9b%3
+   Dirección IPv4. . . . . . . . . . . . . . : 10.1.37.14
+   Máscara de subred . . . . . . . . . . . . : 255.255.255.0
+   Puerta de enlace predeterminada . . . . . : 
+
+Adaptador de túnel isatap.{718BB488-35D3-4052-9123-76914B801677}:
+
+   Estado de los medios. . . . . . . . . . . : medios desconectados
+   Sufijo DNS específico para la conexión. . : 
+
+
++ Comprobación de la conectividad:
+
+1. Ping entre el ordenador de clase (alumnom@a37pc08) y el servidor Debian (10.1.37.8):
+
+[elena@elena ~]$ traceroute 192.168.1.254
+traceroute to 192.168.1.254 (192.168.1.254), 30 hops max, 60 byte packets
+ 1  servidor.local (192.168.1.254)  0.313 ms  0.285 ms  0.274 ms
+
+
+2. Ping entre todos los servidores Debian de otros compañeros (con algunos de ellos):
+
+- Desde mi servidor (10.1.37.8) al servidor 10.1.37.15:
+
+[alumno@servidor ~]$ traceroute 10.1.37.13
+traceroute to 10.1.37.13 (10.1.37.13), 30 hops max, 60 byte packets
+ 1  10.1.37.13 (10.1.37.13)  0.232 ms  0.171 ms  0.152 ms
+
+    
+- Desde mi servidor (10.1.37.8) al servidor 10.1.37.17:
+
+[alumno@servidor ~]$ traceroute 10.1.37.13
+traceroute to 10.1.37.13 (10.1.37.13), 30 hops max, 60 byte packets
+ 1  10.1.37.13 (10.1.37.13)  0.232 ms  0.171 ms  0.152 ms
+
+    
+3. Ping entre el cliente Windows (192.168.8.1) y el cliente Debian (192.168.8.2):
+
+- Desde el cliente Windows (192.168.8.1) al cliente Debian (192.168.8.2):
+
+C:\Users\alumno\Desktop>pathping 10.1.37.13
+
+Seguimiento de ruta a 10.1.37.13 sobre un mximo de 30 saltos.
+
+  0  win81sistemas [10.1.37.14]
+  1  10.1.37.13
+
+Procesamiento de estadsticas durante 25 segundos...
+              Origen hasta aqu   Este Nodo/Vnculo
+Salto  RTT    Perdido/Enviado = Pct  Perdido/Enviado = Pct  Direccin
+  0                                           win81sistemas [10.1.37.14]
+                                0/ 100 =  0%   |
+  1    0ms     0/ 100 =  0%     0/ 100 =  0%  10.1.37.13
+    
+- Desde el cliente Debian (192.168.8.2) al cliente Windows (192.168.8.1):
+
+traceroute to 10.1.37.14 (10.1.37.14), 30 hops max, 60 byte packets
+ 1  10.1.37.14 (10.1.37.14)  0.553 ms * *
+    
+    
+4. Ping entre los clientes y el servidor Debian (192.168.8.254):
+
+- Desde el cliente Windows (192.168.8.1) al servidor Debian (192.168.8.254):
+    
+C:\Users\alumno\Desktop>pathping 10.1.37.254
+
+Seguimiento de ruta a 10.1.37.254 sobre un mximo de 30 saltos.
+
+  0  win81sistemas [10.1.37.14]
+  1  10.1.37.254
+
+Procesamiento de estadsticas durante 25 segundos...
+              Origen hasta aqu   Este Nodo/Vnculo
+Salto  RTT    Perdido/Enviado = Pct  Perdido/Enviado = Pct  Direccin
+  0                                           win81sistemas [10.1.37.14]
+                                0/ 100 =  0%   |
+  1    0ms     0/ 100 =  0%     0/ 100 =  0%  10.1.37.254
+
+- Desde el cliente Debian (192.168.8.2) al servidor Debian (192.168.8.254):
+    
+[alumno@cliente ~]$ traceroute 10.1.37.254
+traceroute to 10.1.37.254 (10.1.37.254), 30 hops max, 60 byte packets
+ 1  _gateway (10.1.37.254)  0.228 ms  0.257 ms  0.112 ms
+
+- Desde el servidor Debian (192.168.8.254) al cliente Windows (192.168.8.1):
+    
+[alumno@servidor ~]$ traceroute 10.1.37.14
+traceroute to 10.1.37.14 (10.1.37.14), 30 hops max, 60 byte packets
+ 1  10.1.37.14 (10.1.37.14)  0.490 ms * *
+
+- Desde el servidor Debian (192.168.8.254) al cliente Debian (192.168.8.2):
+    
+[alumno@servidor ~]$ traceroute 10.1.37.13
+traceroute to 10.1.37.13 (10.1.37.13), 30 hops max, 60 byte packets
+ 1  10.1.37.13 (10.1.37.13)  0.232 ms  0.171 ms  0.152 ms

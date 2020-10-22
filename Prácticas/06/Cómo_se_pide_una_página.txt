@@ -1,0 +1,14 @@
+ 
+GET / HTTP/1.1
+Host: 
+Opcionales:
+<enter>
+<enter>
+
+Si no funciona: HTTP/1.1 400 Bad Request
+Vete a otro lado: HTTP/1.1 301 Moved Permanently
+Todo bien: HTTP/1.1 200 OK
+
+Centet Type: text/html; charset=utf-8 le hace falta a Chrome.
+Probar charset dentro de la página.
+Requere de text/html y también de <!DOCTYPE html>

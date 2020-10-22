@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="de Diego, Elena">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Práctica 2: Presupuesto y montaje de una red</title>
+</head>
+<body>
+<div class="pagina">
+<header>
+    <h6>
+        <span id="asignatura"></span>
+        <span>Presupuesto y montaje de una red</span>
+    </h6>
+</header>
+<h1>Práctica 2: Presupuesto y montaje de una red</h1>
+<div id="console"></div>
+<div id="toc">
+	<h3>Índice</h3>
+	<noscript>Para poder visualizar el índice y que la página tenga plena funcionalidad, por favor, habilite el uso de JavaScript en su navegador.</noscript>
+</div>
+<hr/>
+<div id="contents">
+<h2>Introducción</h2>
+<p>En la asignatura de planificación y administración de redes del primer curso del grado superior de ASIR (Administración de Sistemas Informáticos en Red), se pide realizar el presupuesto y montaje de una red a partir de un caso hipotético, el cual es el siguiente:</p>
+<p>«Un posible cliente pide un presupuesto para realizar la instalación de una LAN en un aula de informática. El aula tiene como dimensiones 20×10 metros. Se pretenden instalar 21 ordenadores: 20 para alumnos y 1 para el profesor. El acceso a la red del edificio se realizará a través de un punto de red preexistente (ver plano). Además, se desea que el profesor disponga de un proyector».</p>
+<p>Para ello, se debe entregar un «Plano aproximado de la situación de los puestos informáticos, puntos de red y <i>racks</i>» y el «Presupuesto de los materiales», excluyéndose de este último el coste del material no informático, como las mesas y las sillas, la instalación eléctrica –no nos corresponde a nosotros hacerla– y el precio por mano de obra –por nuestra inexperiencia–.</p>
+<p>Para la realización de esta práctica, se ha empleado el sistema operativo Linux Mint 19, con el editor de texto LibreOffice 6.1 Writer y el programa de diseño vectorial Inkscape para la creación del plano, que antes había sido esbozado sobre papel. El primer programa venía junto al sistema, mientras que el segundo ha sido instalado. Está en el repositorio oficial de Ubuntu, por lo que si se quiere instalar basta con escribir en la terminal el siguiente comando:</p>
+<div class="comando comando-linux"><pre><code>$ sudo apt-get install inkscape</code></pre></div>
+<p>Y ya estaría en nuestro ordenador, sin necesidad de ninguna licencia. Ya se puede encontrar el programa en el menú de navegación, en «Gráficos».</p>
+<p>Entraremos más en detenimiento con este programa después, primero empecemos por explicar la red que se va a implementar, el porqué, la distribución de los elementos dentro del aula, el material necesario, las medidas y, por supuesto, la factura. ¡Comencemos!</p>
+<p>Los ejercicios de esta práctica pueden consultarse en <a href="par-2-practica-cableado-aula.pdf" target="_blank">este enlace</a>.</p>
+<h2>Lo primero es lo primero: ¿Qué topología y clase de red? ¿Para qué?</h2>
+<p>Antes de ponernos manos a la obra, hay que pensar qué topología y clase de red queremos, para así poder seleccionar los productos adecuadamente. Al parecer, el cliente esto no lo sabe (que no es nada raro, pero ya nos podría haber dado alguna pista sobre a qué velocidad quiere al menos que vaya), por lo que esta responsabilidad recae toda en nosotros. Ni siquiera se nos dice qué va a impartirse en dicha aula, o si es un centro público o privado, por lo que el abanico de posibilidades parece aumentar considerablemente. Antes de entrar con la clase de red, vayamos a lo sencillo: <b>su</b> <b>topología</b>.</p>
+<p>¿Cuál escoger? ¿Bus, anillo, estrella, malla completa...? La de bus queda descartada la primera debido a una gran desventaja que tiene respecto a las otras: si falla el bus, falla toda la red. Para un aula, prevalece la de estrella frente a la de anillo, ya que si se estropea algo en la red, esta no se acabará congestionando, aparte de la fluctuación unidireccional de la información. ¿Malla completa o estrella? Lo ideal sería esta primera, pero teniendo en cuenta que el presupuesto será determinante a la hora de escoger o no la red, nos quedaremos con la de <b>estrella</b>, que seguramente acabe formando parte de un árbol del centro (seguramente instituto) donde se ubica esta aula.</p>
+<p>En cuanto a la <b>clase de red</b>, vamos a basarnos en nuestra aula actual –<i>aula</i> para no confundirnos con la <i>clase</i> de red–, en la que estudiamos. Esta se supone que está concebida para que vaya a, teóricamente, 1000 Mbps (megabit por segundo), es decir, 1 Gbps (gigabit por segundo). Esto se traduce con que las transferencias llegarán a ser de hasta 125 MB/s, pero está comprobado que no llega a tal cifra (el profesor de esta asignatura hizo una pequeña demostración y, efectivamente, no la alcanzó). <b>La transferencia útil</b> (los datos que finalmente van a llegar a la capa de aplicación del otro ordenador descartando la sobrecarga de cabeceras del resto de capas) es bastante <b>menor que el ancho de banda</b> (datos sin procesar que se pueden transportar en un período de tiempo determinado), sumado a los <b>problemas de transmisión</b> que hay (atenuación, interferencias y ruido, principalmente).</p>
+<p>En el aula, la clase de red es de tipo E y se emplean cables de categoría 5e (Cat 5e), por lo que se ha decidido hacer una red de tipo <b>clase E</b><sub><b>A</b></sub>, que es aquella correspondiente a los cables <b>Cat 6</b>. En relación calidad-precio, las categorías 5e y 6 son de las mejores que hay, ya que categorías anteriores se quedan cortas para las actuales necesidades, y las siguientes aún no son muy competitivas en cuanto a precio se refieren.</p>
+<p>Los cables de categoría 6 respecto a los de 5e tienen la misma transferencia, 1000 mbps –aunque los Cat 6 pueden llegar a tasas más altas, pero en detrimento de la longitud del cable–. La diferencia fundamental entre ambos es la <b>frecuencia</b> que alcanzan: 100 MHz los Cat 5e y <b>250 MHz</b> los Cat 6. Gracias a esto, los problemas de transmisión en los cables de categoría 6 son menores, lo que quiere decir que durante el transporte de la información esta se perderá menos y, por tanto, será más eficaz.</p>
+<p> El propósito de instalar una red es que sea algo que no se tenga que cambiar en, al menos, diez años. Por este motivo es que se ha decidido escoger Cat 6 en vez de Cat 5e: la primera podrá aguantar mejor las necesidades de los usuarios de la red (profesores y alumnos); la segunda, seguramente se quede <i>corta</i> antes de tiempo, que es precisamente lo que nos ocurre ahora en nuestro curso (por ejemplo, un día en la asignatura de implantación de sistemas operativos había que trabajar con una ISO [imagen de disco] de más de 7 GB, la cual al descargarla localmente decía que el tiempo promedio era de más de 40 minutos).</p>
+<p>Aunque se ha mencionado muy rápidamente, la <b>longitud</b> también ha salido al terreno de juego. El estándar de los cables de categoría 6, el igual que en los de categoría 5e, establece una longitud máxima de 100 m para obtener unos resultados que garanticen un mínimo de calidad. Por esto no debemos preocuparnos en nuestra red, ya que como se verá más adelante, la longitud máxima de cable de un punto a otro es de 21,5 metros, concretamente el cable que irá desde el punto de red preexistente hasta nuestro <i>rack</i>.</p>
+<h2>Planificación del espacio</h2>
+<p>Decidida ya tanto la topología como la clase de red, al igual que haber intentado hacernos una idea sobre el propósito de la misma, procedamos a la distribución de los elementos del aula en el espacio con la ayuda de una representación gráfica. El plano base no dice mucho: dónde está la puerta, la pizarra y el punto de red. También nos dan las medidas del aula, que son 20 metros de largo por otros 10 de ancho, como ya se incluyó en la introducción.</p>
+<p>Recordemos que la cantidad de ordenadores era de 20 para los alumnos y 1 para el profesor. 20 ordenadores para los alumnos, no se especifican cuántos tampoco. La parte buena es que no hay ventanas, ni columnas ni recovecos que estorben. Nuestra aula será la mitad aproximadamente de estas dimensiones, así que como espacio hay de sobra, se aprovechará todo el ancho del aula hipotética (10 metros) y 12 metros de largo.</p>
+<p>¿Y el resto? Con el espacio sobrante el cliente no nos ha especificado nada, y en clase nos lo han dejado a nuestra imaginación. Yo al menos pondré una pared después y que en el futuro puedan emplear ese espacio como ellos decidan, sin poner red en ella, ya que quizá se haga otra aula en el futuro y es preferible que organicen de cero cómo la quieren. La ventaja es que en caso de querer poner allí también una red, lo podrán hacer fácilmente a través de nuestra estrella ya montada. También había que incluir un proyector, que seguramente habrá de ir acompañado junto a una pantalla.</p>
+<p>El plano está en escala 1:100, es decir, cada centímetro del plano se corresponde con 100 centímetros en la realidad (1 metro). Se ha incluido una tarima en la zona del profesor, para que así se pueda ver mejor desde más atrás. Las medidas del mobiliario son aproximadas, para poder usarlas de referencia a la hora de planificar la red. Estas se han incluido al lado de los muebles que posteriormente se han puesto abajo a modo de leyenda, sin poner en estos líneas de cota, ya que el espacio era muy reducido.</p>
+<p>Aprovechando que hay una gran cantidad de espacio, se le ha asignado a cada alumno un ordenador y un espacio considerable, pero este podría modificarse dependiendo de las demandas del centro. En total resultan 24 puestos, pero solo habrá 20 de ellos con ordenadores, que es la cantidad que nos han dado, pero se han puesto para futuras ampliaciones, a los cuales dotaremos también con puntos de red. Veamos el plano:</p>
+<figure id="figura1">
+    <a href="pictures/01.svg" target="_blank"><img src="pictures/01.svg" title="Plano" alt="Plano" /></a>
+    <figcaption><b>Figura 1</b>: Plano</figcaption>
+</figure>
+<p>A partir del mismo, podemos hacernos una idea de cómo vamos a montar la red, por lo que tener un plano nos servirá, de manera aproximada, para saber en torno a cuál será el presupuesto final que le podremos comunicar a nuestro cliente.</p>
+<h2>Realización del plano: Primeros pasos con un programa de diseño gráfico</h2>
+<p>Este plano es el resultado de un boceto en papel, de alguna manera había que plasmar lo que imaginábamos al ordenador, y nada como hacernos antes una idea mediante algunos trazos. Bueno, eso de «lo que imaginábamos» no es totalmente cierto, ya que lo que veíamos en el aula influía y, sobre todo, cuando tomas como referencia una imagen, que en mi caso ha sido la la que se encuentra en <a href="https://aulaarquitectura.uca.es/">este</a> <a href="https://aulaarquitectura.uca.es/">enlace</a>. También, para la tarima, se había pensado en una como el de <a href="http://www.formacionib.org/noticias/IMG/arton335.jpg?1538997411">este otro</a>.</p>
+<p>El caso es que, como ya se comentó en la introducción, ha sido realizado con el programa Inkscape en Linux Mint, recomendado en clase. Sinceramente, este tipo de programas, los denominados programas de «diseño gráfico» apenas los he utilizado nunca, nada más lejos de Paint en Windows o su <i>alter ego</i> en Linux, KolourPaint. Útiles son, de eso no hay duda, pero siento algo de estrés ante la cantidad tan abrumadora de opciones que hay, lo cual a mi parecer hace que, si no se está uno familiarizado con este tipo de herramientas, resulten bastante complicadas –o, más que complicadas, que esto suponga en primera instancia una gran barrera de cara al usuario más novel–.</p>
+<p>Es debido a este motivo por el que he tardado tanto en hacer algo tan sencillo, simplemente porque era prácticamente mi primera toma de contacto con alguno de estos programas; pero ha tocado y era inevitable. Como punto positivo he podido practicar con él y quizás me sea útil en el futuro, sobre todo en cuanto a planos se refiere –tal vez, porque laborioso el proceso lo es un rato–.</p>
+<p>Problemas he tenido bastantes aquí, ya que hice un primer plano a duras penas, pero había cosas que se me escapaban y no sabía cómo ponerlas como quería ponerlas. El primer plano estaba quedando así, en este punto lo dejé:</p>
+<p><img src="Plano_prueba.svg" style="width:100%;height:100%" /></p>
+<h2>Problemas… y problemas</h2>
+<p>Tenía bastantes contratiempos los cuales no sabía muy bien cómo solventar, cosas que ocurren al intentar aprender a manejar –aunque sea un poco– algo. Por ejemplo, el grosor de las líneas se ponía como quería y desde el menú de arriba no se podía modificar. Para solucionar esta molestia, había que abrir «Relleno y borde» (<i>Shift</i>+<i>Ctrl</i>+<i>F</i>) y cambiar el valor desde esa interfaz para que surtiera efecto. En los rectángulos era aún peor: si modificabas el alto y ancho, cambiaba el grosor de las líneas y, si modificabas el grosor, cambiaba el alto y ancho… Había que ir cercándolos, poniéndolos varias veces cada uno hasta que se lograban ajustar. Otros desajustes que también me ocurrieron son los siguientes:</p>
+<p>El primero, al juntar algunos elementos (Figura 1), seguramente debido al cambio de grosor automático de algunas líneas:</p>
+<figure>
+    <img src="01.png" style="width:100%;height:100%" />
+    <figcaption><b>Figura </b>. Desajuste en el medio del borde superior, puede apreciarse una especie de «escalón».</figcaption>
+</figure>
+<p>Esto mismo también puede apreciarse en las siguientes imágenes (Figuras 2 y 3), aparte de la superposición de líneas, lo cual provocaba que algunos negros fueran más profundos que otros. Esto se consigue arreglar más adelante haciendo uso de «Trayecto» → «Combinar»:</p>
+<figure>
+    <img src="02.png" style="width:100%;height:100%" />
+    <figcaption><b>Figura </b>. Problemas con el cambio automático de grosor y la superposición de líneas, lo que daba lugar a negros más profundos.</figcaption>
+</figure>
+<figure>
+    <img src="03.png" style="width:100%;height:100%" />
+    <figcaption><b>Figura </b>. Diferentes tipos negros vistos desde arriba debido a la superposición de elementos.</figcaption>
+</figure>
+<h2>¿Y si quizás así…?</h2>
+<p>Debido a estos pequeños percances y en la búsqueda de un resultado más «profesional», busqué información sobre más herramientas para hacer planos, y di con AutoCAD. Me hubiera gustado utilizarlo, pero para Linux no estaba –y casi seguro que es de pago–, así que miré programas similares, lo que me llevó a instalar LibreCAD. El mismo puede instalarse con el siguiente comando:</p>
+<div class="comando comando-linux"><pre><code>$ sudo apt-get install librecad</code></pre></div>
+<p>A mi parecer, es bastante menos intuitivo que Inkscape, aparte de que había mezclas de inglés y español que dificultaban un poco su lectura. El nuevo plano iba quedando así:</p>
+<figure>
+    <img src="04.png" style="width:100%;height:100%" />
+    <figcaption><b>Figura </b>. Utilización del programa LibreCAD en busca de obtener un mejor plano.</figcaption>
+</figure>
+<p>Se hacía complicado el cortar algunas cosas y, para más inri, era más impreciso –o seguramente yo hacía que fuera más impreciso– que el otro. Aquí puede observarse (Figura 5) que, justo en el ángulo de 90º, sobresalen un poco las líneas por donde han sido cortadas:</p>
+<figure>
+    <img src="05.png" style="width:100%;height:100%" />
+    <figcaption><b>Figura </b>. Pequeñas líneas que sobresalen después del ángulo de 90º.</figcaption>
+</figure>
+<h2>Siempre acabamos volviendo a lo primero…, o al menos un amplio número de veces</h2>
+<p>Finalmente, decidí volver a usar Inkscape –de lo malo, lo menos malo; o más bien, de lo manejable para mí, lo que más–, pero intentando mitigar los errores anteriores. Se creó un nuevo plano, de cero, y en las siguientes figuras (de la 6 a la 22) voy mostrando y explicando cómo fui elaborando poco a poco el nuevo plano:</p>
+<figure>
+    <img src="06.png" style="width:100%;height:100%" />
+    <figcaption><b>Figura </b>. Primero hay que definir el espacio total del aula, rodeada de un muro exterior. Este tiene una medida errónea (se ve demasiado grande desde esta perspectiva), se corrige más adelante.</figcaption>
+</figure>
+<figure>
+    <img src="07.png" style="width:100%;height:100%" />
+    <figcaption><b>Figura </b>. Pared divisoria creada. La medida tomada estaba mal –cómo no– y se corrige más adelante. Se hicieron uso de las guías arriba mostradas para ir colocando los distintos elementos contra la pared de la manera más precisa (y sencilla) posible.</figcaption>
+</figure>
+<figure>
+    <img src="08.png" style="width:100%;height:100%" />
+    <figcaption><b>Figura </b>. Mesas del aula creadas, con la opción mencionada de «Combinar» para poder unificar el color negro. También, de paso, se agrupaban, transformándose en un solo elemento.</figcaption>
+</figure>
+<figure>
+    <img src="09.png" style="width:100%;height:100%" />
+    <figcaption><b>Figura </b>. Creando la silla y, gracias a la opción de «Editar nodos de trayecto o tiradores de control» (la segunda de las opciones de la izquierda) se pudo dar redondez a los bordes del rectángulo, a ojo.</figcaption>
+</figure>
+<figure>
+    <img src="10.png" style="width:100%;height:100%" />
+    <figcaption><b>Figura </b>. Respaldo de la silla. Se decidió seleccionar los dos elementos y hacer uso de «Trayecto» → «Intersección».</figcaption>
+</figure>
+<figure>
+    <img src="11.png" style="width:100%;height:100%" />
+    <figcaption><b>Figura </b>. Respaldo de la silla creado de la manera mostrada en la anterior figura, aunque a costa de la silla.</figcaption>
+</figure>
+<figure>
+    <img src="12.png" style="width:100%;height:100%" />
+    <figcaption><b>Figura </b>. Nuevo asiento creado y respaldo unido al mismo. Combinados para que así poder evitar el problema con los bordes (sí, parece una cama más que una silla, pegas de la perspectiva de «ojo de águila»).</figcaption>
+</figure>
+<figure>
+    <img src="13.png" style="width:100%;height:100%" />
+    <figcaption><b>Figura </b>. Haciendo uso de las herramientas de alineación («Alinear y distribuir» [<i>Shift</i>+<i>Ctrl</i>+<i>A])</i>. Se suprimió la agrupación de las mesas y se seleccionó la silla, posteriormente una mesa. Se escogieron las opciones de «Centrar en el eje vertical» y «Centrar en el eje horizontal», con «Relativo a: Último seleccionado» activado.</figcaption>
+</figure>
+<figure>
+    <img src="14.png" style="width:100%;height:100%" />
+    <figcaption><b>Figura </b>. Silla completamente centrada respecto a su mesa. Haciendo uso de la flecha derecha (→) del teclado junto a la tecla «<i>Ctrl»</i> pulsada, que permite desplazar los objetos en el eje de abscisas manteniendo el mismo valor en el eje de ordenadas. Separación entre la mesa y la silla establecida a ojo.</figcaption>
+</figure>
+<img src="15.png" title="fig:" style="width:100%;height:100%" />
+<figure>
+    <img src="16.png" style="width:100%;height:100%" />
+    <figcaption><b>Figura </b>. Una mitad de la clase creada, apoyándonos en las guías que van dentro de la pared. Agrupadas y duplicadas («Edición» → «Duplicar» [Ctrl+D]). En las de abajo, las duplicadas, pueden verse las guías que se han usado.</figcaption>
+</figure>
+<figure>
+    <img src="17.png" style="width:100%;height:100%" />
+    <figcaption><i><b>Figura </b>. Creando la puerta a partir de una circunferencia. Cada sector es la medida de la puerta (8 milímetros por 8 milímetros), y se hizo un recuadro para poder seleccionar el punto de abajo a la derecha y que así se creara correctamente. Cuando se crea la circunferencia, arriba aparecen tres opciones de la misma, en azul. Hay que seleccionar «Cambiar a archo (sin cerrar)» y, con la tecla «Ctrl» pulsada, ir reduciendo trazos de la circunferencia hasta extraer el cuarto de la misma.</i></figcaption>
+</figure>
+<figure>
+    <img src="18.png" style="width:100%;height:100%" />
+    <figcaption><b>Figura </b>. Creación de la mesa y silla del profesor, diferentes a las de los alumnos.</figcaption>
+</figure>
+<figure>
+    <img src="19.png" style="width:100%;height:100%" />
+    <figcaption><i><b>Figura </b>. Puerta situada y tarima añadida. Pizarra y pantalla del proyector creadas (a partir de rectángulos) y centradas respecto al aula. Usada también la opción de «Alinear bordes izquierdos» para poner la pizarra contra la pared, sin dejar ningún espacio entre ambas. Medida entre el proyector y la pizarra tomada a ojo.</i></figcaption>
+</figure>
+<figure>
+    <img src="20.png" style="width:100%;height:100%" />
+    <figcaption><i><b>Figura </b>. «Rack» añadido, escalera y punto de red preexistente (será modificado posteriormente). Se olvidaron los puntos de red para los ordenadores y fueron añadidos posteriormente.</i></figcaption>
+</figure>
+<figure>
+    <img src="21.png" style="width:100%;height:100%" />
+    <figcaption><i><b>Figura </b>. Clase combinada y agrupada para evitar problemas anteriores.</i></figcaption>
+</figure>
+<figure>
+    <img src="22.png" style="width:100%;height:100%" />
+    <figcaption><i><b>Figura </b>. Últimos retoques: cotas del plano. Para aplicar el acotado automático se hace con «Extensiones» → «Mostrar trayecto» → «Dimensiones». Hay que instalar una librería con el comando que solicita. Justo en «Mostrar trayecto», aparece también la opción de «Medir trayecto», instalando otra librería. Esta última a mí no me ha funcionado correctamente. También, hubo problemas al añadir más cotas, ya que se distanciaban demasiado, por lo que opté por quitar las puestas automáticamente y crearlas yo mismo (duplicando antes una hecha). Se cambió la fuente adrede a «Andale Mono» debido a que las medidas con comas no se alineaban. Algo parecido ocurrirá después con los nombres en el plano, ya que la alineación tenía en cuenta letras que sobresalían por abajo, como la «p».</i></figcaption>
+</figure>
+<p>Y con todos estos pasos y algunos más no inmortalizados, se ha conseguido realizar el plano que se mostraba al principio de este apartado. Ya tenemos todo encajado en él, ahora podemos pasar a la preparación del material necesario, así como de las medidas totales de cables y canaletas.</p>
+<h2>Preparación del material</h2>
+<p>Ahora que la idea que teníamos en nuestra mente –en las imágenes más bien– está plasmada de manera gráfica en el plano, vamos a preparar todo el material que nos compete comprar y montar (añadiendo enchufes y regletas) para así poder saber el dinero que finalmente habrá que desembolsar y que el posible cliente decidida por tanto si contratar nuestros servicios o no.</p>
+<p>Antes de todo, hay que decidir cuántos puntos de red se quieren instalar por cada media fila (conjunto de 3 mesas de una fila, separadas de las siguientes mesas de la fila por un espacio). Como va a haber 3 ordenadores por cada una y queremos anticiparnos un poco a lo que vaya a pasar pero sin llegar excedernos, en total se van a poner 4 puntos de red por cada una de las medias filas, lo que hacen un total de 32 puntos, sin contar al profesor. A este último le vamos a poner 2, ya que más seguramente no le serán de utilidad. Por tanto, tenemos 34 puntos de red que pondremos, por lo que seguramente un <i>patch panel</i> de 48 puertos sería lo ideal (2 de 24).</p>
+<p>Bien, ahora que este punto está decidido, vamos a proceder con la organización de todo el material necesario. Por simpleza, todo lo que pueda comprarse se hará desde PcComponentes, incluyendo el precio y enlace de cada producto. Antes de comenzar a buscar los artículos, hagamos un listado de todo aquello que creamos necesarios y algunos requisitos que se nos ha mencionado en clase, como que los ordenadores tengan al menos 8 GB de memoria RAM, o el añadido de regletas y enchufes. También aquellos requisitos que hemos establecido nosotros para poder obtener la clase de red deseada o requisitos que establezcan mínimos de calidad en componentes que no están catalogados estrictamente como «de red»:</p>
+<table>
+    <tbody>
+        <tr>
+            <td>Materiales</td>
+            <td>Requisitos</td>
+            <td>N.º de unidades</td>
+        </tr>
+        <tr>
+            <td>Ordenadores (alumnos)</td>
+            <td>8 GB RAM, tarjeta gráfica</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>Ordenador (profesor)</td>
+            <td>8 GB RAM, 2 HDMI</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Teclados</td>
+            <td>Ninguno</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <td>Ratones</td>
+            <td>Ninguno</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <td>Soportes ordenador</td>
+            <td>Ninguno</td>
+            <td>21 (opcionales)</td>
+        </tr>
+        <tr>
+            <td>Monitores</td>
+            <td>Ninguno</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <td>Cables de vídeo</td>
+            <td>Ninguno</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <td>Organizador de cables</td>
+            <td>Debajo de mesas</td>
+            <td>21 (opcionales)</td>
+        </tr>
+        <tr>
+            <td>Proyector</td>
+            <td>Dimensiones de pantalla</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Pantalla proyector</td>
+            <td>~ 3 m de largo</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Cable de vídeo proyector</td>
+            <td>10 m de largo</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Soporte proyector</td>
+            <td>Desde el techo</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Enchufe proyector</td>
+            <td>Ninguno</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Rack</td>
+            <td>< 10 U</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Patch panel</td>
+            <td>48 conexiones</td>
+            <td>2 de 24 puertos</td>
+        </tr>
+        <tr>
+            <td>Switchs</td>
+            <td>48 conexiones</td>
+            <td>2 de 24 puertos</td>
+        </tr>
+        <tr>
+            <td>Cables <i>ethernet</i></td>
+            <td>Cat 6 UTP</td>
+            <td>604 metros</td>
+        </tr>
+        <tr>
+            <td>Conectores RJ-45</td>
+            <td>Ninguno</td>
+            <td>58</td>
+        </tr>
+        <tr>
+            <td>Protectores de conectores RJ-45</td>
+            <td>Misma cantidad que los conectores</td>
+            <td>48</td>
+        </tr>
+        <tr>
+            <td>Rosetas y enchufes</td>
+            <td>4 puertos y 3 enchufes </td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>Regletas</td>
+            <td>> 3 enchufes</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <td>Canaletas</td>
+            <td>Muy gruesas</td>
+            <td>41,5 m</td>
+        </tr>
+        <tr>
+            <td>Canaletas proyector</td>
+            <td>Muy finas</td>
+            <td>13,25 m</td>
+        </tr>
+        <tr>
+            <td>Cambios canaletas</td>
+            <td>Mismo grosor que canaletas</td>
+            <td>3 cambios esquinas y 4 cambios dirección</td>
+        </tr>
+        <tr>
+            <td>Cambios canaletas proyector</td>
+            <td>Mismo grosor que canaletas proyector</td>
+            <td>1 cambio esquinas y 2 cambios dirección</td>
+        </tr>
+    </tbody>
+</table>
+<h2>El porqué de algunos materiales</h2>
+<ul>
+    <li><i>Ordenadores (alumnos)</i>: Requisito de 8 GB de memoria RAM mencionado en clase. Escogidos con tarjeta gráfica diferente a la del procesador debido a que quizá se impartan asignaturas que requieran algo de potencia gráfica, y el precio por unidad no queda tan elevado a pesar de esto. El inconveniente es que no vienen con Windows, así que se podría instalar alguna distribución gratuita de Linux. Las tarjetas de red vienen incluidas, como es habitual en la actualidad.</li>
+    <li><i>Ordenador (profesor)</i>: Los requisitos anteriores son aplicables a este también. Se ha escogido uno diferente para el profesor debido a que requiere de dos tomas HDMI, uno para su monitor y otro para el proyector.</li>
+    <li><i>Soportes de ordenador</i>: Si no vienen incluidos en las mesas, podríamos añadirlos nosotros. Son aquellos puestos debajo de estas para que el ordenador no moleste encima o se pueda caer estando debajo. El cliente decide si quiere incluirlos o no.</li>
+    <li><i>Cables de vídeo</i>: Elegidos de 3 m por el precio. La longitud elegida podría reducirse y sería más conveniente para así tener cables menos holgados, lo que evitaría futuros tropiezos.</li>
+    <li><i>Organizador de cables</i>: En vez de tener canaletas debajo de las mesas, los organizadores de cables me parecen mejor opción. Se podrían poner si al cliente le parece bien, aunque la contra es que los costes se elevan un poco con respecto a las canaletas u otras opciones.</li>
+    <li><i>Proyector</i>: Como la pantalla ha sido escogida primero y de 16:9, este tiene que tener la misma relación de aspecto, aunque también tiene la de 4:3.</li>
+    <li><i>Pantalla proyector</i>: De aproximadamente 3 m de largo, para poder ser fiel al plano.</li>
+    <li><i>Rack</i>: Quizás algo grande para las necesidades actuales, pero puede ser una elección para cuando se realicen futuras ampliaciones.</li>
+    <li><i>Patch panel</i> y <i>switchs</i>: Ya comentado anteriormente. Se necesitarán en total 34 puntos de red, y los que hay suelen ser o de 24, o de 48, por lo que mejor que sobre a que falte. Tienen que tener la categoría 6 de nuestro cable.</li>
+    <li><i>Conectores RJ-45</i>: 10 más respecto al total en caso de que se dañaran algunos y se perdieran otros.</li>
+    <li><i>Protectores de conectores RJ-45</i>: En principio no es algo que se vaya a dañar, es debido a eso que se han puesto solamente de los 48 conectores base y no 10 más.</li>
+    <li><i>Rosetas y enchufes</i>: Como se ha escogido un combinado de enchufes y puntos de red, con 1 de estos será suficiente por puesto, por lo que se necesitan 8 para alumnos y 1 para profesor. Se cablearán todos los puntos de red menos 2 del profesor (son 4 en total), ya que no se consideran necesarios.</li>
+    <li><i>Regletas</i>: Se necesita 1 por cada mesa, excepto en 4 mesas que en principio no se piensan ocupar, por lo que en estos cuatro sitios se prescinden de ellas y se ahorran costes.</li>
+    <li><i>Canaletas</i>: Han de ser lo suficientemente grandes como para poder albergar el gran manojo de cables que se llegará a formar, ya que serán compartidas por todos los cables de red. Los cables eléctricos, cuando se pongan, irán por otras, así que no se necesita dejarlas preparadas. Las del proyector son finas, ya que solo requiere del cable de toma de corriente, que su enchufe estará cercano y el cable HDMI que irá hasta el ordenador del profesor.</li>
+    <li><i>Cambios de canaletas</i>: Con esto nos referimos a aquellas pequeñas piezas de las canaletas que sirven para poder sortear esquinas de las paredes y poder realizar cambios de dirección en una misma pared (las necesitamos por los cambios de altura que hay).</li>
+</ul>
+<h2>Medidas totales y algunas cantidades</h2>
+<ul>
+    <li><i>Cables</i>:
+        <ul>
+            <li><i>De punto de red preexistente a rack</i>: 3,5 m (hasta la pared lateral) + 12 m (hasta la pared trasera) + 1 m (cambio de altura) + 5 m (hasta el <i>rack</i>) = <b>21,5 m</b>.</li>
+            <li><i>De rack a cuarta fila de mesas</i>: 0,75 m (hasta el primer ordenador [en la mitad de la mesa]) + 2,25 m (hasta el segundo ordenador) + <i>2 m</i> (de la pared lateral hasta la pared trasera) + 1 m (cambio de altura) + 5 m (hasta el <i>rack</i>) * 2 (multiplicado por 2 debido a que son medias filas y por lo tanto 2 tienen las mismas distancias) * 4 (multiplicado por 4 porque por hay 4 puntos de red en cada uno marcado en el plano, 3 para los ordenadores y 1 más para necesidades futuras) = <b>88 m</b>.</li>
+            <li><i>De rack a tercera fila de mesas</i>: 0,75 m + 2,25 m + <i>4 m</i> (de la pared lateral hasta la pared trasera) + 1 m + 5 m * 2 * 4 = <b>104 m</b>.</li>
+            <li><i>De rack a segunda fila de mesas</i>: 0,75 m + 2,25 m + <i>6 m</i> (de la pared lateral hasta la pared trasera) + 1 m + 5 m * 2 * 4 = <b>120 m</b>.</li>
+            <li><i>De rack a primera fila de mesas</i>: 0,75 m + 2,25 m + <i>8 m</i> (de la pared lateral hasta la pared trasera) + 1 m + 5 m * 2 * 4 = <b>136 m</b>.</li>
+            <li><i>De rack a mesa del profesor</i>: 1,25 m (hasta el ordenador) + <i>10 m</i><b> </b>(de la pared lateral hasta la pared trasera) + 1 m + 5 m * 2 = <b>34,5 m</b>.</li>
+            <li><i><b>Total cable ethernet UTP Cat 6</b></i>: 21,5 + 88 + 104 + 120 + 136 + 34,5 = <b>504 m</b> + <b>100 m</b> (en caso de necesitar más) = <b>604 m</b>.</li>
+        </ul>
+    </li>
+</ul>
+<ul>
+    <li><i>Canaletas</i>:
+        <ul>
+            <li><i>Lateral izquierdo</i>: 3,5 m (desde punto de red hasta la pared lateral) + 12 m (hasta la pared trasera) + 1 m (cambio de altura) + 5 m (hasta el <i>rack</i>) = <b>21,5 m</b>.</li>
+            <li><i>Lateral derecho</i>: 8 m (desde la primera fila hasta la pared trasera) + 1 m + 5 m = <b>14 m</b>.</li>
+            <li><i><b>Total canaletas</b></i>: 21,5 + 14 = <b>35,5 m</b> + <b>6 m</b> (en caso de necesitar más) = <b>41,5 m</b>.</li>
+        </ul>
+    </li>
+</ul>
+<ul>
+    <li><i>Cambios esquinas y de dirección en las canaletas</i>:
+        <ul>
+            <li><i>Lateral izquierdo</i>: <b>2 cambios en las esquinas</b> (los producidos en los bordes de las paredes del punto de red preexistente y la pared izquierda y el que se produce en la pared trasera) y <b>2 cambios de dirección</b> (en el cambio de altura y en el siguiente cambio para poder dirigir los cables hacia el <i>rack</i>).</li>
+            <li><i>Lateral derecho</i>: <b>1 cambio en las esquinas</b> (solo 1 porque no hay ninguno en la pared derecha, carece del punto de red preexistente) y <b>2 cambios de dirección</b>.</li>
+            <li><i><b>Total cambios de canaletas</b></i>: <b>3 cambios en las esquinas</b> y <b>4 cambios de dirección</b>.</li>
+        </ul>
+    </li>
+    <li><i>Canaleta proyector</i>: 5 m (desde el proyector hasta la pared izquierda) + 3 m (desde el proyector hasta la mesa del profesor) + 1 m (cambio de altura) + 1,25 m (hasta el ordenador del profesor). <i><b>Total canaleta proyector</b></i>: <b>10,25 m</b> + <b>3 m</b> por si acaso = <b>13,25 m</b>.</li>
+    <li><i>Cambios canaleta proyector</i>: <b>1 cambio de dirección</b>, <b>1 cambio en esquinas</b> y <b>1 cambio de dirección</b>. <i><b>Total cambios de canaletas del proyector</b></i>: <b>2 cambios de dirección</b> y <b>1 cambio de esquinas</b>.</li>
+    <li><i>Conectores RJ-45</i>: 21 (ordenadores que han de estar conectados a una roseta) * 2 (dos conectores por cable, uno conectado en la roseta y otro conectado en el ordenador) + 21 (dentro del <i>rack</i>, entre los <i>switchs</i> y el <i>patch panel</i> han de conectarse la misma cantidad que en los equipos) * 2 (dos conectores por cable, uno conectado en los <i>switchs</i> y otro conectado en el <i>patch panel</i>). <i><b>Total conectores RJ-48</b></i>: <b>48</b> + <b>10</b> por si acaso = <b>58</b>.</li>
+</ul>
+<h2>¡Siento la espera! Tome, aquí tiene, su factura</h2>
+<p>Una vez hechas las medidas y las cuentas, toca ir de compras para saber cuánto le va a costar a nuestro cliente toda la red. Con ayuda de la anterior tabla creada, este proceso se simplifica y, si no nos hemos olvidado antes de nada, no se nos escapará ningún detalle. Recordemos que en el presupuesto hay que incluir todos los elementos informáticos y de red, excluyéndose el resto del mobiliario, la instalación eléctrica y la mano de obra. Hay que incluir los enlaces a los productos que vamos a comprar. Herramientas, tornillería, tacos y bridas quedan también fuera fuera del presupuesto. No hay que olvidar incluir el IVA del 21 % respecto al precio base del producto y el precio sin IVA.</p>
+<p>Ya con esto habríamos acabado, espero que haya tenido una agradable lectura, ¡hasta pronto!</p>
+<p>Red es y redes SA</p>
+<p>C/ Vitoria 3</p>
+<p>28804 – Alcalá de Henares</p>
+<p>Número de factura: 32981</p>
+<p>Fecha de factura: 19/11/2018</p>
+<p>Cliente: IES M.ª de la Indecisión</p>
+<table>
+    <tbody>
+        <tr>
+            <td>Concepto</td>
+            <td>Cantidad</td>
+            <td>Precio unitario</td>
+            <td>Importe (sin IVA)</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.pccomponentes.com/lenovo-ideacentre-720-18asu-amd-ryzen-5-8gb-1tb-rx560"><b>Ordenador</b></a><a href="https://www.pccomponentes.com/lenovo-ideacentre-720-18asu-amd-ryzen-5-8gb-1tb-rx560"><b>Lenovo Ideacentre 720-18ASU</b></a></td>
+            <td>20</td>
+            <td>541,81 €</td>
+            <td>10 836,02 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.pccomponentes.com/acer-aspire-axc-885-intel-core-i5-8400-8gb-1tb-128gb-ssd-gt720"><b>Acer Aspire AXC-885</b></a></td>
+            <td>1</td>
+            <td>577,69 €</td>
+            <td>577,69 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.pccomponentes.com/logitech-desktop-mk120">Teclado + Ratón </a><a href="https://www.pccomponentes.com/logitech-desktop-mk120">Logitech Desktop MK120</a></td>
+            <td>21</td>
+            <td>13,34 €</td>
+            <td>280,14 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.pccomponentes.com/soporte-para-cpu-bajo-mesa-negro"><b>Soporte para CPU Bajo Mesa Negro</b></a> <b>(opcional</b><b>es</b><b>)</b></td>
+            <td>21</td>
+            <td>23,97 €</td>
+            <td>503,37 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.pccomponentes.com/samsung-s24d330h-24-led-fullhd"><b>Monitor </b></a><a href="https://www.pccomponentes.com/samsung-s24d330h-24-led-fullhd"><b>Samsung S24D330H 24"</b></a></td>
+            <td>21</td>
+            <td>90,90 €</td>
+            <td>1 908,9 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.pccomponentes.com/equip-cable-hdmi-3d-macho-macho-alta-calidad-3m"><b>Equip Cable HDMI 3D Macho/Macho Alta Calidad 3m</b></a></td>
+            <td>21</td>
+            <td>3,1 €</td>
+            <td>65,1 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.ikea.com/es/es/productos/organizacion-almacenaje/organizacion-cables/signum-regleta-para-cables-horizontal-gris-plata-art-30200253/">Regleta para cables horizontal</a> (opcionales)</td>
+            <td>21</td>
+            <td>10,74 €</td>
+            <td>225,54 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.pccomponentes.com/optoma-dx349-proyector-3d-3000-lumens-ansi-dlp-xga"><b>Optoma DX349 Proyector</b></a></td>
+            <td>1</td>
+            <td>296,69 €</td>
+            <td>296,69 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://shop.optoma.es/de-9120ega">Pantalla proyector Optoma DE-9120EGA</a></td>
+            <td>1</td>
+            <td>615,83 €</td>
+            <td>615,83 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.pccomponentes.com/cable-hdmi-14-macho-macho-10m"><b>Cable HDMI 1.4 Macho/Macho 10m</b></a></td>
+            <td>1</td>
+            <td>11,78 €</td>
+            <td>11,78 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.pccomponentes.com/tooq-soporte-giratorio-inclinable-para-proyector"><b>TooQ Soporte Giratorio Inclinable para Proyector</b></a></td>
+            <td>1</td>
+            <td>23,14 €</td>
+            <td>23,14 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.portalelectricidad.es/base-enchufe-de-superficie-schuko-10a16a.html">BASE ENCHUFE DE SUPERFICIE SCHUKO 10A/16A</a></td>
+            <td>1</td>
+            <td>1,71 €</td>
+            <td>1,71 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.pccomponentes.com/digitus-armario-rack-mural-19-7hu-600x450"><b>Digitus Armario Rack Mural 19" 7HU 600x450</b></a></td>
+            <td>1</td>
+            <td>66,94 €</td>
+            <td>66,94 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.pccomponentes.com/equip-patch-panel-24-puertos-cat-6"><b>Equip Patch Panel 24 puertos Cat 6</b></a></td>
+            <td>2</td>
+            <td>29,75 €</td>
+            <td>59,5 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.pccomponentes.com/tp-link-tl-sg1024de-switch-24-puertos-gigabit"><b>TP-Link TL-SG1024DE Switch 24 Puertos Gigabit</b></a></td>
+            <td>2</td>
+            <td>88,42 €</td>
+            <td>176,84 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.pccomponentes.com/bobina-cable-utp-cat-6-s-lido-305m"><b>Bobina Cable UTP Cat 6 Sólido 305m</b></a></td>
+            <td>2</td>
+            <td>61,16 €</td>
+            <td>122,32 €</td>
+        </tr>
+        <tr>
+        <td><b><br />
+            </b><a href="https://www.pccomponentes.com/equip-conector-rj45-cat6-100-unidades"><b>Equip Conector RJ45 Cat6 100 Unidades</b></a></td>
+            <td>1</td>
+            <td>13,84 €</td>
+            <td>13,84 €</td>
+        </tr>
+        <tr>
+            <td><p><a href="https://www.pccomponentes.com/protector-conector-rj45-gris---pack-25-unds"><b>Protector Conector RJ45 Gris - Pack 25 unds</b></a></p></td>
+            <td>2</td>
+            <td>3,51 €</td>
+            <td>7,02 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.simonelectric.com/51000404-030-kit-caja-pared-superficie-empotrar-8-elementos-2-bases-electri.html">Kit caja pared superficie-empotrar 8 elementos</a></td>
+            <td>9</td>
+            <td>33,05</td>
+            <td>297,45 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.pccomponentes.com/owlotech-6-outlet-essential-series-regleta-6-tomas"><b>Owlotech 6-Outlet Essential Series Regleta 6 Tomas</b></a></td>
+            <td>21</td>
+            <td>7,43 €</td>
+            <td>156,03 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.bricor.es/bricor/electricidad/canalizacion-electrica/canaletas-/canaleta-adhesiva-16x10-000310000302">CABLEFIX Canaleta adhesiva 16x10</a></td>
+            <td>23</td>
+            <td>2,13 €</td>
+            <td>48,99 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.bricor.es/bricor/electricidad/canalizacion-electrica/canaletas-/acces-surtidos-canaleta-16x10-mm-blanco-000310000518">CABLEFIX Acces surtidos canaleta 16x10 mm blanco</a></td>
+            <td>4</td>
+            <td>1,56 €</td>
+            <td>6,24 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.bricor.es/bricor/electricidad/canalizacion-electrica/canaletas-/canaleta-adhesiva-de-9x5-mm-color-blanco-000310000260">CABLEFIX Canaleta adhesiva de 9x5 mm color blanco</a></td>
+            <td>7</td>
+            <td>1,39 €</td>
+            <td>9,73 €</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.bricor.es/bricor/marca/cablefix-0799">CABLEFIX</a><br />
+            Acc surtidos canaleta 9x5 mm blanco</td>
+            <td>1</td>
+            <td>1,48 €</td>
+            <td>1,48 €</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><p>Total sin IVA</p>
+            <p>Total con IVA</p></td>
+            <td><p>16 312,29 €</p>
+            <p>19 737.87 €</p></td>
+        </tr>
+    </tbody>
+</table>
+<footer>
+	<span class="last-modified"><span id="modify"></span></span>
+    <span class="author">Elena de Diego</span>
+</footer>
+</div>
+</div>
+<script src="../functions.js"></script>
+</body>
+</html>

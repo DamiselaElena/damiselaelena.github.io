@@ -1,0 +1,51 @@
+ 
+@import url('../styles.css');
+
+span.triangulo {
+    font-size: 24px;    /* 6px more than div.pagina {font-size} */
+}
+
+div.trama pre code {
+    border-right: 1px solid #b4b4b4;
+    border-left: 1px solid #b4b4b4;
+    display: flex;
+    padding: 3px 0px 3px 15px;  /*Top, right, bottom, left*/
+    font-family: monospace;
+    font-size: 15px;
+    max-width: 42%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: justify;
+}
+
+div.trama_gris pre code {
+    background-color: #dddddd;
+    width: 100%;
+    margin-bottom: -19px;
+}
+
+div.trama_gris_primera pre code {
+    background-color: #dddddd;
+    width: 100%;
+    margin-bottom: -19px;
+    border-top: 1px solid #b4b4b4;
+}
+
+div.trama_ultima pre code {
+    background-color: #dddddd;
+    width: 100%;
+    border-bottom: 1px solid #b4b4b4;
+}
+
+div.trama_blanca pre code {
+    background-color: white;
+    width: 100%;
+    margin-bottom: -19px;
+}
+
+div.trama_highlight pre code {
+    background-color: #1A82BC;
+    color: white;
+    width: 100%;
+    margin-bottom: -19px;
+}

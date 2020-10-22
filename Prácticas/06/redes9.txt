@@ -1,0 +1,40 @@
+linux-ewxc:/home/lg-gram # nc -l 60093
+GET / HTTP/1.1
+Host: localhost:60093
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:64.0) Gecko/20100101 Firefox/64.0                                   
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8                                            
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+
+HTTP/1.1
+Server:Hola
+Content-Type: text/html;charset=UTF-8
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>
+Servidor web
+</title>
+</head>
+<body>
+<h1>
+Un título de nivel 1
+</h1>
+<p>
+Un ejemplo de página que tiene
+<b>
+negrita
+</b>
+ y
+<i>
+cursiva.
+</i>
+</body>
+</html>
+
+

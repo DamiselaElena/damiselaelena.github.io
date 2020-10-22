@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="de Diego, Elena">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Práctica 7: NAT</title>
+</head>
+<body>
+<div class="pagina">
+<header>
+    <h6>
+        <span id="asignatura"></span>
+        <span>NAT</span>
+    </h6>
+</header>
+<h1>Práctica 7: NAT</h1>
+<div id="console"></div>
+<div id="toc">
+	<h3>Índice</h3>
+	<noscript>Para poder visualizar el índice y que la página tenga plena funcionalidad, por favor, habilite el uso de JavaScript en su navegador.</noscript>
+</div>
+<hr/>
+<div id="contents">
+<h2>Esquema de la red</h2>
+<figure>
+    <img src="01.svg" />
+    <figcaption><b>Figura 1</b>: Diagrama de conexiones de red, nosotros somos el anfitrión OpenSuse</figcaption>
+</figure>
+<p>Los ejercicios de esta práctica pueden consultarse en <a href="par-7-practica-nat.pdf" target="_blank">este enlace</a>.</p>
+<h2>Activa el NAT en la máquina A</h2>
+<p>Todos los comandos que vayamos ejecutando los vamos a ir guardando en un <i>script</i> para que se vayan guardando al reiniciar y que así se efectúen también todos los anteriores, ya que son necesarios.</p>
+<p>Primero, activamos el enrutamiento en el enrutador Debian con el siguiente comando:</p>
+<div class="comando comando-linux"><pre><code>root@enrutador-debian:/home/alumno # sysctl net.ipv4.ip_forward=1</code></pre></div>
+<p>Después, vaciamos nuestra tabla NAT –y la vaciaremos al realizar cada prueba–:</p>
+<div class="comando comando-linux"><pre><code>root@enrutador-debian:/home/alumno # iptables -t nat -F</code></pre></div>
+<p>Añadimos las entradas NAT para los dos adaptadores puente –el <span class="codigo">eth0</span>, que está en la red <span class="codigo">10.1.0.0/16</span> y el <span class="codigo">eth1</span>, en la <span class="codigo">192.168.255.0/24</span>–:</p>
+<div class="comando comando-linux"><pre><code>root@enrutador-debian:/home/alumno # iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+root@enrutador-debian:/home/alumno # iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE</code></pre></div>
+<p>Finalmente, comprobamos que tanto el cliente Debian como el cliente Windows tienen acceso a internet.</p>
+<ul>
+    <li>En el cliente Debian:</li>
+</ul>
+<div class="comando comando-linux"><pre><code>root@cliente-debian:/home/alumno # mtr 8.8.8.8
+                             My traceroute [v0.85]
+cliente-debian (0.0.0.0)                             Tue Apr 2 08:54:22 2019
+Keys: Help  Display mode  Restart statistics  Order of fields  quit
+                                       Packets              Pings
+ Host                               Loss%  Snt  Last  Avg Best Wrst StDev
+ 1. 172.16.0.254                     0.0%   14   1.0  1.1  0.9  1.4  0.0
+ 2. 10.1.0.1                        0.0%   14   1.6  4.2  1.6 32.2  8.1
+ 3. 25.red-80-58-67.staticip.rima-td 0.0%   14   4.8  5.3  3.8  8.6  1.1
+ 4. 25.red-80-58-121.staticip.rima-t 0.0%   14   8.7  7.0  5.4 10.5  1.4
+ 5. 240.red-80-58-88.staticip.rima-t 7.1%   14   7.0  6.9  5.0 14.1  2.3
+ 6. 94.red-81-46-8.customer.static.c 0.0%   14   5.1  7.4  4.8 23.3  4.7
+ 7. ???                              
+ 8. 209.85.149.88                    0.0%   14   5.3  7.3  5.3 17.0  2.9
+ 9. ???
+10. 74.125.253.196                   0.0%   13   6.4  6.2  5.6  6.8  0.0
+11. 108.170.232.25                   0.0%   13   8.6  7.9  5.8 15.7  2.4
+12. google-public-dns-a.google.com   0.0%   13   5.4  5.8  4.6  6.4  0.3</code></pre></div>
+<ul>
+    <li>En el cliente Windows:</li>
+</ul>
+<div class="comando comando-linux"><pre><code>Seguimiento de ruta a google-public-dns-a.google.com [8.8.8.8]
+sobre un máximo de 30 saltos:
+  0 WIN-O74RNEACROF [172.16.0.1] 
+  1 172.16.0.254 
+  2 10.1.0.1 
+  3 25.red-80-58-67.staticip.rima-tde.net [80.58.67.25] 
+  4 25.red-80-58-121.staticip.rima-tde.net [80.58.121.25] 
+  5 240.red-80-58-88.staticip.rima-tde.net [80.58.88.240] 
+  6 94.red-81-46-8.customer.static.ccgg.telefonica.net [81.46.8.94] 
+  7    *       *       *    
+Procesamiento de estadísticas durante 150 segundos...
+              Origen hasta aquí  Este Nodo/Vínculo
+Salto RTT   Perdido/Enviado = Pct Perdido/Enviado = Pct Dirección
+  0                                          WIN-O74RNEACROF [172.16.0.1] 
+                                0/ 100 = 0%  |
+  1   0ms    0/ 100 = 0%    0/ 100 = 0% 172.16.0.254 
+                                0/ 100 = 0%  |
+  2   1ms    0/ 100 = 0%    0/ 100 = 0% 10.1.0.1 
+                              100/ 100 =100%  |
+  3 ---    100/ 100 =100%    0/ 100 = 0% 25.red-80-58-67.staticip.rima-tde.net [80.58.67.25] 
+                                0/ 100 = 0%  |
+  4 ---    100/ 100 =100%    0/ 100 = 0% 25.red-80-58-121.staticip.rima-tde.net [80.58.121.25] 
+                                0/ 100 = 0%  |
+  5 ---    100/ 100 =100%    0/ 100 = 0% 240.red-80-58-88.staticip.rima-tde.net [80.58.88.240] 
+                                0/ 100 = 0%  |
+  6 ---    100/ 100 =100%    0/ 100 = 0% 94.red-81-46-8.customer.static.ccgg.telefonica.net [81.46.8.94] 
+Traza completa.</code></pre></div>
+<h2>Conéctate a B por medio de escritorio remoto, desde tu PC físico</h2>
+<p>Abrimos el puerto que emplea RDP (<i>Remote Desktop Protocol</i>), el cual es el <span class="codigo">3389</span>, e insertamos como destino al cliente Windows (<span class="codigo">172.16.0.1</span>):</p>
+<div class="comando comando-linux"><pre><code>root@enrutador-debian:/home/alumno # iptables -t nat -A PREROUTING -p tcp --dport 3389 -i eth0 -j DNAT --to 172.16.0.1:3389</code></pre></div>
+<p>Activamos el escritorio remoto en Windows:</p>
+<figure>
+    <img src="02.png" />
+    <figcaption><b>Figura 2</b>: Se activa haciendo clic derecho en <span class="codigo">Este equipo</span> → <span class="codigo">Propiedades</span> → <span class="codigo">Permitir las conexiones remotas a este equipo</span></figcaption>
+</figure>
+<p>Habilitamos algún usuario para que pueda conectarse por medio de escritorio remoto:</p>
+<figure>
+    <img src="03.png" />
+    <figcaption><b>Figura 3</b>: Usuario <span class="codigo">Remoto</span> agregado correctamente. Para esto, en la figura anterior hacemos clic en <span class="codigo">Seleccionar usuarios...</span> y, después, sobre <span class="codigo">Agregar...</span></figcaption>
+</figure>
+<p>Abrimos el programa Remmina y realizamos los preparativos para la conexión:</p>
+<figure>
+    <img src="04.png" class="img_grande" />
+    <figcaption><b>Figura 4</b>: Configuración de la conexión en Remmina. Como nos conectamos desde la red del aula (<span class="codigo">10.1.0.0/16</span>), hay que poner el adaptador del enrutador que se encuentra en esta, el <span class="codigo">10.1.0.119</span></figcaption>
+</figure>
+<p>Seleccionamos <span class="codigo">Conectar</span> y habremos accedido correctamente a nuestro cliente:</p>
+<figure>
+    <img src="05.png" class="img_grande" />
+    <figcaption><b>Figura 5</b>: Conexión de escritorio remoto establecida exitosamente con nuestro cliente Windows</figcaption>
+</figure>
+<h2>Conéctate a B desde el equipo B de otro compañero</h2>
+<p>Abrimos el puerto que emplea RDP en el adaptador <span class="codigo">eth1</span>, el cual está en la red <span class="codigo">192.168.255.0/24</span>, y ponemos como destino a nuestro cliente Windows:</p>
+<div class="comando comando-linux"><pre><code>root@enrutador-debian:/home/alumno # iptables -t nat -A PREROUTING -p tcp --dport 3389 -i eth1 -j DNAT --to 172.16.0.1:3389</code></pre></div>
+<p>En el cliente Windows buscamos por <span class="codigo">Conexión a Escritorio remoto</span> y escribimos la dirección del enrutador donde se encuentra el cliente Windows al que nos queremos conectar, en nuestro caso en la <span class="codigo">192.168.255.7</span>:</p>
+<figure>
+    <img src="06.png" />
+    <figcaption><b>Figura 6</b>: Estableciendo la conexión de escritorio remoto</figcaption>
+</figure>
+<p>Cuando pulsemos en <span class="codigo">Conectar</span>, se nos pedirá introducir el usuario y contraseña con el que queremos acceder, lo introduciremos y nos habremos conectado a él exitosamente:</p>
+<figure>
+    <img src="07.png" class="img_grande" />
+    <figcaption><b>Figura 7</b>: Conexión establecida desde nuestro cliente Windows al cliente Windows que se encuentra tras el enrutador con la dirección <span class="codigo">192.168.255.7</span>. Al tomar la captura, justamente dicho cliente Windows, desde otro usuario, había accedido a nuestro cliente, por lo que se finalizó la sesión de escritorio remoto</figcaption>
+</figure>
+<h2>Convierte a B en un servidor de ficheros (carpetas compartidas)</h2>
+<p>Para poder convertir nuestra máquina Windows en un servidor de ficheros, lo primero que hay que hacer es abrir los puertos pertinentes, concretamente el 135, 136, 137, 138, 139, 389 y 445, tanto de TCP como de UDP, y en los dos adaptadores en puente, ya que tiene que ser posible acceder desde cualquier red externa. Nuestro destino, como anteriormente, será nuestro cliente Windows:</p>
+<div class="comando comando-linux"><pre><code>iptables -t nat -A PREROUTING -p tcp --dport 135 -i eth0 -j DNAT --to 172.16.0.1:135
+iptables -t nat -A PREROUTING -p tcp --dport 136 -i eth0 -j DNAT --to 172.16.0.1:136
+iptables -t nat -A PREROUTING -p tcp --dport 137 -i eth0 -j DNAT --to 172.16.0.1:137
+iptables -t nat -A PREROUTING -p tcp --dport 138 -i eth0 -j DNAT --to 172.16.0.1:138
+iptables -t nat -A PREROUTING -p tcp --dport 139 -i eth0 -j DNAT --to 172.16.0.1:139
+iptables -t nat -A PREROUTING -p tcp --dport 389 -i eth0 -j DNAT --to 172.16.0.1:389
+iptables -t nat -A PREROUTING -p tcp --dport 445 -i eth0 -j DNAT --to 172.16.0.1:445
+iptables -t nat -A PREROUTING -p udp --dport 135 -i eth0 -j DNAT --to 172.16.0.1:135
+iptables -t nat -A PREROUTING -p udp --dport 136 -i eth0 -j DNAT --to 172.16.0.1:136
+iptables -t nat -A PREROUTING -p udp --dport 137 -i eth0 -j DNAT --to 172.16.0.1:137
+iptables -t nat -A PREROUTING -p udp --dport 138 -i eth0 -j DNAT --to 172.16.0.1:138
+iptables -t nat -A PREROUTING -p udp --dport 139 -i eth0 -j DNAT --to 172.16.0.1:139
+iptables -t nat -A PREROUTING -p udp --dport 389 -i eth0 -j DNAT --to 172.16.0.1:389
+iptables -t nat -A PREROUTING -p udp --dport 445 -i eth0 -j DNAT --to 172.16.0.1:445
+iptables -t nat -A PREROUTING -p tcp --dport 135 -i eth1 -j DNAT --to 172.16.0.1:135
+iptables -t nat -A PREROUTING -p tcp --dport 136 -i eth1 -j DNAT --to 172.16.0.1:136
+iptables -t nat -A PREROUTING -p tcp --dport 137 -i eth1 -j DNAT --to 172.16.0.1:137
+iptables -t nat -A PREROUTING -p tcp --dport 138 -i eth1 -j DNAT --to 172.16.0.1:138
+iptables -t nat -A PREROUTING -p tcp --dport 139 -i eth1 -j DNAT --to 172.16.0.1:139
+iptables -t nat -A PREROUTING -p tcp --dport 389 -i eth1 -j DNAT --to 172.16.0.1:389
+iptables -t nat -A PREROUTING -p tcp --dport 445 -i eth1 -j DNAT --to 172.16.0.1:445
+iptables -t nat -A PREROUTING -p udp --dport 135 -i eth1 -j DNAT --to 172.16.0.1:135
+iptables -t nat -A PREROUTING -p udp --dport 136 -i eth1 -j DNAT --to 172.16.0.1:136
+iptables -t nat -A PREROUTING -p udp --dport 137 -i eth1 -j DNAT --to 172.16.0.1:137
+iptables -t nat -A PREROUTING -p udp --dport 138 -i eth1 -j DNAT --to 172.16.0.1:138
+iptables -t nat -A PREROUTING -p udp --dport 139 -i eth1 -j DNAT --to 172.16.0.1:139
+iptables -t nat -A PREROUTING -p udp --dport 389 -i eth1 -j DNAT --to 172.16.0.1:389
+iptables -t nat -A PREROUTING -p udp --dport 445 -i eth1 -j DNAT --to 172.16.0.1:445</code></pre></div>
+<p>Ahora, en el cliente Windows, nos dirigimos a <span class="codigo">Panel de control</span> → <span class="codigo">Opciones de carpeta</span> y desactivamos la opción <span class="codigo">Usar el Asistente para compartir (recomendado)</span>:</p>
+<figure>
+    <img src="08.png" />
+    <figcaption><b>Figura 8</b>: Asistente para compartir desactivado correctamente en las opciones de carpeta, en la pestaña <span class="codigo">Ver</span></figcaption>
+</figure>
+<p>Ahora, creamos una carpeta para compartirla y añadiremos los usuarios que queramos con todos los permisos:</p>
+<figure>
+    <img src="09.png" />
+    <figcaption><b>Figura 9</b>: Para poder compartir una carpeta, hay que hacer clic derecho sobre la misma y seleccionar <span class="codigo">Compartir con</span>. Nos aparecerá este menú</figcaption>
+</figure>
+<figure>
+    <img src="10.png" />
+    <figcaption><b>Figura 10</b>: Después, seleccionamos <span class="codigo">Uso compartido avanzado...</span> y pulsamos sobre <span class="codigo">Agregar</span>. Añadimos todos los usuarios y todos los permisos, o aquellos que prefiramos</figcaption>
+</figure>
+<p>En nuestra carpeta compartida, quien se conecte ya puede crear carpetas o archivos:</p>
+<figure>
+    <img src="11.png" class="img_grande" />
+    <figcaption><b>Figura 11</b>: Un compañero creando exitosamente un directorio en nuestra carpeta compartida</figcaption>
+</figure>
+<p>Y nosotros nos podemos conectar a la de un compañero para crear una también:</p>
+<figure>
+    <img src="12.png" class="img_grande" />
+    <figcaption><b>Figura 12</b>: Conectándonos correctamente a la carpeta compartida de un compañero y creando un directorio</figcaption>
+</figure>
+<h2>Haz que A y C puedan ser administrados mediante SSH desde la red del aula</h2>
+<p>Primero, instalamos <span class="codigo">openssh-server</span> en nuestras dos máquinas Debian:</p>
+<div class="comando comando-linux"><pre><code>apt-get install openssh-server</code></pre></div>
+<p>Después, abrimos un puerto de redireccionamiento, en nuestro caso el <span class="codigo">22022</span> al de SSH, el puerto <span class="codigo">22</span>, para que por el mismo nos podamos conectar al cliente Debian, ya que por el de SSH lo usaremos para conectarnos con el enrutador:</p>
+<div class="comando comando-linux"><pre><code>root@enrutador-debian:/home/alumno # iptables -t nat -A PREROUTING -p tcp --dport 22022 -j DNAT --to 172.16.0.2:22</code></pre></div>
+<p>Finalmente, nos conectamos simultáneamente al cliente y al enrutador Debian:</p>
+<div class="comando comando-linux"><pre><code>lg-gram-opensuse:/home/lg-gram # ssh -p 22022 alumno@10.1.0.119
+alumno@10.1.0.119's password:
+The programs included with the Debian GNU/Linux system are free
+software; the exact distribution terms for each program are
+described in the individual files in /usr/share/doc/*/copyright.
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+You have mail.
+Last login: Tue Apr 2 08:26:46 2019 from 192.168.255.200
+alumno@cliente-debian:~$
+
+lg-gram-opensuse:/home/lg-gram # ssh alumno@10.1.0.119
+alumno@10.1.0.119's password:
+The programs included with the Debian GNU/Linux system are free
+software; the exact distribution terms for each program are
+described in the individual files in /usr/share/doc/*/copyright.
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+You have new mail.
+Last login: Tue Apr 2 11:56:39 2019
+alumno@enrutador-debian:~$</code></pre></div>
+<h2>Comprueba el NAT con tcpdump</h2>
+<p>Comprobando en el enrutador Debian la traducción NAT. Arriba, está la tarjeta de red conectada a la red del aula y, abajo, la de la interna. Al enviar el cliente Windows una solicitud al servidor <span class="codigo">8.8.8.8</span>, esta le llega a la tarjeta interna del enrutador y hace una traducción NAT, poniendo su dirección de la red puente conectada a la red del aula (<span class="codigo">10.1.0.119</span>) como origen de la solicitud. Cuando la respuesta del servidor <span class="codigo">8.8.8.8</span> llega, el enrutador deshace la traducción y esta se la envía al cliente Windows por la red interna:</p>
+<div class="comando comando-linux"><pre><code>root@enrutador-debian:/home/alumno # tcpdump icmp -n -i eth0
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
+09:23:31.163937 IP 10.1.0.119 &gt; 8.8.8.8: ICMP echo request, id 1, seq 1235, length 40
+09:23:32.185906 IP 10.1.0.119 &gt; 8.8.8.8: ICMP echo request, id 1, seq 1236, length 40
+09:23:33.202022 IP 10.1.0.119 &gt; 8.8.8.8: ICMP echo request, id 1, seq 1237, length 40
+09:23:34.232723 IP 10.1.0.119 &gt; 8.8.8.8: ICMP echo request, id 1, seq 1238, length 40
+
+root@enrutador-debian:/home/alumno # tcpdump icmp -n -i eth2
+09:23:32.190135 IP 8.8.8.8 &gt; 172.168.0.1: ICMP echo reply, id 1, seq 1236, length 40
+09:23:33.201961 IP 172.16.0.1 &gt; 8.8.8.8: ICMP echo request, id 1, seq 1237, length 40
+09:23:33.206064 IP 8.8.8.8 &gt; 172.168.0.1: ICMP echo reply, id 1, seq 1237, length 40
+09:23:34.232657 IP 172.16.0.1 &gt; 8.8.8.8: ICMP echo request, id 1, seq 1238, length 40
+09:23:34.237077 IP 8.8.8.8 &gt; 172.168.0.1: ICMP echo reply, id 1, seq 1238, length 40                                                                                                                   
+
+[0] 0:tcpdump*                                 “enrutador-debian” 09:23 02-abr-19</code></pre></div>
+<footer>
+	<span class="last-modified"><span id="modify"></span></span>
+    <span class="author">Elena de Diego</span>
+</footer>
+</div>
+</div>
+<script src="../functions.js"></script>
+</body>
+</html>

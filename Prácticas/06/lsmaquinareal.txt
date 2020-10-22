@@ -1,0 +1,20 @@
+total 64
+drwx------ 1 root root   274 mar 10 00:41 .
+drwxr-xr-x 1 root root   172 feb 23 11:54 ..
+-rw------- 1 root root 13727 mar  9 19:33 .bash_history
+-rw-r--r-- 1 root root   156 ene 23 12:35 .bashrc
+drwxr-xr-x 1 root root     0 ene 30 00:30 bin
+drwx------ 1 root root   194 feb 21 23:43 .cache
+drwxr-xr-x 1 root root    22 feb  1 15:53 .config
+drwx------ 1 root root    22 ene 23 22:20 .dbus
+drwx------ 1 root root    22 ene 30 00:30 .gnupg
+drwxr-xr-x 1 root root    36 ene 23 11:59 inst-sys
+-rw------- 1 root root   138 mar  4 06:21 .lesshst
+-rw------- 1 root root    39 feb 13 12:46 .node_repl_history
+drwxr-xr-x 1 root root     8 ene 23 13:02 oradiag_root
+-rw------- 1 root root 14262 mar  8 09:36 .sqlplus_history
+drwx------ 1 root root    22 ene 26 20:16 .ssh
+-rw------- 1 root root 15288 mar  9 17:44 .viminfo
+drwx------ 1 root root     0 feb 24 15:19 .w3m
+-rw------- 1 root root    55 mar 10 00:41 .xauthDDspfO
+ 
