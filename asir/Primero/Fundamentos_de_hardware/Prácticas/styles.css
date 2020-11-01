@@ -1,0 +1,430 @@
+/* Importar fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Miss+Fajardose&family=Roboto&family=Roboto+Mono&family=Roboto+Slab&display=swap');
+
+/* Variables */
+:root {
+  --main-bg-highlight: #ffcccc;
+  --main-border-black: 1px solid black;
+  --main-border-gray: 1px solid #b4b4b4;
+}
+
+/* Texto subrayado */
+::-moz-selection { /* Code for Firefox */
+    background: var(--main-bg-highlight);
+}
+
+::selection {
+    background: var(--main-bg-highlight);
+}
+
+/* Flower background */
+body {
+    background-image: url('vintage-floral-wallpaper-pattern-2.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+div.pagina {
+    padding: 0.4cm 1.4cm 0.6cm 1.4cm;   /* Page margin */
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    max-width: 174mm;   /*210mm (DIN A4) - Margins right and left (1.8cm each). HTML length is not accurate */
+    /* To center page on screen. Source: https://stackoverflow.com/a/3341581*/
+    margin-left: auto;
+    margin-right: auto;
+    border: var(--main-border-black);
+    background-color: white;
+    /* Texto dividido con guiones al final de línea */
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+
+@media screen and (max-width:830px) {
+  div.pagina {
+    padding: 0.3cm 1cm 0.4cm 1cm;   /*Top, right, bottom, left*/    
+  }
+}
+
+@media screen and (max-width:1200px) {
+    #contents > figure img {
+      width: 80%;
+    }
+  }
+  
+  @media only screen and (max-width:620px) {
+    /* For mobile phones: */
+    #contents > figure img {
+      width: 80%;
+    }
+  }
+
+.pagina header > h6 { /* Encabezado: Asignatura   Práctica */
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Roboto Mono', monospace;
+    border-bottom: var(--main-border-black);
+    font-weight: normal;
+}
+
+.pagina > h1 {
+     text-align: center;
+}
+
+.pagina > h1,
+#contents > h2,
+#contents > h3,
+#contents > h4,
+#contents > h5,
+#contents > h6 {
+    font-family: 'Roboto Slab', serif;
+}
+
+/* Índice */
+#toc > h3 {
+    margin-bottom: -5px;
+}
+
+#contents > h2:not(:first-of-type) {
+    padding-top: 20px;
+}
+
+#contents > h2:first-of-type {
+    padding-top: 10px;
+}
+
+#contents > h3 {
+    text-indent: 24px;
+}
+
+#contents > h2 + h3 {
+    margin-top: -10px;
+}
+
+#contents > h2 + *:not(h3) {
+    margin-top: -10px;
+}
+
+#contents > table + h2 {
+    margin-top: 23px;
+}
+
+#contents > figure + h3 {
+    padding-top: 13px;
+}
+
+#contents > p + h3 {
+    padding-top: 10px;
+}
+
+#contents > h3 + *:not(h4) {
+    margin-top: -5px;
+}
+
+#contents > h3 + ol,
+#contents > h3 + ul {
+    margin-top: -10px;
+}
+
+#contents > p {
+    text-indent: 48px;
+}
+
+#contents > p a span.fa-external-link {
+    text-indent: 0px;
+}
+
+/* Estilo de enlaces */
+/* Con [href] para evitar los enlaces de los títulos */
+a[href], a[href] span.codigo {
+	color: #ff4d94;
+	text-decoration: none;
+}
+
+a[href]:hover {
+	text-decoration: underline;
+}
+
+a[href]:visited, a[href]:visited span.codigo {
+	color: #cb4d80;
+}
+
+b > a, a > b {
+	font-weight: normal;
+}
+
+#contents > figure {
+    display: table;
+    border: var(--main-border-gray);
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+#contents > figure > figcaption {
+    display: table-caption;
+    caption-side: bottom;
+    border: var(--main-border-gray);
+    border-top: none;
+    font-style: italic;
+    font-size: 12px;
+    padding: 5px;
+    text-align: center;
+}
+
+#contents > figure img {
+    vertical-align: top;
+    width: 100%;
+    height: auto;
+}
+
+#contents > figure + h2,
+#contents > figure + p {
+    margin-top: 23px;
+}
+
+#contents > figure + ul,
+#contents > figure + ol {
+    margin-top: 30px;
+}
+
+#contents > figure figcaption i {
+    font-style: normal;
+}
+
+#contents > div.comando-linux {
+    border: var(--main-border-gray);
+    background-color: #fff4a0;
+}
+
+#contents > div.comando-windows {
+    border: var(--main-border-gray);
+    background-color: #99ddff;
+}
+
+#contents > div.comando-linux pre code span.highlight {
+    color: #fff4a0;
+    background-color: #ff5454;
+}
+
+#contents > div.comando-windows pre code span.highlight {
+    color: white;
+    background-color: #0066cc;
+}
+
+#contents > div.comando {
+    margin-bottom: 30px;
+}
+
+#contents > div.comando pre {
+    padding: 0px 15px 0px 15px;   /*Top, right, bottom, left*/
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#contents > div.comando pre code {
+    display: inline-block;
+    font-family: monospace;
+    font-size: 14px;
+    width: 100%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: justify;
+}
+
+#contents > div.comando-linux pre code::first-line {
+    color: #ff5454;
+    font-weight: bold;
+}
+
+#contents > div.comando-windows pre code::first-line {
+    color: #0066cc;
+    font-weight: bold;
+}
+
+ol:not(div.referencias > ol) > li > ul, ul > li > ol {
+    margin-top: 10px;
+}
+
+div.referencias > ol > li span.contains-ul {
+    color: #ff4d94;
+    text-decoration: underline;
+}
+
+/* Colour for colon, I hate it with underline */
+div.referencias > ol > li span.colon {
+    color: #ff4d94;
+}
+
+#contents > ol > li:not(:first-of-type), #contents > ul > li:not(:first-of-type) {
+    margin-top: 10px;
+}
+
+/* Margin <li><ol><li></li></ol></li>___<li> */
+li + li > ol {
+    margin-bottom: 15px;
+}
+
+ol + p, ul + p {
+    margin-top: 18px;
+}
+
+/* Only li direct childs from ul */
+ul:not(div.referencias > ol ul) > li {
+    list-style: disc;
+    margin-bottom: 5px;
+}
+
+div.referencias > ol li ul > li {
+    list-style: disc;
+}
+
+li.no_dot {
+    list-style-type: none;
+}
+
+li.pro {
+    list-style-type: none;
+}
+
+li.pro:before {
+    content: '✓ ';
+}
+
+li.contra {
+    list-style-type: none;
+}
+
+li.contra:before {
+    content: '✗ ';
+}
+
+#contents li.pro > ul > li,
+#contents li.contra > ul > li {
+    list-style: disc;
+}
+
+li.inglés:after, a.inglés:after {
+    content: url('https://www.countryflags.io/gb/flat/16.png');
+    position: relative;
+    bottom: -3px;
+}
+
+li.español:after, a.español:after {
+    content: url('https://www.countryflags.io/es/flat/16.png');
+    position: relative;
+    bottom: -3px;
+}
+
+li.holandés:after, a.holandés:after {
+    content: url('https://www.countryflags.io/nl/flat/16.png');
+    position: relative;
+    bottom: -3px;
+}
+
+span.codigo {
+    font-family: monospace;
+    font-weight: lighter;
+    color: #2fb687;
+}
+
+h2 span.codigo, h3 span.codigo, h4 span.codigo, h5 span.codigo, h6 span.codigo {
+    color: black;
+    font-weight: bold;
+}
+
+span.verdadero {
+    color: #8bc18b;
+}
+
+span.falso {
+    color: #ff0000;
+}
+
+span.aclaracion {
+    color: #00aaff;
+}
+
+kbd {
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 2px 9px;
+    border: var(--main-border-gray);
+    font-size: 12px;
+    color: #b30000;
+    margin: 2px 2px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Tables that come immediately after any table */
+table + table, table + p {
+  margin-top: 30px;
+}
+
+table, th, tr, td {
+    border: var(--main-border-black);
+    text-align: center;
+    vertical-align: middle;
+}
+
+#contents table tr:nth-child(odd) {
+    background:  #ffe999;   /*#99ddff;   */
+}
+
+#contents table tr:nth-child(even) {
+    background: #fff4cc;    /*#cceeff;    */
+}
+
+th.mitad, td.mitad {
+    width: 50%;
+}
+
+span.fa-external-link:before {
+    margin-left: 5px;
+}
+
+#contents > *:not(figure) span.fa-external-link {
+    font-size: 14px;
+}
+
+#contents > figure span.fa-external-link {
+    font-size: 10px;
+}
+
+a span.fa-external-link:after {
+    content: "\00a0";
+}
+
+/* Eliminar espaciado entre superíndices o subíndices y el texto */
+sup, sub {
+    line-height: 0px;
+}
+
+/* Referencias */
+#contents > h2 + div.referencias > ol {
+    margin-top: -5px;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+    border-top: var(--main-border-black);
+}
+
+footer span.author {
+	font-family: 'Miss Fajardose', cursive;
+	font-size: 1.9em;
+}
+
+footer span.last-modified {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: normal;
+	font-size: 12px;
+	font-style: italic;
+}

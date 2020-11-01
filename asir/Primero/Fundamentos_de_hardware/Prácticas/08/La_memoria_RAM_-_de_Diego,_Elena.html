@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="de Diego, Elena">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Práctica 8: La memoria RAM</title>
+</head>
+<body>
+<div class="pagina">
+<header>
+    <h6>
+        <span id="asignatura"></span>
+        <span>La memoria RAM</span>
+    </h6>
+</header>
+<h1>Práctica 8: La memoria RAM</h1>
+<div id="console"></div>
+<div id="toc">
+	<h3>Índice</h3>
+	<noscript>Para poder visualizar el índice y que la página tenga plena funcionalidad, por favor, habilite el uso de JavaScript en su navegador.</noscript>
+</div>
+<hr/>
+<div id="contents">
+<h2>Elige verdadero o falso en base a las afirmaciones dadas</h2>
+<table>
+    <tbody>
+        <tr>
+            <th>✓</th>
+            <th>✗</th>
+			<th>Afirmación</th>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+			<td>La memoria DDR3 realiza seis transferencias por ciclo de reloj. <span class="falso">Son ocho</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+			<td>Los módulos de memoria DIMM SDRAM son de 168 contactos</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+			<td>La memoria RAM dinámica no necesita ser refrescada nunca. <span class="falso">Necesita un refresco continuo</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+			<td>La memoria SDRAM solo se provee en módulos DDR y DDR3. <span class="falso">También en DDR2 y DDR4<a href="#referencia1"><sup>1</sup></a></span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+			<td>Las memorias SIMM son igual de largas que las DIMM. <span class="falso">Las memorias SIMM miden 8.9 (30 pines) y 10.8 cm (72 pines), mientras que las DIMM miden 13.3 cm, al igual que las RIMM</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+			<td>Todas las memorias DIMM son igual de largas</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+			<td>Para las memorias caché se utiliza tecnología SRAM</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+			<td>La memoria DRAM consume más energía que la memoria SRAM</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+			<td>La memoria SRAM es más rápida que la memoria DRAM</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+			<td>La memoria PC133 era una memoria SDR SDRAM que funcionaba a 133 MHz</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+			<td>Un zócalo de memoria DIMM nos permite albergar en él cualquier tipo de módulo: SDRAM, DDR, DDR2 o DDR3. <span class="aclaracion">Dichas memorias van en un zócalo DIMM.</span> <span class="falso">A pesar de ser el zócalo DIMM, la muesca de dichas memorias no está situada en el mismo sitio</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+			<td>Los módulos de memoria DDR2 y DDR3 son del mismo tamaño pero la muesca no está situada en el mismo sitio</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+			<td>Con la tecnología de triple canal se triplica el ancho de banda respecto a la de único canal</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+			<td>Una memoria DDR3 1600 con triple canal alcanzaría un ancho de banda de 38 400 Mb/s. <span class="falso">Cuidado, el resultado está en Mb/s, no en MB/s, por lo que: <span class="codigo">1600 MHz * 8 = 12 800 MB/s; 12 800 * 3 = 38 400 MB/s; 38 400 * 8 = 307 200 Mb/s</span></span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+			<td>Se denomina latencia al n.º de ciclos que transcurren desde que la controladora de memoria envía una petición para leer una posición de memoria hasta que los datos son enviados a los pines del módulo <span class="aclaracion">En el tipo de latencia CAS.</span> <span class="falso">Miden los tiempos —en n.º de ciclos de reloj— de acceso a distintos componentes de la memoria</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+			<td>En una memoria PC2-6400, significa que la frecuencia de la memoria es de 6400 MHz. <span class="falso">Significa que la tasa de transferencia es de 6400 MB/s. En este caso, la frecuencia será de 800 MHz: <span class="codigo">6400 MB/s / 8 = 800 MHz</span></span></td>
+        </tr>
+    </tbody>
+</table>
+<h2>Tenemos 2 memorias DDR3-1333 y con latencias 3 y 5. ¿Cuál comprarías? Explica por qué</h2>
+<p>El factor último de decisión en la compra sería el precio, pero, en el supuesto de que este no importare, escogería aquella <b>con menor latencia</b>, es decir, la 3, debido a que será menor el número de ciclos de reloj de acceso a los distintos componentes. En la práctica, la diferencia de latencias tan próximas son inapreciables para un usuario normal, importarían más cosas como si las memorias están en doble o triple canal, la frecuencia de las mismas y, por supuesto, su capacidad.</p>
+<h2>¿Existe memoria DIMM-DDR5? ¿Hay algún tipo de memoria que no sea principal y su nombre sea parecido a DDR5? ¿Cómo se llama exactamente? ¿Para qué se utiliza?</h2>
+<p>Hace unos pocos meses se ha anunciado la nueva generación de las memorias RAM, la DDR5, que estará disponible para, en principio, el 2019<a href="#referencia2"><sup>2</sup></a>. No obstante, la memoria a la que hace referencia el ejercicio es a la <b>VRAM</b><a href="#referencia3"><sup>3</sup></a> (<i>Virtual Random Access Memory</i>, memoria gráfica de acceso aleatorio) <b>GDDR5</b><a href="#referencia4"><sup>4</sup></a>  (<i>Graphics Double Data Rate</i>, velocidad de datos doble de gráficos) y GDDR5X, es decir, a aquella empleada por las tarjetas gráficas. Esta es usada de manera dedicada, para almacenar carga gráfica, y así no saturar a la memoria principal, la RAM, con el almacenaje de la misma. En muchos casos esta carga supera el GB, hasta llegar a cifras que superan los 11 GB<a href="#referencia5"><sup>5</sup></a> —VRAM que incorpora la Nvidia GTX 1080 Ti, una de las tarjetas gráficas más potentes del mercado—.</p>
+<h2>Calcula las tasas de transferencia de las siguientes memorias, dando el resultado en MB/s. Escribe la notación equivalente en PC</h2>
+<table>
+    <tbody>
+        <tr>
+            <th>Tipo</th>
+            <th>Velocidad de transferencia</th>
+			<th>Nomenclatura equivalente</th>
+        </tr>
+        <tr>
+            <td>DDR-266</td>
+            <td><span class="codigo">266 * 8 = <b>2128 MB/s</b></span></td>
+			<td>PC-2100</td>
+        </tr>
+        <tr>
+            <td>DDR2-800</td>
+            <td><span class="codigo">800 * 8 = <b>6400 MB/s</b></span></td>
+			<td>PC2-6400</td>
+        </tr>
+        <tr>
+            <td>DDR3-1600</td>
+            <td><span class="codigo">1600 * 8 = <b>12 800 MB/s</b></span></td>
+			<td>PC3-12800</td>
+        </tr>
+    </tbody>
+</table>
+<h2>¿Qué tasa de transferencia alcanzaría una memoria DDR3 1600 con doble canal? ¿Y con triple canal? Convierte los resultados a GB/s</h2>
+<p><span class="codigo">MHz a MB/s → 1600 * 8 = 12 800 MB/s; 12 800 * 2 = 25 600 MB/s (doble canal); 25 600 / 1000 = <b>25.6 GB/s en doble canal</b></span></p>
+<p><span class="codigo">MHz a MB/s → 12 800 * 3 = 38 400 MB/s (triple canal); 38 400 / 1000 = <b>38.4 GB/s en triple canal</b></span></p>
+<h2>Rellena la siguiente tabla</h2>
+<p>DDR standard: http://cs.ecs.baylor.edu/~maurer/CSI5338/JEDEC79R2.pdf</p>
+<p>DDR2 standard: http://oz.nthu.edu.tw/~d947207/JEDEC/JESD79-2E_DDR2_SDRAM.pdf</p>
+<p>DDR3 standard: http://mermaja.act.uji.es/docencia/is37/data/DDR3.pdf</p>
+<p>DDR4 standard: http://www.softnology.biz/pdf/JESD79-4_DDR4_SDRAM.pdf</p>
+<p>RAM chart: https://www.transcend-info.com/Support/FAQ-296</p>
+<table>
+    <tbody>
+        <tr>
+            <th>Tipo</th>
+            <th>N.º contactos</th>
+            <th>N.º muescas</th>
+            <th>N.º lecturas por ciclo</th>
+            <th>Voltaje</th>
+            <th>Mínima frecuencia</th>
+            <th>Máxima  frecuencia</th>
+            <th>Máxima tasa transferencia</th>
+            <th>N.º contactos para portátil</th>
+        </tr>
+        <tr>
+            <td>DIMM-SDRAM</td>
+            <td>168</td>
+            <td>2</td>
+            <td></td>
+            <td>3.3 V</td>
+            <td>100 MHz</td>
+            <td>133 MHz</td>
+            <td>1.064 GB/s</td>
+            <td>144</td>
+        </tr>
+        <tr>
+            <td>DIMM-DDR</td>
+            <td>184</td>
+            <td>1</td>
+            <td></td>
+            <td>2.5/2.6 V</td>
+            <td>333 MHz</td>
+            <td>533 MHz</td>
+            <td>4.264 GB/s</td>
+            <td>200</td>
+        </tr>
+        <tr>
+            <td>DIMM-DDR2</td>
+            <td>240</td>
+            <td>1</td>
+            <td></td>
+            <td>1.8 V</td>
+            <td>533 MHz</td>
+            <td>1200 MHz</td>
+            <td>9.6 GB/s</td>
+            <td>200</td>
+        </tr>
+        <tr>
+            <td>DIMM-DDR3</td>
+            <td>240</td>
+            <td>1</td>
+            <td></td>
+            <td>1.35/1.5 V</td>
+            <td>1066 MHz</td>
+            <td>2600 MHz</td>
+            <td>20.8 GB/s</td>
+            <td>204</td>
+        </tr>
+        <tr>
+            <td>DIMM-DDR4</td>
+            <td>288</td>
+            <td>1</td>
+            <td></td>
+            <td>1.2 V</td>
+            <td>2133 MHz</td>
+            <td>4400 MHz</td>
+            <td>35.2 GB/s</td>
+            <td>260</td>
+        </tr>
+    </tbody>
+</table>
+<h2>Busca los siguientes precios, poniendo el enlace donde los has encontrado</h2>
+<table>
+    <tbody>
+        <tr>
+            <th>Tipo</th>
+            <th>Precio</th>
+            <th>Enlace</th>
+        </tr>
+        <tr>
+            <td>DIMM-DDR 1 GB</td>
+            <td>6,39 €</td>
+            <td><a href="https://web.archive.org/web/20201031210641/https://www.amazon.es/QUMOX-Memoria-1GB-Computadora-Escritorio/dp/B010NMEK4G/ref=sr_1_4?ie=UTF8&qid=1542041303&sr=8-4&keywords=dimm+ddr+1+gb" target="_blank" class="español">Enlace<span class="fa fa-external-link"></span></a></td>
+        </tr>
+        <tr>
+            <td>SODIMM-DDR 1 GB</td>
+            <td>10,29 €</td>
+            <td><a href="https://web.archive.org/web/20201031210952/https://www.amazon.es/QUMOX-M%C3%B3dulo-memoria-SODIMM-1GB/dp/B00KLSWGRQ/ref=sr_1_3?s=electronics&ie=UTF8&qid=1542041449&sr=1-3&keywords=so-dimm+ddr+1+gb" target="_blank" class="español">Enlace<span class="fa fa-external-link"></span></a></td>
+        </tr>
+        <tr>
+            <td>DIMM-DDR2 2 GB</td>
+            <td>17,75 €</td>
+            <td><a href="https://web.archive.org/web/20201031211016/https://www.pccomponentes.com/v7-v753002gbd-ddr2-667-pc2-5300-2gb-cl5" target="_blank" class="español">Enlace<span class="fa fa-external-link"></span></a></td>
+        </tr>
+        <tr>
+            <td>SODIMM-DDR2 2 GB</td>
+            <td>28 €</td>
+            <td><a href="https://web.archive.org/web/20201031211344/https://www.pccomponentes.com/gskill-so-dimm-ddr2-800-pc2-6400-2gb-cl5" target="_blank" class="español">Enlace<span class="fa fa-external-link"></span></a></td>
+        </tr>
+        <tr>
+            <td>DIMM-DDR3 4 GB</td>
+            <td>33 €</td>
+            <td><a href="https://web.archive.org/web/20201031211406/https://www.pccomponentes.com/kingston-valueram-ddr3-1333-pc3-10600-4gb-cl9" target="_blank" class="español">Enlace<span class="fa fa-external-link"></span></a></td>
+        </tr>
+        <tr>
+            <td>SODIMM-DDR3 4 GB</td>
+            <td>33 €</td>
+            <td><a href="https://web.archive.org/web/20201031211557/https://www.pccomponentes.com/kingston-valueram-so-dimm-ddr3l-1600-pc3-12800-4gb-cl11" target="_blank" class="español">Enlace<span class="fa fa-external-link"></span></a></td>
+        </tr>
+        <tr>
+            <td>DIMM-DDR4 8 GB</td>
+            <td>73 €</td>
+            <td><a href="https://web.archive.org/web/20201031211559/https://www.pccomponentes.com/kingston-hyperx-fury-black-ddr4-2400-pc4-19200-8gb-cl15" target="_blank" class="español">Enlace<span class="fa fa-external-link"></span></a></td>
+        </tr>
+        <tr>
+            <td>SODIMM-DDR4 8 GB</td>
+            <td>71,45 €</td>
+            <td><a href="https://web.archive.org/web/20201031211601/https://www.pccomponentes.com/gskill-ripjaws-so-dimm-ddr4-2400-pc4-19200-8gb-cl16" target="_blank" class="español">Enlace<span class="fa fa-external-link"></span></a></td>
+        </tr>
+    </tbody>
+</table>
+<h2>Referencias</h2>
+<div class="referencias">
+    <ol>
+        <li id="referencia1" class="inglés"><a href="https://en.wikipedia.org/wiki/DDR4_SDRAM" target="_blank">DDR4 SDRAM<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia2" class="español"><a href="https://www.xataka.com/componentes/nuevos-datos-de-la-memoria-ram-ddr5-que-empezara-a-llegar-a-partir-de-2019" target="_blank">Fecha de llegada de la memoria RAM DDR5<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia3" class="español"><a href="https://es.wikipedia.org/wiki/Memoria_gr%C3%A1fica_de_acceso_aleatorio" target="_blank">VRAM<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia4" class="inglés"><a href="https://en.wikipedia.org/wiki/GDDR5_SDRAM" target="_blank">GDDR5 SDRAM<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia5" class="inglés"><a href="https://www.nvidia.com/en-sg/geforce/products/10series/geforce-gtx-1080-ti/" target="_blank">Tarjeta gráfica Nvidia GTX 1080 Ti<span class="fa fa-external-link"></span></a></li>
+    </ol>
+</div>
+<footer>
+	<span class="last-modified"><span id="modify"></span></span>
+    <span class="author">Elena de Diego</span>
+</footer>
+</div>
+</div>
+<script src="../functions.js"></script>
+</body>
+</html>

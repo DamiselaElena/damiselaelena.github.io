@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="de Diego, Elena">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Práctica 11: La BIOS</title>
+</head>
+<body>
+<div class="pagina">
+<header>
+    <h6>
+        <span id="asignatura"></span>
+        <span>La BIOS</span>
+    </h6>
+</header>
+<h1>Práctica 11: La BIOS</h1>
+<div id="console"></div>
+<div id="toc">
+	<h3>Índice</h3>
+	<noscript>Para poder visualizar el índice y que la página tenga plena funcionalidad, por favor, habilite el uso de JavaScript en su navegador.</noscript>
+</div>
+<hr/>
+<div id="contents">
+<h2>Anota el fabricante y modelo del BIOS de tu ordenador</h2>
+<p>La información que he encontrado del fabricante de la BIOS de mi placa base (GA-H110M-S2H) es la siguiente:</p>
+<figure id="figura1">
+    <a href="pictures/01.jpg" target="_blank"><img src="pictures/01.jpg" title="Información BIOS" alt="Información BIOS" /></a>
+    <figcaption><b>Figura 1</b>: Información del fabricante de la BIOS de mi placa base después de pulsar el tabulador al arrancar</figcaption>
+</figure>
+<p>En ella, solo puedo saber la versión que tiene y el fabricante de la misma, pero no el modelo concreto de la BIOS. Como se puede observar, el fabricante es American Megatrends (AMI), y la versión que tiene es la 2.17.1249. En las especificaciones en la web del fabricante de mi placa base tampoco la indican.</p>
+<h2>Buscar en Internet las características técnicas de la BIOS. Anotar en la siguiente tabla el comportamiento de la BIOS con las acciones que se enumeran</h2>
+<table>
+    <tbody>
+        <tr>
+            <th>ACCIÓN</td>
+            <th>SECUENCIA PITIDOS</td>
+            <th>MENSAJE PANTALLA</td>
+        </tr>
+        <tr>
+            <td>Arrancar normalmente</td>
+            <td>Ningún pitido</td>
+            <td>Fabricante y teclas para entrar al menú BIOS</td>
+        </tr>
+        <tr>
+            <td>Quitar la RAM y arrancar</td>
+            <td>3 pitidos cortos</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Quitar la tarjeta gráfica y arrancar</td>
+            <td>Mi procesador tiene gráficos integrados, por lo que no ocurriría nada, pero según la fuente, serían 8 pitidos cortos</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Quitar la pila de la CMOS y arrancar</td>
+            <td>10 pitidos cortos</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Arrancar sin teclado</td>
+            <td>6 pitidos cortos</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Desconectar el disco duro de sistema y arrancar</td>
+            <td>Ningún pitido</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Desconectar la alimentación del procesador y arrancar</td>
+            <td>2 pitidos largos a modo sirena</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+<p>Características técnicas de la BIOS:</p>
+<ul>
+    <li>Es un chip de memoria no volátil (mantiene la información cuando se apaga el ordenador) y regrabable (se puede actualizar).</li>
+    <li>Configura y gestiona todos los componentes de la MOBO, detectando el hardware y comprobando si este funciona correctamente a través del autotesteo de encendido (POST [Power-On Self Test]).</li>
+    <li>Se encarga de encontrar el sistema operativo y cargarlo en la memoria RAM.</li>
+    <li>Se pueden realizar modificaciones de la BIOS gracias al CMOS (Complementary Metal Oxide Semiconductor), una pequeña memoria que recibe alimentación de una pila de botón. En esta pueden almacenarse las configuraciones que se le realicen a la BIOS (secuencia de arranque, gestión de energía de algunos dispositivos…) y la hora y la fecha.</li>
+</ul>
+<h2>Buscar en Internet las características de una BIOS AMI, escribir el código, y cumplimentar la siguiente tabla con los diferentes sonidos de error qué emite</h2>
+<table>
+    <tbody>
+        <tr>
+            <th>CÓDIGO PITIDOS (BIOS AMI)</td>
+            <th>COMPONENTE QUE FALLA</td>
+            <th>SOLUCIÓN PROPUESTA</td>
+        </tr>
+        <tr>
+            <td>1 pitido largo</td>
+            <td>Fuente de alimentación</td>
+            <td>Reemplazar la fuente</td>
+        </tr>
+        <tr>
+            <td>1 pitido largo y 8 cortos</td>
+            <td>Placa base</td>
+            <td>Revisar placa base</td>
+        </tr>
+        <tr>
+            <td>1 pitido largo y 3 cortos</td>
+            <td>Monitor no reconocido o placa base defectuosa</td>
+            <td>Revisar conexiones de vídeo o la placa base</td>
+        </tr>
+        <tr>
+            <td>10 pitidos cortos</td>
+            <td>Placa base defectuosa (fallo de la BIOS)</td>
+            <td>Probar a cambiar la pila. Si no, revisar la placa base</td>
+        </tr>
+        <tr>
+            <td>5 pitidos cortos</td>
+            <td>Procesador defectuoso</td>
+            <td>Reemplazar el procesador</td>
+        </tr>
+        <tr>
+            <td>8 pitidos cortos</td>
+            <td>Tarjeta gráfica defectuosa o mal conectada</td>
+            <td>Revisar conexiones de vídeo o reemplazar la tarjeta gráfica</td>
+        </tr>
+    </tbody>
+</table>
+<p>En el apartado de Solución propuesta, yo intentaría reemplazar dichos componentes si están defectuosos. Si se trata de la placa base, se podría ir mirando poco a poco dónde está el fallo: si es de la circuitería, los condensadores… Quizá soldando un poco con pequeños componentes nuevos se pueda arreglar, pero seguramente sea algo laborioso.</p>
+<h2>UEFI y BIOS. Funcionamiento, diferencias, ventajas y desventajas de una y otra</h2>
+<p>BIOS (Basic Input Output System): Su función principal es la de iniciar los componentes de hardware y lanzar el sistema operativo. También, carga las funciones de gestión de energía y temperatura del ordenador.</p>
+<p>UEFI (Unified Extensible Firmware Interface): Tiene las mismas funciones que la BIOS, pero añadiendo algunas adicionales y mejoras, enumeradas a continuación.</p>
+<p>Diferencias, ventajas y desventajas:</p>
+<ul>
+    <li>UEFI tiene una interfaz gráfica más moderna, pudiéndose utilizar el ratón aparte del teclado. Incluye animaciones y sonidos.</li>
+    <li>UEFI tiene un sistema de inicio seguro (secure boot), que evita que se inicien sistemas operativos no autenticados y cierto tipo de malware.</li>
+    <li>UEFI tiene una mayor velocidad de arranque.</li>
+    <li>UEFI soporta discos de más de 2 TB y más de cuatro particiones, gracias al esquema de particiones GPT frente a MBR de BIOS.</li>
+    <li>UEFI puede conectarse a internet para actualizarse.</li>
+    <li>UEFI se ejecuta en 32 o 64 bits, mientras que la BIOS suele hacerlo en 16 bits.</li>
+    <li>UEFI hace que el ordenador arranque más rápido que con BIOS.</li>
+    <li>UEFI puede cargarse en cualquier recurso de memoria no volátil, lo que permite que esta sea independiente de cualquier sistema operativo.</li>
+    <li>UEFI puede tener extensiones de terceros, como herramientas de overclocking o software de diagnóstico.</li>
+</ul>
+<footer>
+	<span class="last-modified"><span id="modify"></span></span>
+    <span class="author">Elena de Diego</span>
+</footer>
+</div>
+</div>
+<script src="../functions.js"></script>
+</body>
+</html>

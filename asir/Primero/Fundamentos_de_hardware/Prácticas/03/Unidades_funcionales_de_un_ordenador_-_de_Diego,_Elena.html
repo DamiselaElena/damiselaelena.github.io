@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="de Diego, Elena">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Práctica 3: Unidades funcionales de un ordenador</title>
+</head>
+<body>
+<div class="pagina">
+<header>
+    <h6>
+        <span id="asignatura"></span>
+        <span>Unidades funcionales de un ordenador</span>
+    </h6>
+</header>
+<h1>Práctica 3: Unidades funcionales de un ordenador</h1>
+<div id="console"></div>
+<div id="toc">
+	<h3>Índice</h3>
+	<noscript>Para poder visualizar el índice y que la página tenga plena funcionalidad, por favor, habilite el uso de JavaScript en su navegador.</noscript>
+</div>
+<hr/>
+<div id="contents">
+<h2>Dibuja un diagrama básico de la arquitectura de un ordenador</h2>
+<figure id="figura1">
+    <a href="pictures/01.svg" target="_blank"><img src="pictures/01.svg" title="Arquitectura Von Neumann" alt="Arquitectura Von Neumann" /></a>
+    <figcaption><b>Figura 1</b>: Arquitectura Von Neumann<a href="#referencia1"><sup>1</sup></a></figcaption>
+</figure>
+<h2>Define las funciones de la unidad de control</h2>
+<p>La <b>unidad de control</b> (UC) es un componente del procesador que se encarga de dirigir y coordinar la mayoría de las operaciones en la computadora, <b>buscando las instrucciones</b> en la memoria RAM e <b>interpretando</b> cada una de estas generadas por un programa, iniciando así las acciones apropiadas para poder <b>llevar a cabo dicha coordinación</b>. </p>
+<h2>Dibuja un diagrama de la unidad aritmético-lógica</h2>
+<figure id="figura2">
+    <a href="pictures/02.svg" target="_blank"><img src="pictures/02.svg" title="Unidad aritmético-lógica" alt="Unidad aritmético-lógica" /></a>
+    <figcaption><b>Figura 2</b>: Unidad aritmético-lógica (ALU, <i>arithmetic logic unit</i>)<a href="#referencia2"><sup>2</sup></a></figcaption>
+</figure>
+<h2>Describe las ventajas e inconvenientes de que la memoria RAM sea un sistema de almacenamiento volátil</h2>
+<ul>
+    <li class="pro"><u>Ventajas</u>:
+        <ul>
+            <li>Al ser volátil, la velocidad tanto de lectura como de escritura será mucho <b>más rápida</b> que en aquellos sistemas que no lo son, como por ejemplo en los discos duros<a href="#referencia3"><sup>3</sup></a>.</li>
+        </ul>
+    </li>
+    <li class="contra"><u>Inconvenientes</u>:
+        <ul>
+            <li>La información almacenada en los sistemas volátiles <b>depende del flujo eléctrico</b>. Por tanto, si la corriente eléctrica es cortada, toda la información que estaba contenida en la memoria RAM, desaparecerá casi instantáneamente.</li>
+            <li>También, estos sistemas requieren materiales y componentes <b>más caros</b> que aquellos no volátiles, por lo que el coste-relación gigabyte/euro será mayor<a href="#referencia3"><sup>3</sup></a>.</li>
+        </ul>
+    </li>
+</ul>
+<h2>¿Cuántos bytes son 60 GiB?</h2>
+<p><span class="codigo">60 GiB a bytes → 60 * 1024 <span class="aclaracion">(MiB)</span> * 1024 <span class="aclaracion">(KiB)</span> * 1024 = <b>64 424 509 440 B</b></span></p>
+<h2>¿Qué es el ancho de palabra?</h2>
+<p>El <b>ancho de palabra</b><a href="#referencia4"><sup>4</sup></a> es el número de bits que puede manipular a la vez el procesador por cada ciclo de reloj y, por tanto, los registros de dicha CPU tienen una capacidad de ese mismo número de bits. Este <b>ancho de palabra</b> suele ser un múltiplo de un byte (8 bits), y en la actualidad los más comunes en ordenadores son los 64 bits, pero los 32 bits fueron muy populares —también ha habido y hay de menos: 8 bits, 16…, y de más: 128 bits, 256...—. Esto va ligado también a la memoria, ya que sus localizaciones tienen una dirección numérica para identificarla, y dicha numeración tiene el <b>tamaño</b> o <b>ancho de una palabra</b>. Es por esto que una procesador de más bits puede mapear más cantidades de memoria RAM que uno de menos bits. </p>
+<h2>Describe detalladamente los pasos de búsqueda y de ejecución de la siguiente operación:</h2>
+<h3>Caso concreto, SUMAR <i>n</i>: suma el valor del registro acumulador (RA) con un operando que se encuentra en memoria, en la posición indicada por <i>n</i>. Suponemos que la instrucción tiene dos campos: Código de operación (CO) y un campo de dirección (CD)</h3>
+<p>SUMAR RA <i>n</i> <i>p</i> (sumar el valor de RA con el contenido de la posición de memoria <i>n</i> y almacenar el resultado en la posición de memoria <i>p</i>).</p>
+<ul>
+    <li>Código de operación (CO): SUMAR.</li>
+    <li>Dirección del primer sumando (CD1): RA.</li>
+    <li>Dirección del segundo sumando (CD2): <i>n</i>.</li>
+    <li>Dirección del resultado (CD3): <i>p</i>.</li>
+</ul>
+<p>La ejecución de una instrucción siempre conlleva a realizar la misma secuencia de pasos:</p>
+<ol type="I">
+	<li style="margin-bottom:18px;"><b>Fase de búsqueda:</b>
+		<ol type="a">
+			<li>La unidad de control (UC) envía una microorden para que el contenido del registro contador de programa (RCP), que contiene la dirección de la siguiente instrucción, sea transferido al registro de dirección de memoria (RDM).</li>
+			<li>La posición del registro acumulador (RA) y la posición de memoria que figura en el RDM es utilizada por el RA y por la memoria para transferir su contenido al registro de intercambio de memoria (RIM).</li>
+			<li>Se transfiere la instrucción desde el RIM al registro de instrucción.</li>
+			<li>Posteriormente, el decodificador procede a interpretar la instrucción que acaba de llegar al registro de instrucción, en este caso SUMAR, quedando dispuesto para la activación del circuito sumador de la ALU e informando al secuenciador.</li>
+			<li>El RCP se autoincrementa con un valor (1), de tal forma que quede apuntado para la siguiente instrucción situada consecutivamente en memoria. Si la instrucción en ejecución es de ruptura de secuencia, el contador de programa se cargará con la dirección que corresponda.</li>
+        </ol>
+    </li>
+	<li><b>Fase de ejecución:</b>
+		<ol type="a">
+			<li>Se transfiere la dirección del primer operando desde el registro de instrucción al RDM.</li>
+			<li>La memoria extrae dicho dato depositándolo en el RIM.</li>
+			<li>Se lleva este operando desde el RIM al registro de entrada 1 de la ALU.</li>
+			<li>Se transfiere la dirección del segundo operando desde el registro de instrucción al registro de memoria.</li>
+			<li>La memoria toma dicho dato y lo deposita en el registro de intercambio de memoria.</li>
+			<li>Se lleva este operando al registro de entrada 2 de la ALU.</li>
+			<li>El secuenciador envía una microorden a la ALU para que se ejecute la operación. El resultado de la operación queda almacenado en el acumulador.</li>
+			<li>Este resultado se envía desde el acumulador al RIM.</li>
+			<li>Se transfiere desde el registro de instrucción al RDM la dirección donde ha de almacenarse el resultado en la memoria.</li>
+			<li>Se transfiere el resultado desde el RIM a la dirección de memoria indicada en el RDM.</li>
+        </ol>
+    </li>
+</ol>
+<h2>Referencias</h2>
+<div class="referencias">
+    <ol>
+        <li id="referencia1" class="inglés"><a href="https://web.archive.org/web/20200920155516/https://computercombatcards.com/wp-content/uploads/2020/02/Computer-Architecture-v5.pdf" target="_blank">Arquitectura Von Neumann<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia2" class="inglés"><a href="https://web.archive.org/web/20201101123738/http://sites.science.oregonstate.edu/~hetheriw/whiki/ph415_s13/sys/8.php" target="_blank">Arquitectura del procesador Intel 8080<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia3" class="inglés"><a href="https://web.archive.org/web/20201101114838/https://www.classmate4u.com/ram-and-rom/" target="_blank">Ventajas y desventajas de la memoria RAM<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia4"><span class="contains-ul">Ancho de palabra</span><span class="colon">:</span>
+            <ul>
+                <li class="español"><a href="https://web.archive.org/web/20201101114940/https://foro.noticias3d.com/vbulletin/showthread.php?t=422085&s=800df9655a275bb517ed4e6491248d62&p=5011951&viewfull=1" target="_blank">¿Qué es el tamaño de palabra?<span class="fa fa-external-link"></span></a></li>
+                <li class="español"><a href="https://web.archive.org/web/20201101114953/https://es.wikipedia.org/wiki/Palabra_%28inform%C3%A1tica%29" target="_blank">Palabra (informática)<span class="fa fa-external-link"></span></a></li>
+            </ul>
+        </li>
+    </ol>
+</div>
+<footer>
+	<span class="last-modified"><span id="modify"></span></span>
+    <span class="author">Elena de Diego</span>
+</footer>
+</div>
+</div>
+<script src="../functions.js"></script>
+</body>
+</html>

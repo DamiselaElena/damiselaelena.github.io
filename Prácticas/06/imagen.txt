@@ -1,3 +1,0 @@
- 
-lg-gram@linux-ewxc:~/Imágenes/Otros> ls -l opensuse-1551910063720-5495.jpg
--rw-r--r-- 1 lg-gram users 135470 mar  6 23:07 opensuse-1551910063720-5495.jpg

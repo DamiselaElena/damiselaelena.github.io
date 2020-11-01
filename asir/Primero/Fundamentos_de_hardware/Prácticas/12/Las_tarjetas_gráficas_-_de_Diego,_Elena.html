@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="de Diego, Elena">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Práctica 12: Las tarjetas gráficas</title>
+</head>
+<body>
+<div class="pagina">
+<header>
+    <h6>
+        <span id="asignatura"></span>
+        <span>Las tarjetas gráficas</span>
+    </h6>
+</header>
+<h1>Práctica 12: Las tarjetas gráficas</h1>
+<div id="console"></div>
+<div id="toc">
+	<h3>Índice</h3>
+	<noscript>Para poder visualizar el índice y que la página tenga plena funcionalidad, por favor, habilite el uso de JavaScript en su navegador.</noscript>
+</div>
+<hr/>
+<div id="contents">
+<h2>Busca en internet la siguiente información de las tarjetas gráficas:</h2>
+<h3>Evolución</h3>
+<p>Puede seguirse la evolución de las tarjetas gráficas con la lectura de los apartados de <a href="#Conectores_de_salida_de_una_tarjeta_gráfica9">Conectores de salida de una tarjeta gráfica</a>, <a href="#Tipos_de_ranuras_de_expansi%C3%B3n_de_tarjetas_gr%C3%A1ficas22">Tipos de ranuras de expansión de tarjetas gráficas</a> y <a href="#Memoria_de_una_tarjeta_gr%C3%A1fica4">Memoria de una tarjeta gráfica</a>. En el último apartado, <a href="#Tendencias_y_%C3%BAltimos_modelos_de_tarjetas_gr%C3%A1ficas">Tendencias y últimos modelos de tarjetas gráficas</a>, puede verse el panorama actual de ellas, en las que en el ancho de banda pueden apreciarse unos valores inimaginables en antaño y admiten unas resoluciones muy altas.</p>
+<h3>Elementos básicos de una tarjeta gráfica</h3>
+<p>Una tarjeta gráfica<a href="#referencia1"><sup>1</sup></a> consiste en una placa de circuito impreso en la cual están montados diferentes componentes:</p>
+<ul>
+    <li><b><b>Unidad de procesamiento gráfico o GPU (<i>Graphics Processing Unit</i>)</b></b>: Es el procesador de la tarjeta gráfica, optimizado para el cálculo en coma flotante, que son las operaciones predominantes en las funciones 3D. Gracias a la especialización de este procesador, deja libre de sobrecargas a la CPU, al menos en cuanto a procesamiento gráfico se refiere. Las tarjetas gráficas buenas llevan más de una GPU.</li>
+    <li><b>Disipador<a href="#referencia2"><sup>2</sup></a></b>: Está montado en la mayoría de las tarjetas gráficas modernas. Este distribuye el calor producido por la GPU de manera uniforme en todo el disipador y en la propia tarjeta. Cuenta generalmente con uno o varios ventiladores montados para enfriar el disipador y la GPU. No todas las tarjetas tienen disipador, ya que algunas las hay con refrigeración líquida. Además, las tarjetas de los años 80 y principios de los 90 no producían mucho calor, por lo que no requerían de estos.</li>
+    <li><b>BIOS de vídeo<a href="#referencia3"><sup>3</sup></a></b>: La BIOS de vídeo o el <i>firmware</i> contiene un programa mínimo para la configuración inicial y el control de la tarjeta de vídeo. Puede tener información sobre el tiempo de la memoria, las velocidades de operación y los voltajes del procesador gráfico y la RAM, así como también de otra información que a veces se puede cambiar.</li>
+    <li><b>Memoria de vídeo<a href="#referencia4"><sup>4</sup></a></b>: Este tipo de memoria almacena la información de los datos de una pantalla. La memoria de vídeo está formada por bits dispuestos en tres dimensiones: bits de resolución horizontal, bits de resolución vertical y bits en cada píxel —profundidad del color—. Al ser dedicada para los gráficos, se evita que se sobrecargue la memoria RAM. Actualmente, las tarjetas gráficas tienen entre 1<a href="#referencia5"><sup>5</sup></a> y 24 GB<a href="#referencia6"><sup>6</sup></a> de este tipo de memoria, y usan una específica, conocida como GDDR<a href="#referencia7"><sup>7</sup></a>.</li>
+    <li><b>RAMDAC<a href="#referencia8"><sup>8</sup></a> (<i>Random-Access-Memory Digital-to-Analog Converter</i> ['Convertidor digital-analógico de memoria de acceso aleatorio'])</b>: Convierte las señales digitales del ordenador en señales analógicas para poder ser representadas en el monitor, con la inevitable pérdida de calidad que ello supone. En la actualidad, este componente está desapareciendo de las tarjetas gráficas, puesto que los monitores suelen ser digitales y, por ende, no hace falta dicha conversión.</li>
+</ul>
+<h3>Conectores de salida de una tarjeta gráfica<a href="#referencia9"><sup>9</sup></a></h3>
+<ul>
+    <li><b><i>Composite video</i><a href="#referencia10"><sup>10</sup></a></b>: Creado en la década de los 80, es un conector analógico amarillo de un solo pin compuesto de un cable coaxial y con conector BNC. Actualmente no es muy usado, pero aún hay dispositivos que incluyen este tipo de conector. Es habitual encontrarlo en el conector RCA, junto a los cables rojo y blanco para el sonido.</li>
+    <li><b>DB13W3<a href="#referencia11"><sup>11</sup></a></b>: Creado en la década de los 80 y usado por Sun Microsystems, Silicon Graphics, IBM y Apple, fue un conector analógico de 10 pines + 3 distribuidos en dos filas de 5. Fue usado como conector de vídeo en los ordenadores y en la actualidad ya no se usa.</li>
+    <li><b>VGA<a href="#referencia12"><sup>12</sup></a> (<i>Video Graphics Array</i>)</b>: Diseñado en 1987, es un conector analógico DE-15 de 15 pines distribuidos en tres filas. Fue un estándar para la transmisión de vídeo y hoy día se sigue produciendo.</li>
+    <li><b><i>S-Video</i><a href="#referencia13"><sup>13</sup></a></b>: Diseñado en 1987, fue un conector analógico de 4 pines distribuidos de dos en dos, en cada lateral. Era empleado para la transmisión de imagen.</li>
+    <li><b>VESA <i>Enhanced Video Conector</i><a href="#referencia14"><sup>14</sup></a></b>: Publicado en 1995, fue un conector analógico y digital de 30 + 5 pines distribuidos en tres filas. Basado en DVI, fue diseñado para transportar VGA/RGB, <i>FireWire</i>, audio y señales USB.</li>
+    <li><b>DVI<a href="#referencia15"><sup>15</sup></a> (<i>Digital Visual Interface</i>)</b>: Diseñado en 1999 por la DDWG (<i>Digital Display Working Group</i>), es un conector analógico digital de 24 pines + 5 distribuidos en tres filas de 8 —en la versión estándar, otras pueden tener menos pines—. Fue desarrollado con la intención de crear un estándar en la industria para transferir el contenido digital de vídeo y se sigue empleando en la actualidad. Variantes:
+        <ol>
+            <li><b>DVI-A</b>: Solo analógico.</li>
+            <li><b>DVI-I <i>Single Link</i></b>: Combina digital y analógico.</li>
+            <li><b>DVI-l <i>Dual Link</i></b>: Combina digital y analógico.</li>
+            <li><b>DVI-D <i>Single Link</i></b>: Solo digital.</li>
+            <li><b>DVI-D <i>Dual Link</i></b>: Solo digital.</li>
+            <li><b>Mini-DVI</b>: Combina digital y analógico.</li>
+            <li><b>Micro-DVI</b>: Solo digital.</li>
+        </ol>
+   </li>
+    <li><b>HDMI<a href="#referencia16"><sup>16</sup></a> (<i>High-Definition Multimedia Interface</i>)</b>: Diseñado en 2002, es un conector digital propietario con los pines distribuidos en dos filas, 10 arriba y 9 abajo. Es uno de los estándares a día de hoy para la transmisión de imagen, sumado a que puede transportar también sonido y red (<i>ethernet</i>). Tiene distintas versiones: 1.0, 1.1, 1.2, 1.3, 1.4, 2.0 y 2.1. Variantes:
+        <ol>
+            <li><b>Mini-HDMI</b>: Ideado para pequeños dispositivos (cámaras y <i>tablets</i>).</li>
+            <li><b>Micro-HDMI</b>: Ideado para pequeños dispositivos (móviles).</li>
+        </ol>
+   </li>
+    <li><b>UDI<a href="#referencia17"><sup>17</sup></a> (<i>Unified Display Interface</i>)</b>: Diseñado en 2006 y cancelado en 2007, iba a ser un conector digital de 26 pines basado en DVI que, finalmente, no se llegó a producir. Se planteó como una alternativa de bajo coste y que tuviera compatibilidad con HDMI y DVI, enfocado especialmente a monitores y tarjetas gráficas. Fue respaldado por empresas como Intel y Samsung.</li>
+    <li><b><i>DisplayPort</i><a href="#referencia18"><sup>18</sup></a></b>: Producido en 2008, es un conector digital con los pines distribuidos en dos filas de 10. Fue diseñado por VESA y es el competidor directo con HDMI que, a diferencia de este, no hay que pagar nada para poder usarlo en la fabricación de los dispositivos. Variantes:
+        <ol>
+            <li><b>Mini <i>DisplayPort</i></b>: Anunciado por Apple.</li>
+            <li><b>Micro <i>DisplayPort</i></b>: Ideado para dispositivos ultracompactos (móviles, <i>tablets</i> y <i>ultrabooks</i>).</li>
+        </ol>
+   </li>
+    <li><b>HDBaseT<a href="#referencia20"><sup>20</sup></a></b>: Diseñado en 2010, no es en sí un tipo conector, sino que hace uso del conector <i>ethernet</i> de los cables Cat5e y Cat6. Puede transportar vídeo, sonido y red.</li>
+    <li><b>DMS-59<a href="#referencia21"><sup>21</sup></a></b>: Usado en tarjetas gráficas, fue un conector digital de 59 pines distribuidos en cuatro filas. Era compatible con dos conectores DVI o dos conectores VGA, pero en uno solo, consiguiendo así una mayor resolución.</li>
+</ul>
+<p>La información del apartado anterior está recogida en la <b>siguiente tabla</b>:</p>
+<table>
+    <tbody>
+        <tr>
+            <th>Conector</th>
+            <th>Pines</th>
+            <th>Tipo de señal</th>
+            <th>Año</th>
+        </tr>
+        <tr>
+            <td>DMS-59</td>
+            <td>59</td>
+            <td>Digital</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td><i>Composite video</i></td>
+            <td>1</td>
+            <td>Analógica</td>
+            <td>Años 80</td>
+        </tr>
+        <tr>
+            <td>DB13W3</td>
+            <td>10 + 3</td>
+            <td>Analógica</td>
+            <td>Años 80</td>
+        </tr>
+        <tr>
+            <td>VGA</td>
+            <td>15</td>
+            <td>Analógica</td>
+            <td>1987 — Hoy</td>
+        </tr>
+        <tr>
+            <td><i>S-Video</i></td>
+            <td>4</td>
+            <td>Analógica</td>
+            <td>1987</td>
+        </tr>
+        <tr>
+            <td>VESA <i>Enhanced Video Conector</i></td>
+            <td>30 + 5</td>
+            <td>Analógica y digital</td>
+            <td>1995</td>
+        </tr>
+        <tr>
+            <td>DVI</td>
+            <td>24 + 5 (estándar)</td>
+            <td>Analógica y digital</td>
+            <td>1999 — Hoy</td>
+        </tr>
+        <tr>
+            <td>HDMI</td>
+            <td>19</td>
+            <td>Digital</td>
+            <td>2002 — Hoy</td>
+        </tr>
+        <tr>
+            <td>UDI</td>
+            <td>26</td>
+            <td>Digital</td>
+            <td>2006-2007</td>
+        </tr>
+        <tr>
+            <td><i>DisplayPort</i></td>
+            <td>20</td>
+            <td>Digital</td>
+            <td>2008 — Hoy</td>
+        </tr>
+        <tr>
+            <td>HDBaseT</td>
+            <td>8</td>
+            <td>Digital</td>
+            <td>2010</td>
+        </tr>
+    </tbody>
+</table>
+<h3>Tipos de ranuras de expansión de tarjetas gráficas<a href="#referencia22"><sup>22</sup></a></h3>
+<ul>
+    <li><b>S-100 bus<a href="#referencia23"><sup>23</sup></a></b>: Diseñado en 1974 como una parte del Altair 8800, fue el primer bus estándar para la industria de las microcomputadoras. Era de 8 bits con una frecuencia de reloj de 10 MHz.</li>
+    <li><b>ISA<a href="#referencia24"><sup>24</sup></a> (<i>Industry Standard Architecture</i>)</b>: Introducido en 1981 por IBM, se convirtió en la opción predominante del mercado en la década de los 80. Hubo dos versiones: ISA XT (8 bits) e ISA AT (16 bits, creada en el 1984), que tenían una frecuencia de reloj de 4.77 y 8.33 MHz, respectivamente.</li>
+    <li><b>Zorro II<a href="#referencia25"><sup>25</sup></a></b>: Introducido en 1986 y usado en los Commodore Amiga 1500 y 2000. Era de 16 bits con una frecuencia de reloj de 7.14 MHz.</li>
+    <li><b>NuBus<a href="#referencia26"><sup>26</sup></a></b>: Usado en el ordenador Macintosh II de Apple (lanzado en 1987). Era un bus de 32 bits con una frecuencia de reloj de 10 MHz.</li>
+    <li><b>MCA<a href="#referencia27"><sup>27</sup></a> (<i>Mircro Channel Architecture</i>)</b>: Fue un intento de IBM en 1987 para reemplazar al ISA, pero incompatible con los anteriores. Era un bus de 16 o 32 bits con una frecuencia de reloj de 10 MHz.</li>
+    <li><b>EISA<a href="#referencia28"><sup>28</sup></a> (<i>Extended Industry Standard Architecture</i>)</b>: Publicado en 1988 para competir con el MCA de IBM y compatible con lSA AT. Era un bus de 32 bits con una frecuencia de reloj de 8.33 MHz.</li>
+    <li><b>Zorro III<a href="#referencia29"><sup>29</sup></a></b>: Introducido en 1990 y usado en los Commodore Amiga 3000 y 4000. Era de 32 bits con una frecuencia de reloj de 37.5 MHz.</li>
+    <li><b>VLB<a href="#referencia30"><sup>30</sup></a> (VESA [<i>Video Electronics Standards Association</i>] <i>Local Bus</i>)</b>: Fue una extensión de ISA creada en 1992. Era un bus de 32 bits con una frecuencia de reloj de 25 a 40 MHz.</li>
+    <li><b>PCI<a href="#referencia31"><sup>31</sup></a> (<i>Peripheral Component Interconnect</i>)</b>: Desplazó a los buses ISA, EISA, MCA y VLB desde 1993 en adelante. La ranura PCI permitía una conectividad dinámica entre los dispositivos sin tener que ajustar manualmente los <i>jumpers</i>. La primera versión era un bus de 32 bits con una frecuencia de 33 MHz, luego han ido apareciendo mejores versiones.</li>
+    <li><b>UPA<a href="#referencia32"><sup>32</sup></a> (<i>Ultra Port Architecture</i>)</b>: Fue una arquitectura de bus de interconexión introducida por Sun Microsystems en 1995. Era un bus de 64 bits con una frecuencia de reloj de 67 a 120 MHz.</li>
+    <li><b>AGP<a href="#referencia33"><sup>33</sup></a> (<i>Accelerated Graphics Port</i>)</b>: Introducido en 1997, es un bus dedicado a los gráficos. Hay diferentes versiones: 1.0, 2.0, 3.0 y 3.5. Es de 32 bits con una frecuencia de reloj de 66 MHz.</li>
+    <li><b>PCI-X<a href="#referencia34"><sup>34</sup></a> (<i>Peripheral Component Interconnect eXtended</i>)</b>: Fue una extensión del bus PCI introducida en 1998. Mejora el PCI al extender el ancho del bus a los 64 bits y con una frecuencia de reloj de hasta los 133 MHz.</li>
+    <li><b>PCIe<a href="#referencia35"><sup>35</sup></a> (<i>Peripheral Component Interconnect Express</i>)</b>: Fue una de las interfaces de vídeo más novedosas, desplazando así al formato paralelo de todas las anteriores. Fue publicada en el año 2004 y, en 2006, ya proveían el doble de transferencia de datos que AGP. Es el estándar actual y, a día de hoy, ya se está empezando a abrir paso la versión 4.0<a href="#referencia36"><sup>36</sup></a>, con vistas a la 5.0<a href="#referencia37"><sup>37</sup></a>. Hay diferentes versiones: 1.0, 2.0, 3.0, 4.0 y 5.0, todas con formato x1 hasta x16. El formato x32<a href="#referencia38"><sup>38</sup></a> no es muy común, pero existe.</li>
+</ul>
+<p>La información del apartado anterior está recogida en la <b>siguiente tabla</b>:</p>
+<table>
+    <tbody>
+        <tr>
+            <th>Bus</th>
+            <th>Ancho (bits)</th>
+            <th>Frecuencia de reloj (MHz)</th>
+            <th>Ancho de banda (MB/s)</th>
+            <th>Tipo</th>
+            <th>Año</th>
+        </tr>
+        <tr>
+            <td>PCI-X 133</td>
+            <td>N/A</td>
+            <td>N/A</td>
+            <td>1067</td>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>PCI-X QDR</td>
+            <td>16</td>
+            <td>N/A</td>
+            <td>1067</td>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>PCI-X DDR</td>
+            <td>N/A</td>
+            <td>N/A</td>
+            <td>2133</td>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>PCI-X QDR</td>
+            <td>N/A</td>
+            <td>N/A</td>
+            <td>4266</td>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>PCI</td>
+            <td>64</td>
+            <td>66/100</td>
+            <td>533.3/800</td>
+            <td>Paralelo</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>S-100 bus</td>
+            <td>8</td>
+            <td>10</td>
+            <td>10</td>
+            <td>Paralelo</td>
+            <td>1974</td>
+        </tr>
+        <tr>
+            <td>ISA XT</td>
+            <td>8</td>
+            <td>4.77</td>
+            <td>2.39</td>
+            <td>Paralelo</td>
+            <td>1981</td>
+        </tr>
+        <tr>
+            <td>ISA AT</td>
+            <td>16</td>
+            <td>8.33</td>
+            <td>8.33</td>
+            <td>Paralelo</td>
+            <td>1984</td>
+        </tr>
+        <tr>
+            <td>Zorro II</td>
+            <td>16</td>
+            <td>7.14</td>
+            <td>5.3</td>
+            <td>N/A</td>
+            <td>1986</td>
+        </tr>
+        <tr>
+            <td>NuBus</td>
+            <td>32</td>
+            <td>10</td>
+            <td>40</td>
+            <td>Paralelo</td>
+            <td>1987</td>
+        </tr>
+        <tr>
+            <td>MCA</td>
+            <td>16/32</td>
+            <td>10</td>
+            <td>66</td>
+            <td>Paralelo</td>
+            <td>1987</td>
+        </tr>
+        <tr>
+            <td>EISA</td>
+            <td>8/16/32</td>
+            <td>8.33</td>
+            <td>33.32</td>
+            <td>Paralelo</td>
+            <td>1988</td>
+        </tr>
+        <tr>
+            <td>Zorro III</td>
+            <td>32</td>
+            <td>37.5</td>
+            <td>150</td>
+            <td>N/A</td>
+            <td>1990</td>
+        </tr>
+        <tr>
+            <td>NuBus90<a href="#referencia39"><sup>39</sup></a></td>
+            <td>N/A</td>
+            <td>20</td>
+            <td>70</td>
+            <td>N/A</td>
+            <td>1991</td>
+        </tr>
+        <tr>
+            <td>VLB o VESA</td>
+            <td>32</td>
+            <td>33/40</td>
+            <td>133.33/160</td>
+            <td>Paralelo</td>
+            <td>1992</td>
+        </tr>
+        <tr>
+            <td>PCI</td>
+            <td>32/64</td>
+            <td>33</td>
+            <td>133.33/266.7</td>
+            <td>Paralelo</td>
+            <td>1993</td>
+        </tr>
+        <tr>
+            <td>PCI</td>
+            <td>32</td>
+            <td>66</td>
+            <td>266.7</td>
+            <td>Paralelo</td>
+            <td>1995</td>
+        </tr>
+        <tr>
+            <td>UPA</td>
+            <td>64</td>
+            <td>67/83/100/120</td>
+            <td>1070/1320/1600/1920</td>
+            <td>N/A</td>
+            <td>1995</td>
+        </tr>
+        <tr>
+            <td>AGP 1x</td>
+            <td>32</td>
+            <td>66</td>
+            <td>266.7</td>
+            <td>Paralelo</td>
+            <td>1997</td>
+        </tr>
+        <tr>
+            <td>AGP 2x</td>
+            <td>32</td>
+            <td>66</td>
+            <td>533.3</td>
+            <td>Paralelo</td>
+            <td>1997</td>
+        </tr>
+        <tr>
+            <td>AGP 4x</td>
+            <td>32</td>
+            <td>66</td>
+            <td>1067</td>
+            <td>Paralelo</td>
+            <td>1998</td>
+        </tr>
+        <tr>
+            <td>PCI-X DDR</td>
+            <td>16</td>
+            <td>N/A</td>
+            <td>533.3</td>
+            <td>N/A</td>
+            <td>1998</td>
+        </tr>
+        <tr>
+            <td>AGP 8x</td>
+            <td>32</td>
+            <td>66</td>
+            <td>2133</td>
+            <td>Paralelo</td>
+            <td>2002</td>
+        </tr>
+        <tr>
+            <td>PCIe 1.0 x1</td>
+            <td>1</td>
+            <td>2500</td>
+            <td>250</td>
+            <td>Serie</td>
+            <td>2004</td>
+        </tr>
+        <tr>
+            <td>PCIe 1.0 x4</td>
+            <td>1 x 4</td>
+            <td>2500</td>
+            <td>1000</td>
+            <td>Serie</td>
+            <td>2004</td>
+        </tr>
+        <tr>
+            <td>PCIe 1.0 x8</td>
+            <td>1 x 8</td>
+            <td>2500</td>
+            <td>2000</td>
+            <td>Serie</td>
+            <td>2004</td>
+        </tr>
+        <tr>
+            <td>PCIe 1.0 x16</td>
+            <td>1 x 16</td>
+            <td>2500</td>
+            <td>4000</td>
+            <td>Serie</td>
+            <td>2004</td>
+        </tr>
+        <tr>
+            <td>PCIe 2.0 x1</td>
+            <td>1</td>
+            <td>5000</td>
+            <td>500</td>
+            <td>Serie</td>
+            <td>2007</td>
+        </tr>
+        <tr>
+            <td>PCIe 2.0 x2</td>
+            <td>1 x 2</td>
+            <td>5000</td>
+            <td>1000</td>
+            <td>Serie</td>
+            <td>2007</td>
+        </tr>
+        <tr>
+            <td>PCIe 2.0 x4</td>
+            <td>1 x 4</td>
+            <td>5000</td>
+            <td>2000</td>
+            <td>Serie</td>
+            <td>2007</td>
+        </tr>
+        <tr>
+            <td>PCIe 2.0 x8</td>
+            <td>1 x 8</td>
+            <td>5000</td>
+            <td>4000</td>
+            <td>Serie</td>
+            <td>2007</td>
+        </tr>
+        <tr>
+            <td>PCIe 2.0 x16</td>
+            <td>1 x 16</td>
+            <td>5000</td>
+            <td>8000</td>
+            <td>Serie</td>
+            <td>2007</td>
+        </tr>
+        <tr>
+            <td>PCIe 1.0 x2</td>
+            <td>1 x 2</td>
+            <td>2500</td>
+            <td>500</td>
+            <td>Serie</td>
+            <td>2011</td>
+        </tr>
+        <tr>
+            <td>PCIe 3.0 x1</td>
+            <td>1</td>
+            <td>8000</td>
+            <td>~ 1000</td>
+            <td>Serie</td>
+            <td>2011</td>
+        </tr>
+        <tr>
+            <td>PCIe 3.0 x2</td>
+            <td>1 x 2</td>
+            <td>8000</td>
+            <td>~ 2000</td>
+            <td>Serie</td>
+            <td>2011</td>
+        </tr>
+        <tr>
+            <td>PCIe 3.0 x4</td>
+            <td>1 x 4</td>
+            <td>8000</td>
+            <td>~ 4000</td>
+            <td>Serie</td>
+            <td>2011</td>
+        </tr>
+        <tr>
+            <td>PCIe 3.0 x8</td>
+            <td>1 x 8</td>
+            <td>8000</td>
+            <td>~ 8000</td>
+            <td>Serie</td>
+            <td>2011</td>
+        </tr>
+        <tr>
+            <td>PCIe 3.0 x16</td>
+            <td>1 x 16</td>
+            <td>8000</td>
+            <td>~ 16000</td>
+            <td>Serie</td>
+            <td>2011</td>
+        </tr>
+        <tr>
+            <td>PCIe 4.0 x1</td>
+            <td>1</td>
+            <td>16000</td>
+            <td>~ 2000</td>
+            <td>Serie</td>
+            <td>2018</td>
+        </tr>
+        <tr>
+            <td>PCIe 4.0 x2</td>
+            <td>1 x 2</td>
+            <td>16000</td>
+            <td>~ 4000</td>
+            <td>Serie</td>
+            <td>2018</td>
+        </tr>
+        <tr>
+            <td>PCIe 4.0 x4</td>
+            <td>1 x 4</td>
+            <td>16000</td>
+            <td>~ 8000</td>
+            <td>Serie</td>
+            <td>2018</td>
+        </tr>
+        <tr>
+            <td>PCIe 4.0 x8</td>
+            <td>1 x 8</td>
+            <td>16000</td>
+            <td>~ 16000</td>
+            <td>Serie</td>
+            <td>2018</td>
+        </tr>
+        <tr>
+            <td>PCIe 4.0 x16</td>
+            <td>1 x 16</td>
+            <td>16000</td>
+            <td>~ 32000</td>
+            <td>Serie</td>
+            <td>2018</td>
+        </tr>
+        <tr>
+            <td>PCIe 5.0 x1</td>
+            <td>1</td>
+            <td>32000</td>
+            <td>~ 4000</td>
+            <td>Serie</td>
+            <td>2019</td>
+        </tr>
+        <tr>
+            <td>PCIe 5.0 x2</td>
+            <td>1 x 2</td>
+            <td>32000</td>
+            <td>~ 8000</td>
+            <td>Serie</td>
+            <td>2019</td>
+        </tr>
+        <tr>
+            <td>PCIe 5.0 x4</td>
+            <td>1 x 4</td>
+            <td>32000</td>
+            <td>~ 16000</td>
+            <td>Serie</td>
+            <td>2019</td>
+        </tr>
+        <tr>
+            <td>PCIe 5.0 x8</td>
+            <td>1 x 8</td>
+            <td>32000</td>
+            <td>~ 32000</td>
+            <td>Serie</td>
+            <td>2019</td>
+        </tr>
+        <tr>
+            <td>PCIe 5.0 x16</td>
+            <td>1 x 16</td>
+            <td>32000</td>
+            <td>~ 64000</td>
+            <td>Serie</td>
+            <td>2019</td>
+        </tr>
+	</tbody>
+</table>
+<h3>Memoria de una tarjeta gráfica<a href="#referencia4"><sup>4</sup></a></h3>
+<p>La <b>memoria gráfica</b>, o también conocida como VRAM<a href="#referencia40"><sup>40</sup></a> (<i>Video</i> RAM), tiene una capacidad en las tarjetas gráficas modernas que va desde 1 GB<a href="#referencia5"><sup>5</sup></a> hasta los 24 GB<a href="#referencia6"><sup>6</sup></a>. Ha empleado distintos tipos de memoria, que va desde la GDDR hasta la GDDR6<a href="#referencia41"><sup>41</sup></a>. Los tipos de VRAM existentes pueden resumirse en la siguiente tabla:</p>
+<table>
+    <tbody>
+        <tr>
+            <th>Tipo</th>
+            <th>Frecuencia de reloj (MHz)</th>
+            <th>Ancho de banda (GB/s)</th>
+            <th>Año</th>
+        </tr>
+        <tr>
+            <td>GDDR</td>
+            <td>166 a 950</td>
+            <td>1.2 a 30.4</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>GDDR2</td>
+            <td>533 a 1000</td>
+            <td>8.5 a 16</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>GDDR3</td>
+            <td>700 a 1700</td>
+            <td>5.6 a 54.4</td>
+            <td>2004</td>
+        </tr>
+        <tr>
+            <td>GDDR4</td>
+            <td>1600 a 1800</td>
+            <td>64 a 86.4</td>
+            <td>2007</td>
+        </tr>
+        <tr>
+            <td>GDDR5</td>
+            <td>3200 a 7000</td>
+            <td>24 a 448</td>
+            <td>2008</td>
+        </tr>
+        <tr>
+            <td>HBM</td>
+            <td>500</td>
+            <td>512 a 1024</td>
+            <td>2013</td>
+        </tr>
+        <tr>
+            <td>GDDR5X</td>
+            <td>1000 a 1750</td>
+            <td>160 a 673</td>
+            <td>2016</td>
+        </tr>
+        <tr>
+            <td>GDDR6</td>
+            <td>N/A</td>
+            <td>N/A</td>
+            <td>2018</td>
+        </tr>
+    </tbody>
+</table>
+<h3>¿Qué es el renderizado<a href="#referencia42"><sup>42</sup></a>? Describe el proceso de renderizado, elementos que intervienen y su relación con la capacidad de proceso con la tarjeta gráfica<a href="#referencia43"><sup>43</sup></a></h3>
+<p>El <b>renderizado 3D</b> es el proceso por el cual, a través de los sistemas informáticos, generamos una <b>imagen digital a partir de un modelo o escenario en tres dimensiones (3D)</b>. El objetivo es generar una imagen realista desde cualquier perspectiva del modelo.</p>
+<p>Se trata de conseguir generar imágenes en 3D a partir de diversos procesos que permiten generar sensación de profundidad y dar textura a los diferentes elementos de la imagen para que resulte más realista. También permiten generar <b>diferentes efectos de iluminación</b>, y usar diversas técnicas fotográficas que generan <b>efectos ópticos</b> similares o iguales a los que se producen en el mundo real cuando observamos un objeto, una habitación, un paisaje o cualquier tipo de vista que perciban nuestros ojos.</p>
+<p>El renderizado 3D se genera a través del cálculo producido por algoritmos y fórmulas que van <b>generando simulaciones</b> que calculan posibles reflejos de la luz sobre los objetos en tres dimensiones que hallamos dispuestos en la escena. El rastreo se produce desde la cámara virtual que situemos para generar la escena hasta las fuentes de luz emisoras.</p>
+<p>Se utiliza hoy en día de forma amplia en el mundo de la creación audiovisual. Es muy apreciado para la <b>realización de vídeos</b> porque permite realizar y disponer en las escenas diferentes tipos de objetos y situaciones que no se pueden llegar a grabar en entornos reales.</p>
+<p>También es muy apreciado porque permite realizar simulaciones de objetos o elementos que todavía no se han construido, por lo que hoy en día se usa mucho en el ámbito de la construcción para recrear viviendas, edificios y nuevas construcciones y así podernos hacer una idea de cómo serían en realidad.</p>
+<p>El mundo el diseño gráfico también se ha visto ampliamente impactado por la renderización 3D, son muchos los profesionales del diseño gráfico que se han especializado en esta área por sus posibilidades. Hay cada vez más empresas especializadas en el diseño 3D por ordenador. Ciertos diseños de objetos o proyectos arquitectónicos se aprecian mejor en un diseño 3D.</p>
+<p>El mundo de la <b>publicidad</b> también ha acogido con los brazos abiertos el uso del renderizado 3D, dado que se pueden recrear objetos sin necesidad de que sean fotografiados y con ello se pueden hacer simulaciones para ver cómo quedaría un objeto en una situación concreta, o se pueden realizar combinaciones imposibles que a nivel publicitario tienen mucho efecto y que solo son posibles gracias al uso de este proceso.</p>
+<p>En la renderización es importante tanto el procesador, como la memoria RAM, como contar con un disco SSD pero, sin lugar a dudas, el más importante de todos es la tarjeta gráfica. Como ya se ha explicado anteriormente, la GPU está optimizada para los cálculos de coma flotante, por lo que es el más rápido en hacer los algoritmos necesarios de renderización pertinentes. Dependiendo del tipo de renderizado que se trate, necesitará más potencia y memoria.</p>
+<h3>Tendencias y últimos modelos de tarjetas gráficas</h3>
+<p>Existen dos fabricantes de tarjetas gráficas dedicadas: Nvidia y AMD. Intel tiene gráficas integradas en sus procesadores, pero parece que también competirá en este mercado en el futuro<a href="#referencia44"><sup>44</sup></a>. En cuanto a los ensambladores<a href="#referencia45"><sup>45</sup></a>, existen los siguiente:</p>
+<table>
+    <tbody>
+        <tr>
+            <th rowspan="16">Ensambladores de tarjetas<a href="#referencia45"><sup>45</sup></a></th>
+            <th colspan="2">Diseñadores de GPU</th>
+        </tr>
+        <tr>
+            <th>AMD</th>
+            <th>Nvidia</th>
+        </tr>
+        <tr>
+            <td>Asus</td>
+            <td>Asus</td>
+        </tr>
+        <tr>
+            <td>Club3D</td>
+            <td>Club3D</td>
+        </tr>
+        <tr>
+            <td>Gigabyte</td>
+            <td>Gigabyte</td>
+        </tr>
+        <tr>
+            <td>MSI</td>
+            <td>MSI</td>
+        </tr>
+        <tr>
+            <td>Diamond</td>
+            <td>ECS EliteGroup</td>
+        </tr>
+        <tr>
+            <td>Gecube</td>
+            <td>EVGA</td>
+        </tr>
+        <tr>
+            <td>HIS</td>
+            <td>Gainward</td>
+        </tr>
+        <tr>
+            <td>Powercolor</td>
+            <td>Galaxy</td>
+        </tr>
+        <tr>
+            <td>Sapphire</td>
+            <td>KFA2<a href="#referencia46"><sup>46</sup></a></td>
+        </tr>
+        <tr>
+            <td>XFX</td>
+            <td>Palit</td>
+        </tr>
+        <tr>
+		    <td rowspan="4"></td>
+            <td>PNY</td>
+        </tr>
+        <tr>
+            <td>Point of View</td>
+        </tr>
+        <tr>
+            <td>Sparkle</td>
+        </tr>
+        <tr>
+            <td>Zotac</td>
+        </tr>
+    </tbody>
+</table>
+<p><b>Últimos modelos de tarjetas gráficas</b>:</p>
+<ul>
+    <li><b>Nvidia</b>: Los últimos modelos de Nvidia son los de la gama RTX lanzados entre 2018 y 2019: 2060<a href="#referencia47"><sup>47</sup></a>, 2070<a href="#referencia48"><sup>48</sup></a>, 2080<a href="#referencia49"><sup>49</sup></a>, 2080 Ti<a href="#referencia50"><sup>50</sup></a>, Titan<a href="#referencia51"><sup>51</sup></a> y, en el sector profesional, Quadro RTX 5000<a href="#referencia52"><sup>52</sup></a> y 6000<a href="#referencia53"><sup>53</sup></a>.</li>
+    <li><b>AMD</b>: En cuanto a AMD, sus últimos modelos son: RX 580<a href="#referencia54"><sup>54</sup></a>, 580X<a href="#referencia55"><sup>55</sup></a>, 590<a href="#referencia56"><sup>56</sup></a>, RX Vega<sup>64<a href="#referencia57"><sup>57</sup></a></sup> y Radeon Vega VII<a href="#referencia58"><sup>58</sup></a>.</li>
+</ul>
+<p>Las tarjetas Nvidia RTX han surgido principalmente debido al auge realidad virtual y a la demanda de estos dispositivos de mover gráficos de muy alta calidad con una tasa de refresco muy elevada, aparte de resoluciones cada vez más altas, como el 8K<a href="#referencia59"><sup>59</sup></a>. Es por eso que se ha creado un nuevo estándar, el <i>VirtualLink</i><a href="#referencia60"><sup>60</sup></a>, incluido en estas RTX.</p>
+<h2>Referencias</h2>
+<div class="referencias">
+    <ol>
+        <li id="referencia1"><span class="contains-ul">Tarjeta gráfica</span><span class="colon">:</span>
+            <ul>
+                <li class="inglés"><a href="https://en.wikipedia.org/wiki/Video_card#:~:text=A%20modern%20video%20card%20consists,are%20mounted.%20These%20include%3A" target="_blank">Tarjeta gráfica<span class="fa fa-external-link"></span></a></li>
+                <li class="español"><a href="https://es.wikipedia.org/wiki/Tarjeta_gr%C3%A1fica" target="_blank">Tarjeta gráfica<span class="fa fa-external-link"></span></a></li>
+            </ul>
+        </li>
+        <li id="referencia2" class="inglés"><a href="https://en.wikipedia.org/wiki/Video_card#Heat_sink" target="_blank">Disipador de calor en las tarjetas gráficas<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia3" class="inglés"><a href="https://en.wikipedia.org/wiki/Video_card#Video_BIOS" target="_blank"><i>Firmware</i> de las tarjetas gráficas<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia4"><span class="contains-ul">Memoria de vídeo en las tarjetas gráficas</span><span class="colon">:</span>
+            <ul>
+                <li class="inglés"><a href="https://en.wikipedia.org/wiki/Video_card#Video_memory" target="_blank">Memoria de vídeo en las tarjetas gráficas<span class="fa fa-external-link"></span></a></li>
+                <li class="español"><a href="https://es.wikipedia.org/wiki/Tarjeta_gr%C3%A1fica#GRAM" target="_blank">Memoria de vídeo en las tarjetas gráficas<span class="fa fa-external-link"></span></a></li>
+            </ul>
+        </li>
+        <li id="referencia5" class="español"><a href="https://www.pccomponentes.com/msi-geforce-gt710-1gb-ddr3-low-profile" target="_blank">Tarjeta gráfica MSI GeForce GT710 de 1 GB<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia6" class="español"><a href="https://www.pccomponentes.com/nvidia-titan-rtx-24gb-gddr6" target="_blank">Tarjeta gráfica Nvidia Titan RTX de 24 GB<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia7" class="español"><a href="https://es.wikipedia.org/wiki/Tarjeta_gr%C3%A1fica#GRAM" target="_blank">GRAM de las tarjetas gráficas<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia8" class="español"><a href="https://es.wikipedia.org/wiki/Tarjeta_gr%C3%A1fica#RAMDAC" target="_blank">RAMDAC de las tarjetas gráficas<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia9" class="inglés"><a href="https://en.wikipedia.org/wiki/List_of_video_connectors#Physical_connectors" target="_blank">Lista de conectores de vídeo<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia10"><span class="contains-ul">Conector <i>composite video</i></span><span class="colon">:</span>
+            <ul>
+                <li class="inglés"><a href="https://en.wikipedia.org/wiki/Composite_video" target="_blank">Conector <i>composite video</i><span class="fa fa-external-link"></span></a></li>
+                <li class="inglés"><a href="https://www.hardwaresecrets.com/video-connectors-tutorial/3/" target="_blank">Tutorial de conectores de vídeo: <i>Composite video</i><span class="fa fa-external-link"></span></a></li>
+                <li class="español"><a href="https://es.wikipedia.org/wiki/V%C3%ADdeo_compuesto#Conectores_y_l%C3%ADneas_utilizadas_por_la_se%C3%B1al_de_v%C3%ADdeo" target="_blank">Conectores y líneas utilizadas por el <i>composite video</i><span class="fa fa-external-link"></span></a></li>
+            </ul>
+        </li>
+        <li id="referencia11" class="inglés"><a href="https://en.wikipedia.org/wiki/DB13W3#:~:text=DB13W3%20(13W3)%20is%20a%20style,(DVI%2C%20HDMI%2C%20or%20DisplayPort)." target="_blank">Conector DB13W3<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia12" class="inglés"><a href="https://en.wikipedia.org/wiki/VGA_connector" target="_blank">Conector VGA<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia13"><span class="contains-ul">Conector <i>S-Video</i></span><span class="colon">:</span>
+            <ul>
+                <li class="inglés"><a href="https://en.wikipedia.org/wiki/S-Video" target="_blank">Conector <i>S-Video</i><span class="fa fa-external-link"></span></a></li>
+                <li class="inglés"><a href="https://www.hardwaresecrets.com/video-connectors-tutorial/4/" target="_blank">Tutorial de conectores de vídeo: <i>S-Video</i><span class="fa fa-external-link"></span></a></li>
+            </ul>
+        </li>
+        <li id="referencia14"><span class="contains-ul">Conector EVC</span><span class="colon">:</span>
+            <ul>
+                <li class="inglés"><a href="http://www.interfacebus.com/Design_EVC_Connector_Pinout.html" target="_blank">Diseño de un conector EVC<span class="fa fa-external-link"></span></a></li>
+                <li class="inglés"><a href="https://web.archive.org/web/20160409010303/http://www.stuartconnections.com/en/graphics/2193-Dell-ATI-32MB-RAGE128-AGP-EVC-Video-Graphics-Card-1028110402-1098110000-4E732.html" target="_blank">Tarjeta gráfica Dell ATI 32 MB RAGE128 AGP con conector EVC<span class="fa fa-external-link"></span></a></li>
+            </ul>
+        </li>
+        <li id="referencia15" class="inglés"><a href="https://en.wikipedia.org/wiki/Digital_Visual_Interface" target="_blank">Conector DVI<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia16" class="inglés"><a href="https://en.wikipedia.org/wiki/HDMI" target="_blank">Conector HDMI<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia17" class="inglés"><a href="https://en.wikipedia.org/wiki/Unified_Display_Interface" target="_blank">Conector UDI<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia18" class="inglés"><a href="https://en.wikipedia.org/wiki/DisplayPort" target="_blank">Conector <i>DisplayPort</i><span class="fa fa-external-link"></span></a></li>
+        <li id="referencia19" class="inglés"><a href="https://www.hardwaresecrets.com/video-connectors-tutorial/9/" target="_blank">Tutorial de conectores de vídeo: HDMI<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia20"><span class="contains-ul">Conector HDBaseT</span><span class="colon">:</span>
+            <ul>
+                <li class="inglés"><a href="https://en.wikipedia.org/wiki/HDBaseT" target="_blank">Conector HDBaseT<span class="fa fa-external-link"></span></a></li>
+                <li class="español"><a href="https://es.wikipedia.org/wiki/HDBaseT" target="_blank">Conector HDBaseT<span class="fa fa-external-link"></span></a></li>
+                <li class="inglés"><a href="https://advoli.com/ta6performance/" target="_blank">Tarjeta gráfica Advoli TA6 con conector HDBaseT<span class="fa fa-external-link"></span></a></li>
+            </ul>
+        </li>
+        <li id="referencia21"><span class="contains-ul">Conector DMS-59</span><span class="colon">:</span>
+            <ul>
+                <li class="inglés"><a href="https://en.wikipedia.org/wiki/DMS-59" target="_blank">Conector DMS-59<span class="fa fa-external-link"></span></a></li>
+                <li class="español"><a href="https://es.wikipedia.org/wiki/DMS-59" target="_blank">Conector DMS-59<span class="fa fa-external-link"></span></a></li>
+            </ul>
+        </li>
+        <li id="referencia22"><span class="contains-ul">Interfaces de la placa base en tarjetas de vídeo</span><span class="colon">:</span>
+            <ul>
+                <li class="inglés"><a href="https://en.wikipedia.org/wiki/List_of_interface_bit_rates#Computer_buses" target="_blank">Lista de tasa de bits de los buses<span class="fa fa-external-link"></span></a></li>
+                <li class="inglés"><a href="https://en.wikipedia.org/wiki/Video_card#Motherboard_interfaces" target="_blank">Interfaces de la placa base en tarjetas de vídeo<span class="fa fa-external-link"></span></a></li>
+                <li class="español"><a href="https://es.wikipedia.org/wiki/Tarjeta_gr%C3%A1fica#Interfaces_con_la_placa_base" target="_blank">Interfaces de la placa base en tarjetas de vídeo<span class="fa fa-external-link"></span></a></li>
+            </ul>
+        </li>
+        <li id="referencia23" class="inglés"><a href="https://en.wikipedia.org/wiki/S-100_bus" target="_blank">Bus S-100<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia24" class="inglés"><a href="https://en.wikipedia.org/wiki/Industry_Standard_Architecture" target="_blank">Bus ISA<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia25" class="inglés"><a href="https://en.wikipedia.org/wiki/Amiga_Zorro_II" target="_blank">Bus Zorro II<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia26" class="inglés"><a href="https://en.wikipedia.org/wiki/NuBus" target="_blank">Bus NuBus<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia27" class="inglés"><a href="https://en.wikipedia.org/wiki/Micro_Channel_architecture" target="_blank">Bus MCA<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia28" class="inglés"><a href="https://en.wikipedia.org/wiki/Extended_Industry_Standard_Architecture" target="_blank">Bus EISA<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia29" class="inglés"><a href="https://en.wikipedia.org/wiki/Amiga_Zorro_III" target="_blank">Bus Zorro III<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia30" class="inglés"><a href="https://en.wikipedia.org/wiki/VESA_Local_Bus" target="_blank">Bus VLB<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia31" class="inglés"><a href="https://en.wikipedia.org/wiki/Conventional_PCI" target="_blank">Bus PCI<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia32" class="inglés"><a href="https://web.archive.org/web/20000816220050/http://www.sun.com/desktop/products/graphics/upawhitepaper_jan99.pdf" target="_blank">Bus UPA<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia33" class="inglés"><a href="https://en.wikipedia.org/wiki/Accelerated_Graphics_Port" target="_blank">Bus AGP<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia34" class="inglés"><a href="https://en.wikipedia.org/wiki/PCI-X" target="_blank">Bus PCI-X<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia35" class="inglés"><a href="https://en.wikipedia.org/wiki/PCI_Express" target="_blank">Bus PCIe<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia36" class="español"><a href="https://elchapuzasinformatico.com/2019/01/gracias-al-amd-ryzen-3000-llega-la-primera-prueba-de-un-ssd-pci-express-4-0/" target="_blank">Primera prueba de un SSD con interfaz PCIe 4.0<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia37" class="inglés"><a href="https://www.tomshardware.com/news/pcie-4.0-5.0-pci-sig-specification,38460.html" target="_blank">Anunciación de las especificaciones de PCIe 5.0<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia38" class="inglés"><a href="https://www.supermicro.com/products/motherboard/Xeon/C600/X9DRW-CTF31.cfm#:~:text=1%20(x32)%20PCI-E%203.0,riser%20slot)" target="_blank">Placa base Supermicro X9DRW-CTF31 con PCIe 3.0 x32<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia39" class="inglés"><a href="https://en.wikipedia.org/wiki/NuBus#:~:text=A%20later%20addition,30%20MB%2Fs." target="_blank">Bus NuBus90<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia40" class="inglés"><a href="https://en.wikipedia.org/wiki/Video_RAM_(dual-ported_DRAM)" target="_blank"><i>Video</i> RAM<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia41" class="inglés"><a href="https://en.wikipedia.org/wiki/GDDR6_SDRAM" target="_blank">Memoria GDDR6<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia42" class="español"><a href="https://www.cocoschool.com/que-es-renderizado-3d/" target="_blank">¿Qué es el renderizado 3D?<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia43" class="español"><a href="https://www.iscarnet.com/2018/06/renderizar-con-gpu-cpu-o-ambos/" target="_blank">¿Renderizar con GPU, CPU o ambos?<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia44" class="español"><a href="https://www.adslzone.net/2018/02/19/intel-prototipo-tarjeta-grafica/" target="_blank">Intel anuncia el primer prototipo de su tarjeta gráfica<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia45" class="español"><a href="https://es.wikipedia.org/wiki/Tarjeta_gr%C3%A1fica#Dise%C3%B1adores,_fabricantes_y_ensambladores" target="_blank">Diseñadores, fabricantes y ensambladores de tarjetas gráficas<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia46" class="español"><a href="https://www.pccomponentes.com/kfa2-geforce-rtx-2060-oc-1-click-6gb-gddr6" target="_blank">Tarjeta gráfica KFA2 GeForce RTX 2060<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia47" class="español"><a href="https://www.nvidia.com/es-es/geforce/graphics-cards/rtx-2060/" target="_blank">Tarjeta gráfica Nvidia RTX 2060<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia48" class="español"><a href="https://www.nvidia.com/es-es/geforce/graphics-cards/rtx-2070/" target="_blank">Tarjeta gráfica Nvidia RTX 2070<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia49" class="español"><a href="https://www.nvidia.com/es-es/geforce/graphics-cards/rtx-2080/" target="_blank">Tarjeta gráfica Nvidia RTX 2080<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia50" class="español"><a href="https://www.nvidia.com/es-es/geforce/graphics-cards/rtx-2080-ti/" target="_blank">Tarjeta gráfica Nvidia RTX 2080 Ti<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia51" class="español"><a href="https://www.nvidia.com/es-es/titan/titan-rtx/" target="_blank">Tarjeta gráfica Nvidia Titan RTX<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia52" class="español"><a href="https://www.nvidia.com/es-es/design-visualization/quadro/rtx-5000/" target="_blank">Tarjeta gráfica Nvidia Quadro RTX 5000<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia53" class="español"><a href="https://www.nvidia.com/es-es/design-visualization/quadro/rtx-6000/" target="_blank">Tarjeta gráfica Nvidia Quadro RTX 6000<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia54" class="español"><a href="https://www.amd.com/es/products/graphics/radeon-rx-580" target="_blank">Tarjeta gráfica AMD Radeon RX 580<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia55" class="español"><a href="https://www.amd.com/es/products/graphics/radeon-rx-580x" target="_blank">Tarjeta gráfica AMD Radeon RX 580X<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia56" class="español"><a href="https://www.amd.com/es/products/graphics/radeon-rx-590" target="_blank">Tarjeta gráfica AMD Radeon RX 590<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia57" class="español"><a href="https://www.amd.com/es/products/graphics/radeon-rx-vega-64" target="_blank">Tarjeta gráfica AMD Radeon RX Vega<sup>64</sup><span class="fa fa-external-link"></span></a></li>
+        <li id="referencia58" class="español"><a href="https://www.xataka.com/ordenadores/amd-anuncia-radeon-vii-primera-gpu-gaming-arquitectura-7-nm" target="_blank">Tarjeta gráfica AMD Radeon VII, con arquitectura de 7 nm<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia59" class="inglés"><a href="https://www.dell.com/en-us/shop/accessories/apd/210-alez" target="_blank">Monitor Dell UltraSharp 32 8K: UP3218K<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia60" class="inglés"><a href="https://www.roadtovr.com/nvidia-geforce-rtx-virtuallink-vr-connector/" target="_blank">Tarjetas GeForce RTX anunciadas con el conector <i>VirtualLink</i> VR<span class="fa fa-external-link"></span></a></li>
+    </ol>
+</div>
+<footer>
+	<span class="last-modified"><span id="modify"></span></span>
+    <span class="author">Elena de Diego</span>
+</footer>
+</div>
+</div>
+<script src="../functions.js"></script>
+</body>
+</html>

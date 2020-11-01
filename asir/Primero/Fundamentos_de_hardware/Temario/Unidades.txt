@@ -1,0 +1,6 @@
+01. Representación de la información
+02. Componentes hardware de un ordenador
+03. La memoria RAM y discos duros
+04. La BIOS
+05. Tarjetas de expansión
+06. Tercera evaluación — Trabajos en grupo

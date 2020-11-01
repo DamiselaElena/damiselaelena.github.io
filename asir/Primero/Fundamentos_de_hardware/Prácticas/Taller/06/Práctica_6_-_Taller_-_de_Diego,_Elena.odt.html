@@ -1,0 +1,112 @@
+<p>Práctica 6: Taller – Herramientas de disco duro: Análisis <em>benchmark</em> y diagnóstico</p>
+<h2 id="section"></h2>
+<h1 id="ejercicio-1"><span id="anchor"></span>Ejercicio 1</h1>
+<h3 id="instala-hd-tach-en-el-ordenador-del-aula-y-analiza-la-partición-c-de-windows"><span id="anchor-1"></span>Instala HD Tach en el ordenador del aula y analiza la partición <em>C:\</em> de Windows</h3>
+<figure>
+<img src="Pictures/100000000000104000000C30F4425E9CE728F83E.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Programa HD Tach instalado y analizada la velocidad de lectura secuencial de la partición <em>C:\</em> de Windows en el disco duro mecánico</figcaption>
+</figure>
+<h3 id="section-1"></h3>
+<h3 id="cuál-es-la-velocidad-de-lectura-al-inicio-del-disco"><span id="anchor-2"></span>1. ¿Cuál es la velocidad de lectura al inicio del disco?</h3>
+<p>La velocidad inicial de lectura secuencial es de aproximadamente 127 MB/s.</p>
+<h3 id="cuál-es-la-velocidad-de-lectura-al-final-del-disco"><span id="anchor-3"></span>2. ¿Cuál es la velocidad de lectura al final del disco?</h3>
+<p>La velocidad final de lectura secuencial es de aproximadamente 36 MB/s.</p>
+<h3 id="cuál-es-la-velocidad-de-lectura-media"><span id="anchor-4"></span>3. ¿Cuál es la velocidad de lectura media?</h3>
+<p>La velocidad media de lectura secuencial es de 108.6 MB/s.</p>
+<h3 id="si-no-se-tuvieran-en-cuenta-los-retardos-mecánicos-del-disco-duro-cuál-sería-la-velocidad-de-lectura"><span id="anchor-5"></span>4. Si no se tuvieran en cuenta los retardos mecánicos del disco duro, ¿cuál sería la velocidad de lectura?</h3>
+<p>La velocidad de lectura secuencial sería de 214.3 MB/s si no se tuvieran en cuenta los retardos mecánicos del disco duro.</p>
+<h3 id="teniendo-en-cuenta-los-resultados-qué-modo-de-transferencia-parece-que-tiene-el-disco-duro"><span id="anchor-6"></span>5. Teniendo en cuenta los resultados, ¿qué modo de transferencia parece que tiene el disco duro?</h3>
+<p>Parece que se trata de un disco duro SATA II –cuya velocidad máxima son 300 MB/s–, ya que sin tener en cuenta los retardos mecánicos está por encima de un SATA I, el cual tiene una velocidad máxima de 150 MB/s.</p>
+<h1 id="ejercicio-2"><span id="anchor-7"></span>Ejercicio 2</h1>
+<h3 id="ahora-analiza-el-pendrive-con-hd-tach"><span id="anchor-8"></span>Ahora analiza el <em>pendrive</em> con HD Tach</h3>
+<figure>
+<img src="Pictures/100000000000104000000C30321558CE25C14FC5.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Ahora terminando de analizar la velocidad de lectura secuencial del «pendrive»</figcaption>
+</figure>
+<h3 id="section-2"></h3>
+<h3 id="cuál-es-la-velocidad-de-lectura-al-inicio-del-disco-1"><span id="anchor-9"></span>1. ¿Cuál es la velocidad de lectura al inicio del disco?</h3>
+<p>La velocidad inicial de lectura secuencial es de aproximadamente 19.8 MB/s.</p>
+<h3 id="cuál-es-la-velocidad-de-lectura-al-final-del-disco-1"><span id="anchor-10"></span>2. ¿Cuál es la velocidad de lectura al final del disco?</h3>
+<p>La velocidad final de lectura secuencial es de aproximadamente 17.7 MB/s.</p>
+<h3 id="cuál-es-la-velocidad-de-lectura-media-1"><span id="anchor-11"></span>3. ¿Cuál es la velocidad de lectura media?</h3>
+<p>La velocidad media de lectura secuencial es de 19.4 MB/s.</p>
+<h3 id="si-no-se-tuvieran-en-cuenta-distintos-retardos-o-latencias-cuál-sería-la-velocidad-de-lectura"><span id="anchor-12"></span>4. Si no se tuvieran en cuenta distintos retardos o latencias, ¿cuál sería la velocidad de lectura?</h3>
+<p>La velocidad de lectura secuencial sería de 21.3 MB/s si no se tuvieran en cuenta los retardos o latencias.</p>
+<h3 id="qué-dispositivo-es-más-lento-el-disco-duro-o-el-pendrive-cuántas-veces-más-lento"><span id="anchor-13"></span>5. ¿Qué dispositivo es más lento, el disco duro o el <em>pendrive</em>? ¿Cuántas veces más lento?</h3>
+<p>En lectura secuencial, es más lento el <em>pendrive</em> que el disco duro mecánico. Si tomamos como medida la media de lectura, el <em>pendrive</em> es unas cinco veces más lento (19.4 MB/s frente a 108.6 MB/s) que el disco duro.</p>
+<h3 id="se-puede-decir-que-el-pendrive-tiene-velocidad-casi-constante"><span id="anchor-14"></span>6. ¿Se puede decir que el <em>pendrive</em> tiene velocidad casi constante?</h3>
+<p>Sí, ya que no tiene componentes mecánicos que hagan variar la velocidad y tampoco existen los sectores físicamente hablando, por lo que apenas hay retardos.</p>
+<h1 id="ejercicio-3"><span id="anchor-15"></span>Ejercicio 3</h1>
+<h3 id="analiza-la-partición-c-con-atto-benchmark.-una-vez-que-se-estabiliza-la-velocidad-en-mb"><span id="anchor-16"></span>Analiza la partición <em>C:\</em> con Atto Benchmark. Una vez que se estabiliza la velocidad (en MB):</h3>
+<figure>
+<img src="Pictures/100000000000104000000C30700DDBA8E8A51CD1.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Analizada la partición <em>C:\</em> de Windows en el disco duro mecánico con el programa Atto Benchmark. En él, nos muestra las velocidades de lectura y escritura con diferentes tamaños de transferencia (de 0.5 a 1024 kb)</figcaption>
+</figure>
+<h3 id="section-3"></h3>
+<h3 id="cuál-es-la-velocidad-de-lectura"><span id="anchor-17"></span>¿Cuál es la velocidad de lectura?</h3>
+<p>La velocidad de lectura es aquella que se muestra con el color verde. Con un tamaño de transferencia de 0.5 kb, esta es de aproximadamente 10 MB/s, y con uno de 1024 kb, aproximadamente de 126 MB/s. A efectos reales, la velocidad que se tiene en cuenta es aquella cuyo tamaño de transferencia es mayor, ya que los discos emplean sectores de 512 bytes.</p>
+<h3 id="cuál-es-la-velocidad-de-escritura"><span id="anchor-18"></span>¿Cuál es la velocidad de escritura?</h3>
+<p>La velocidad de escritura es aquella que se muestra con el color rojo. Con un tamaño de transferencia de 0.5 kb, esta es de aproximadamente 11 MB/s, y con uno de 1024 kb, aproximadamente de 93 MB/s, que por lo explicado anteriormente, es esta la que se tendría en cuenta.</p>
+<h3 id="se-parece-la-velocidad-obtenida-a-la-del-primer-ejercicio"><span id="anchor-19"></span>¿Se parece la velocidad obtenida a la del primer ejercicio?</h3>
+<p>La velocidad de lectura es bastante similar a la obtenida en el primer ejercicio, ya que se obtuvo una media de 108.6 MB/s.</p>
+<h3 id="qué-análisis-hd-tach-o-atto-benchmark-te-parece-que-ha-dado-más-detalles-de-la-velocidad-del-disco-duro-explica-por-qué"><span id="anchor-20"></span>¿Qué análisis (HD Tach o Atto Benchmark) te parece que ha dado más detalles de la velocidad del disco duro? Explica por qué</h3>
+<p>En el análisis de HD Tach se puede ver cómo ha ido de principio a fin la velocidad de lectura, por lo que hemos podido observar esa caída de velocidad que con Atto Benchmark no hemos apreciado. En Atto Benchmark también se ha visto la velocidad de escritura y qué resultados ha obtenido al tomar distintos valores para el tamaño de transferencia, por lo que dependiendo de para qué, uno ha dado más información que el otro. Si se quería ver si el disco era mecánico o uno de estado sólido, ha sido más evidente con el primer análisis, pero si se quería una comparativa con distintos tamaños de transferencia y la velocidad de escritura, esto se ha podido observar con el segundo. Por tanto, ambos análisis son complementarios el uno al otro.</p>
+<h1 id="ejercicio-4"><span id="anchor-21"></span>Ejercicio 4</h1>
+<h3 id="pasa-el-análisis-de-atto-benchmark-al-pendrive.-una-vez-que-se-estabiliza-la-velocidad-en-mb"><span id="anchor-22"></span>Pasa el análisis de Atto Benchmark al <em>pendrive</em>. Una vez que se estabiliza la velocidad (en MB):</h3>
+<figure>
+<img src="Pictures/100000000000104000000C306150443B1C20DF4A.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Análisis del «pendrive» con el programa Atto Benchmark</figcaption>
+</figure>
+<h3 id="section-4"></h3>
+<h3 id="cuál-es-la-velocidad-de-lectura-1"><span id="anchor-23"></span>¿Cuál es la velocidad de lectura?</h3>
+<p>Con un tamaño de transferencia de 0.5 kb, la velocidad de lectura es de aproximadamente 0.47 MB/s, y con uno de 1024 kb, es de aproximadamente 13 MB/s.</p>
+<h3 id="cuál-es-la-velocidad-de-escritura-1"><span id="anchor-24"></span>¿Cuál es la velocidad de escritura?</h3>
+<p>Con un tamaño de transferencia de 0.5 kb, la velocidad de escritura es de aproximadamente 0.16 MB/s, y con uno de 1024 kb, es de aproximadamente 4 MB/s.</p>
+<h3 id="se-parece-la-velocidad-obtenida-a-la-del-ejercicio-anterior"><span id="anchor-25"></span>¿Se parece la velocidad obtenida a la del ejercicio anterior?</h3>
+<p>En este caso, la velocidad de lectura dista un poco a la obtenida en el anterior ejercicio, ya que en este análisis es algo menor. Puede que sea más notoria aquí la diferencia que en el disco duro mecánico debido a que el <em>pendrive</em> tiene un menor almacenamiento</p>
+<h3 id="qué-análisis-hd-tach-o-atto-benchmark-te-parece-que-ha-dado-más-detalles-de-la-velocidad-del-pendrive-explica-por-qué"><span id="anchor-26"></span>¿Qué análisis (HD Tach o Atto Benchmark) te parece que ha dado más detalles de la velocidad del <em>pendrive</em>? Explica por qué</h3>
+<p>El análisis de Atto Benchmark pienso que ha dado más información en este caso, ya que en el de HD Tach la velocidad de lectura era algo casi constante, pero aquí se contrasta con la velocidad de escritura, y la diferencia de velocidad es mucho más acusada que con el disco duro mecánico. </p>
+<h1 id="ejercicio-5"><span id="anchor-27"></span>Ejercicio 5</h1>
+<h3 id="como-conclusión-de-los-últimos-apartados-del-tercer-y-cuarto-ejercicio-di-qué-análisis-pasarías-es-decir-cuál-de-ellos-te-parece-más-interesante-a"><span id="anchor-28"></span>Como conclusión de los últimos apartados del tercer y cuarto ejercicio, di qué análisis pasarías (es decir, cuál de ellos te parece más interesante) a:</h3>
+<p>Discos duro mecánicos-magnéticos: HD Tach</p>
+<p><em>Pendrives</em>: Atto Benchmark </p>
+<p>Discos SSD: Atto Benchmark, ya que en el fondo un disco SSD es como un <em>pendrive</em>, solo que con mayor capacidad y más veloz</p>
+<h1 id="ejercicio-6"><span id="anchor-29"></span>Ejercicio 6</h1>
+<h3 id="hd-crystal-info.-pasos"><span id="anchor-30"></span>HD Crystal Info. Pasos:</h3>
+<h3 id="instalar-hd-crystal-info"><span id="anchor-31"></span>1. Instalar HD Crystal Info</h3>
+<h3 id="arrancar-el-programa.-seleccionar-nuestro-disco-duro"><span id="anchor-32"></span>2. Arrancar el programa. Seleccionar nuestro disco duro</h3>
+<h3 id="ver-los-valores-smart-de-nuestro-disco-duro"><span id="anchor-33"></span>3. Ver los valores SMART de nuestro disco duro</h3>
+<h3 id="interpretación-si-todo-está-en-verde-todo-va-bien"><span id="anchor-34"></span>4. Interpretación: Si todo está en verde, todo va bien</h3>
+<h3 id="si-aparecen-cosas-amarillas-o-en-rojo-hay-problemas.-en-ese-caso-se-debe-salvar-los-datos-antes-de-que-se-estropee-y-perder-la-información"><span id="anchor-35"></span>Si aparecen cosas amarillas, o en rojo, hay problemas. En ese caso, se debe salvar los datos, antes de que se estropee y perder la información</h3>
+<figure>
+<img src="Pictures/100000000000104000000C306A95C0BE4F97D19E.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Analizada la partición <em>C:\</em> de Windows en el disco duro mecánico con el programa CrystalDiskInfo. En él, nos muestra el estado del disco duro mecánico, el cual está bien, ya que no se nos muestran los colores amarillo o rojo</figcaption>
+</figure>
+<figure>
+<img src="Pictures/100000000000104000000C30A8CD70BD8C8AC86B.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Mirando más parámetros analizados por CrystalDiskInfo</figcaption>
+</figure>
+<figure>
+<img src="Pictures/100000000000104000000C30533B75F128CC2487.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Terminando de revisar todos los parámetros. Todo está en buen estado</figcaption>
+</figure>
+<figure>
+<img src="Pictures/100000000000104000000C307317D8E10F01D43B.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Analizada la velocidad de lectura secuencial en la partición <em>C:\</em> de Windows en el disco SSD con el programa HD Tach. Tiene una gráfica bastante similar a la del «pendrive», solo que es bastante más veloz que este. Concretamente tiene una media de velocidad de 203.2 MB/s, sin tener en cuenta los retardos o latencias asciende a los 238.4 MB/s, por lo que seguramente su interfaz se trate de SATA II</figcaption>
+</figure>
+<figure>
+<img src="Pictures/100000000000104000000C301E03290C08FC7216.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Analizada la partición <em>C:\</em> de Windows en el disco SSD con el programa Atto Benchmark. La velocidad de lectura es similar a la del anterior análisis, pero curiosamente la de escritura es mayor que la de lectura</figcaption>
+</figure>
+<figure>
+<img src="Pictures/100000000000104000000C3009BED909CDFAF29D.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Comprobando el estado de salud del disco con CrystalDiskInfo, el cual está correctamente</figcaption>
+</figure>
+<figure>
+<img src="Pictures/100000000000104000000C305D38025A260E840C.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Más parámetros del análisis sobre el estado de salud del disco</figcaption>
+</figure>
+<figure>
+<img src="Pictures/100000000000104000000C30DD70CEE1F2D35DF7.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Finalizando los parámetros de salud del disco. Goza de «buena salud»</figcaption>
+</figure>

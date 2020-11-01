@@ -1,0 +1,406 @@
+                                              Las tarjetas gráficas
+1. Busca en internet las características técnicas de las
+tarjetas gráficas:
+      a. Evolución.
+      b. Elementos básicos de una tarjeta gráfica
+      c. Conectores de salida de una tarjeta gráfica
+      d. Tipos de ranuras de expansión de tarjetas gráficas
+      e. Memoria de una tarjeta gráfica
+      f. ¿Qué es el renderizado? Describir el proceso de renderizado, elementos que
+         intervienen y su relación con la capacidad de proceso con la tarjeta gráfica
+      g. Tendencias y últimos modelos de tarjetas gráficas
+a. Evolución
+      Puede seguirse la evolución de las tarjetas gráficas con la lectura de los apartados de
+Conectores de salida de una tarjeta gráfica, Tipos de ranuras de expansión de tarjetas
+gráficas y Memoria de una tarjeta gráfica. En el último apartado, Tendencias y últimos
+modelos de tarjetas gráficas, puede verse el panorama actual de ellas, en las que en el
+ancho de banda pueden apreciarse unos valores inimaginables en antaño y admiten unas
+resoluciones muy altas.
+b. Elementos básicos de una tarjeta gráfica
+      Una tarjeta gráfica1 consiste en una placa de circuito impreso en la cual están
+montados diferentes componentes:
+    •   Unidad de procesamiento gráfico o GPU (Graphics Processing Unit): Es el procesador
+        de la tarjeta gráfica, optimizado para el cálculo en coma flotante, que son las
+        operaciones predominantes en las funciones 3D. Gracias la especialización de este
+        procesador, deja libre de sobrecargas al procesador principal, al menos en cuanto a
+        procesamiento gráfico se refiere. Las tarjetas gráficas buenas llevan más de una GPU.
+    •   Disipador2: Está montado en la mayoría de las tarjetas gráficas modernas. Este
+        distribuye el calor producido por la GPU de manera uniforme en todo el disipador y en
+        la propia tarjeta. Cuenta generalmente con uno o varios ventiladores montados para
+        enfriar el disipador y la GPU. No todas las tarjetas tienen disipador, por ejemplo, las
+        hay con refrigeración líquida. Además, las tarjetas de los años 80 y principios de los
+2/15                                                                  Ramos de Diego, Miguel
+Fundamentos de hardware                                                Las tarjetas gráficas
+      90 no producían mucho calor y no requerían de estos.
+    • BIOS de vídeo3: La BIOS de vídeo o el firmware de vídeo contiene un programa mínimo
+      para la configuración inicial y el control de la tarjeta de vídeo. Puede tener
+      información sobre el tiempo de la memoria, las velocidades de operación y los
+      voltajes del procesador gráfico, la RAM y otra información que a veces se puede
+      cambiar.
+    • Memoria de vídeo4: Este tipo de memoria almacena la información de los datos de
+      una pantalla. La memoria de vídeo está formada por bits dispuestos en tres
+      dimensiones: bits de resolución horizontal, resolución vertical y bits en cada píxel
+      (profundidad del color). Al ser dedicada para los gráficos, se evita que se sobrecargue
+      la memoria RAM. Actualmente, las tarjetas gráficas tienen entre 1 y 24 GB de este
+      tipo de memoria, y usan una específica conocida como GDDR5.
+    • RAMDAC6 (Random-Access-Memory Digital-to-Analog Converter [‘convertidor digital-
+      analógico de memoria de acceso aleatorio’]): Convierte las señales digitales (del
+      ordenador) en señales analógicas para poder ser representadas en el monitor, con la
+      inevitable pérdida de calidad que eso supone. En la actualidad, este componente está
+      desapareciendo de las tarjetas gráficas, puesto que los monitores suelen son ya
+      digitales y, por ende, no hace falta esta conversión.
+c. Conectores de salida de una tarjeta gráfica
+    • Composite video7: Creado en la década de los 80, es un conector analógico amarillo
+      de un solo pin compuesto de un cable coaxial y con conector BNC. Actualmente no es
+      muy usado, pero aún hay dispositivos que incluyen este tipo de conector. Es habitual
+      encontrarlo en el conector RCA, junto a los cables rojo y blanco para el sonido.
+    • DB13W38: Creado en la década de los 80 y usado por Sun Microsystems, Silicon
+      Graphics, IBM y Apple, fue un conector analógico de 10 pines + 3 distribuidos en dos
+      filas de 5. Fue usado como conector de vídeo en los ordenadores y en la actualidad ya
+      no se usa.
+    • VGA9 (Video Graphics Array): Diseñado en 1987, es un conector analógico DE-15 de 15
+      pines distribuidos en tres filas. Fue un estándar para la transmisión de vídeo y hoy día
+      se sigue produciendo.
+    • S-Video10: Diseñado en 1987, fue un conector analógico de 4 pines distribuidos de dos
+      en dos, en cada lateral. Era empleado para la transmisión de imagen.
+    • VESA Enhanced Video Conector11: Publicado en 1995, fue un conector analógico y
+      digital de 30 + 5 pines distribuidos en tres filas. Basado en DVI, fue diseñado para
+      transportar VGA/RGB, FireWire, audio y señales USB.
+   •  DVI12 (Digital Visual Interface): Diseñado en 1999 por la DDWG (Digital Display Working
+      Group), es un conector analógico digital de 24 pines + 5 distribuidos en tres filas de 8
+      (en la versión estándar, otras pueden tener menos pines). Fue desarrollado con la
+      intención de crear un estándar en la industria para transferir el contenido digital de
+      vídeo y se sigue empleando en la actualidad. Variantes:
+          1. DVI-A: Solo analógico.
+          2. DVI-I Single Link: Combina digital y analógico.
+          3. DVI-l Dual Link: Combina digital y analógico.
+          4. DVI-D Single Link: Solo digital.
+          5. DVI-D Dual Link: Solo digital.
+          6. Mini-DVI: Combina digital y analógico.
+          7. Micro-DVI: Solo digital.
+   •  HDMI13 (High-Definition Multimedia Interface): Diseñado en 2002, es un conector
+      digital propietario con los pines distribuidos en dos filas, 10 arriba y 9 abajo. Es uno
+      de los estándares a día de hoy para la transmisión de imagen, sumado a que puede
+      transportar también sonido y Ethernet. Tiene distintas versiones: 1.0, 1.1, 1.2, 1.3, 1.4,
+      2.0 y 2.1. Variantes:
+          1. Mini-HDMI: Ideado para pequeños dispositivos.
+          2. Micro-HDMI: Ideado para pequeños dispositivos.
+   •  UDI14 (Unified Display Interface): Diseñado en 2006 y cancelado en 2007, iba a ser un
+      conector digital de 26 pines basado en DVI que, finalmente, no se llegó a producir. Se
+      planteó como una alternativa de bajo coste y que tuviera compatibilidad con HDMI y
+      DVI, enfocado especialmente a monitores y tarjetas gráficas. Fue respaldado por
+      empresas como Intel y Samsung.
+   •  DisplayPort15: Producido en 2008, es un conector digital con los pines distribuidos en
+      dos filas de 10. Fue diseñado por VESA y es el competidor directo con HDMI que, a
+      diferencia de este, no hay que pagar nada para poder usarlo en la fabricación de los
+      dispositivos. Variantes:
+          1. Mini-DisplayPort: Anunciado por Apple.
+   •  HDBaseT16: Diseñado en 2010, no es en sí un tipo conector, sino que hace uso del
+      conector Ethernet de los cables Cat 5e y Cat 6. Puede transportar vídeo, sonido y
+      Ethernet.
+   •  DMS-5917: Usado en tarjetas gráficas, fue un conector digital de 59 pines distribuidos
+      en cuatro filas. Era compatible con dos conectores DVI o dos conectores VGA, pero
+       en uno solo, consiguiendo así una mayor resolución.
+      Conectores                   Pines              Tipo de señal               Año
+        DMS-59                       59                   Digital
+   Composite video                   1                  Analógica           Década de los 80
+        DB13W3                    10 + 3                Analógica           Década de los 80
+          VGA                        15                 Analógica          1987–Actualidad
+        S-Video                      4                  Analógica                 1987
+    VESA Enhanced
+                                  30 + 5            Analógica y digital           1995
+    Video Conector
+           DVI               24 + 5 (estándar)      Analógica y digital     1999–Actualidad
+         HDMI                        19                   Digital           2002–Actualidad
+           UDI                       26                   Digital             2006–2007
+      DisplayPort                    20                   Digital           2008–Actualidad
+       HDBaseT                       8                    Digital                 2010
+d. Tipos de ranuras de expansión de tarjetas gráficas18
+    •  S-100 bus19: Diseñado en 1974 como una parte del Altair 8800, fue el primer bus
+       estándar para la industria de las microcomputadoras. Era de 8 bits con una
+       frecuencia de reloj de 10 MHz.
+    •  ISA20 (Industry Standard Architecture): Introducido en 1981 por IBM, se convirtió en la
+       opción predominante del mercado en la década de los 80. Hubo dos versiones: ISA
+       XT (de 8 bits) e ISA AT (de 16 bits, creada en el 1984), que tenían una frecuencia de
+       reloj de 4.77 y 8.33 MHz.
+    •  Zorro II21: Introducido en 1986 y usado en los Commodore Amiga 1500 y 2000. Era de
+       16 bits con una frecuencia de reloj de 7.14 MHz.
+    •  NuBus22: Usado en el ordenador Macintosh II de Apple (lanzado en marzo de 1987).
+       Era un bus de 32 bits con una frecuencia de reloj de 10 MHz.
+    •  MCA23 (Mircro Channel Architecture): Fue un intento de IBM en 1987 para reemplazar
+       al ISA, pero incompatible con los anteriores. Era un bus de 16 o 32 bits con una
+       frecuencia de reloj de 10 MHz.
+    •  EISA24 (Extended Industry Standard Architecture): Publicado en 1988 para competir
+5/15                                                                 Ramos de Diego, Miguel
+Fundamentos de hardware                                                Las tarjetas gráficas
+      con el MCA de IBM y compatible con lSA AT. Era un bus de 32 bits con una frecuencia
+      de reloj de 8.33 MHz.
+   •  Zorro III25: Introducido en 1990 y usado en los Commodore Amiga 3000 y 4000. Era de
+      32 bits con una frecuencia de reloj de 37.5 MHz.
+   •  VLB26 (VESA [Video Electronics Standards Association] Local Bus): Una extensión de
+      ISA en 1992. Era un bus de 32 bits con una frecuencia de reloj de 33 y 40 MHz.
+   •  PCI27 (Peripheral Component Interconnect): Desplazó a los buses EISA, ISA, MCA y
+      VESA desde 1993 en adelante. La ranura PCI permitía una conectividad dinámica
+      entre los dispositivos sin tener que ajustar manualmente los jumpers. La primera
+      versión era un bus de 32 bits con una frecuencia de 33 MHz, luego han ido
+      apareciendo mejores versiones.
+   •  UPA28 (Ultra Port Architecture): Una arquitectura de bus de interconexión introducida
+      por Sun Microsystems en 1995. Era un bus de 64 bits con una frecuencia de reloj de
+      67 a 120 MHz.
+   •  AGP29 (Accelerated Graphics Port): Introducido en 1997, es un bus dedicado a los
+      gráficos. Hay diferentes versiones: 1x, 2x, 4x y 8x. Es de 32 bits con una frecuencia de
+      reloj de 66 MHz.
+   •  PCI-X30 (Peripheral Component Interconnect eXtended): Fue una extensión del bus PCI
+      introducida en 1998. Mejora el PCI al extender el ancho del bus a los 64 bits y con una
+      frecuencia de reloj de hasta los 133 MHz.
+   •  PCIe31 (Peripheral Component Interconnect Express): Fue la primera interfaz de vídeo
+      en serio, desplazando así al formato paralelo de todos los anteriores. Publicado en el
+      año 2004 y, en 2006, ya proveían el doble de transferencia de datos que AGP. Es el
+      estándar actual y, a día de hoy, ya se está empezando a abrir paso la versión 4.0, con
+      vistas a la 5.0. Versiones de PCIe: PCIe 1.0 x1, x2, x4, x8, x16, x32; PCIe 2.0 x1, x2, x4,
+      x8, x16, x32; PCIe 3.0 x1, x2, x4, x8, x16, x32; y las que están por llegar: PCIe 4.0 x1, x2,
+      x4, x8, x16; PCIe 5.0 x1, x2, x4, x8, x16. Los formatos x32 no son muy comunes, pero
+      existen.
+                                 Frecuencia de      Ancho de
+     Bus           Ancho (bits)                                        Tipo             Año
+                                   reloj (MHz) banda (MB/s)
+  PCI-X 133                                            1067
+  PCI-X QDR             16                             1067
+  PCI-X DDR                                            2133
+  PCI-X QDR                                            4266
+     PCI                64           66/100         533.3/800        Paralelo
+6/15                                                                  Ramos de Diego, Miguel
+Fundamentos de hardware                             Las tarjetas gráficas
+  S-100 bus          8         10           10     Paralelo       1974
+    ISA XT           8        4.77         2.39    Paralelo       1981
+    ISA AT          16        8.33         8.33    Paralelo       1984
+    Zorro II        16        7.14         5.3                    1986
+     NuBus          32         10           40     Paralelo       1987
+      MCA         16/32        10           66     Paralelo       1987
+      EISA       8/16/32      8.33        33.32    Paralelo       1988
+    Zorro III       32        37.5         150                    1990
+   NuBus 90                    20           80                    1991
+ VLB o VESA         32       33/40     133.33/160  Paralelo       1992
+      PCI         32/64        33     133.33/266.7 Paralelo       1993
+      PCI           32         66         266.7    Paralelo       1995
+                         67/83/100/12 1070/1320/1
+      UPA           64                                            1995
+                                0       600/1920
+    AGP 1x          32         66         266.7    Paralelo       1997
+    AGP 2x          32         66         533.3    Paralelo       1997
+    AGP 4x          32         66         1067     Paralelo       1998
+  PCI-X DDR         16                    533.3                   1998
+ PCIe 1.0 x32     1 x 32     2500         8000      Serie         2001
+    AGP 8x          32         66         2133     Paralelo       2002
+  PCIe 1.0 x1        1       2500          250      Serie         2004
+  PCIe 1.0 x4     1x4        2500         1000      Serie         2004
+  PCIe 1.0 x8     1x8        2500         2000      Serie         2004
+ PCIe 1.0 x16     1 x 16     2500         4000      Serie         2004
+  PCIe 2.0 x1        1       5000          500      Serie         2007
+  PCIe 2.0 x2     1x2        5000         1000      Serie         2007
+  PCIe 2.0 x4     1x4        5000         2000      Serie         2007
+  PCIe 2.0 x8     1x8        5000         4000      Serie         2007
+ PCIe 2.0 x16     1 x 16     5000         8000      Serie         2007
+ PCIe 2.0 x32     1 x 32     5000        16000      Serie         2007
+  PCIe 1.0 x2     1x2        2500          500      Serie         2011
+  PCIe 3.0 x1        1       8000        ~1000      Serie         2011
+  PCIe 3.0 x2     1x2        8000        ~2000      Serie         2011
+  PCIe 3.0 x4     1x4        8000        ~4000      Serie         2011
+  PCIe 3.0 x8     1x8        8000        ~8000      Serie         2011
+7/15                                               Ramos de Diego, Miguel
+Fundamentos de hardware                                           Las tarjetas gráficas
+ PCIe 3.0 x16        1 x 16          8000        ~16000           Serie         2011
+ PCIe 3.0 x32        1 x 32          8000        ~32000           Serie         2011
+  PCIe 4.0 x1           1           16000         ~2000           Serie         2018
+  PCIe 4.0 x2        1x2            16000         ~4000           Serie         2018
+  PCIe 4.0 x4        1x4            16000         ~8000           Serie         2018
+  PCIe 4.0 x8        1x8            16000        ~16000           Serie         2018
+ PCIe 4.0 x16        1 x 16         16000        ~32000           Serie         2018
+  PCIe 5.0 x1           1           32000         ~4000           Serie         2019
+  PCIe 5.0 x2        1x2            32000         ~8000           Serie         2019
+  PCIe 5.0 x4        1x4            32000        ~16000           Serie         2019
+  PCIe 5.0 x8        1x8            32000        ~32000           Serie         2019
+ PCIe 5.0 x16        1 x 16         32000        ~64000           Serie         2019
+      Nota: El ancho de banda es el máximo teórico de cada interfaz.
+e. Memoria de una tarjeta gráfica
+      La memoria gráfica, o también conocida como VRAM, tiene una capacidad en las
+tarjetas gráficas modernas que va desde 1 GB hasta los 24 GB. Ha empleado distintos tipos
+de memoria, que va desde la GDDR hasta la GDDR6. Puede resumirse en la siguiente tabla:
+                          Frecuencia de reloj Ancho de banda (GB/
+          Tipo                                                               Año
+                                (MHz)                    s)
+         GDDR                 166 a 950              1.2 a 30.4
+         GDDR2                533 a 1000              8.5 a 16
+         GDDR3                700 a 1700             5.6 a 54.4             2004
+         GDDR4               1600 a 1800             64 a 86.4              2007
+         GDDR5               3200 a 7000             24 a 448               2008
+          HBM                    500                512 a 1024              2013
+        GDDR5X               1000 a 1750             160 a 673              2016
+         GDDR6                                                              2018
+8/15                                                             Ramos de Diego, Miguel
+Fundamentos de hardware                                               Las tarjetas gráficas
+f. ¿Qué es el renderizado? Describir el proceso de renderizado, elementos que
+   intervienen y su relación con la capacidad de proceso con la tarjeta gráfica.
+      El renderizado 3D es el proceso por el cual, a través de los sistemas informáticos,
+generamos una imagen digital a partir de un modelo o escenario en tres dimensiones (3D).
+El objetivo es generar una imagen realista desde cualquier perspectiva del modelo.
+      Se trata de conseguir generar imágenes en 3D a partir de diversos procesos que
+permiten generar sensación de profundidad y dar textura a los diferentes elementos de la
+imagen para que resulte más realista. También permiten generar diferentes efectos de
+iluminación, y también usar diferentes técnicas fotográficas que generan efectos ópticos
+similares o iguales a los que se producen en el mundo real cuando observamos un objeto,
+una habitación, un paisaje o cualquier tipo de vista que perciban nuestros ojos.
+      El renderizado 3D se genera a través del cálculo producido por algoritmos y fórmulas
+que van generando simulaciones que calculan posibles reflejos de la luz sobre los objetos
+en tres dimensiones que hallamos dispuestos en la escena. El rastreo se produce desde la
+cámara virtual que situemos para generar la escena hasta las fuentes de luz emisoras.
+      Se utiliza hoy en día de forma amplia en el mundo de la creación audiovisual. Es muy
+apreciado para la realización de vídeos porque permite realizar y disponer en las escenas
+diferentes tipos de objetos y situaciones que no se pueden llegar a grabar en entornos
+reales.
+      También es muy apreciado porque permite realizar simulaciones de objetos o
+elementos que todavía no se han construido, por lo que hoy en día se usa mucho en el
+ámbito de la construcción para recrear viviendas, edificios y nuevas construcciones y así
+poder hacernos una idea de cómo serían en realidad.
+      El mundo el diseño gráfico también se ha visto ampliamente impactado por la
+renderización 3D, son muchos los profesionales del diseño gráfico que se han especializado
+en este área por sus posibilidades. Hay cada vez más empresas especializadas en el diseño
+3D por ordenador. Ciertos diseños de objetos o proyectos arquitectónicos se aprecian mejor
+un un diseño 3D.
+      El mundo de la publicidad también ha acogido con los brazos abiertos el uso del
+renderizado 3D, dado que se pueden recrear objetos sin necesidad de que sean
+fotografiados y con ello se pueden hacer simulaciones para ver cómo quedaría un objeto en
+una situación concreta, o se pueden realizar combinaciones imposibles que a nivel
+publicitario tienen mucho efecto y que solo son posibles gracias al uso de este proceso.
+      En la renderización es importante tanto el procesador, como la memoria RAM, como
+contar con un disco SSD pero, sin lugar a dudas, el más importante de todos es la tarjeta
+9/15                                                                 Ramos de Diego, Miguel
+Fundamentos de hardware                                              Las tarjetas gráficas
+gráfica. Como ya se ha explicado anteriormente, la GPU está optimizada en los cálculos de
+coma flotante, por lo que es el más rápido en hacer los algoritmos necesarios de
+renderización pertinentes. Dependiendo del tipo de renderizado que se trate, necesitará más
+potencia y memoria.
+e. Tendencias y últimos modelos de tarjetas gráficas
+      Existen dos fabricantes de tarjetas gráficas dedicadas: Nvidia y AMD. Intel tiene
+gráficas integradas en sus procesadores, pero parece que también competirá en este
+mercado en el futuro. En cuanto a los ensambladores, existen los siguiente:
+                                                         Diseñadores de GPU
+                                                    AMD                        Nvidia
+                                                    Asus                        Asus
+                                                   Club3D                      Club3D
+                                                  Gigabyte                    Gigabyte
+                                                     MSI                         MSI
+                                                  Diamond                  ECS EliteGroup
+                                                   Gecube                       EVGA
+       Ensambladores de tarjetas
+                                                     HIS                      Gainward
+                                                 Powercolor                    Galaxy
+                                                  Sapphire                      KFA2
+                                                    XFX                         Palit
+                                                                                 PNY
+                                                                            Point of View
+                                                                               Sparkle
+                                                                                Zotac
+      Últimos modelos de tarjetas gráficas:
+       •   Nvidia: Los últimos modelos de Nvidia son los de la gama RTX lanzados entre
+           2018 y 2019: 2060, 2070, 2080, 2080 Ti, Titan y, en el sector profesional, Quadro
+           RTX 5000 y 6000.
+       •   AMD: En cuanto a AMD, sus últimos modelos son: RX 580, 580X, 590, RX Vega64 y
+10/15                                                               Ramos de Diego, Miguel
+Fundamentos de hardware                                               Las tarjetas gráficas
+            Radeon Vega VII.
+      Las tarjetas Nvidia RTX han surgido principalmente debido al auge realidad virtual y a
+la demanda de estos dispositivos de mover gráficos de muy alta calidad con una tasa de
+refresco muy elevada, aparte de resoluciones cada vez más altas, como el 8K. Es por eso
+que se ha creado un nuevo estándar, el VirtualLink, incluido en estas RTX.
+Referencias
+      1. https://en.wikipedia.org/wiki/Video_card (inglés).
+      https://es.wikipedia.org/wiki/Tarjeta_gr%C3%A1fica (castellano).
+      2. https://en.wikipedia.org/wiki/Video_card#Heat_sink (inglés).
+      3. https://en.wikipedia.org/wiki/Video_card#Video_BIOS (inglés).
+      4. https://en.wikipedia.org/wiki/Video_card#Video_memory (inglés).
+      5. https://es.wikipedia.org/wiki/Tarjeta_gr%C3%A1fica#GRAM (castellano).
+      6. https://es.wikipedia.org/wiki/Tarjeta_gr%C3%A1fica#RAMDAC (castellano).
+      7. https://en.wikipedia.org/wiki/Composite_video (inglés).
+      https://es.wikipedia.org/wiki/V%C3%ADdeo_compuesto#Conectores_y_l
+%C3%ADneas_utilizadas_por_la_se%C3%B1al_de_v%C3%ADdeo (castellano).
+      8. https://en.wikipedia.org/wiki/DB13W3 (inglés).
+      9. https://en.wikipedia.org/wiki/VGA_connector (inglés).
+      10. https://en.wikipedia.org/wiki/S-Video (inglés).
+      11. http://www.interfacebus.com/Design_EVC_Connector_Pinout.html (inglés).
+      12. https://en.wikipedia.org/wiki/Digital_Visual_Interface (inglés).
+      13. https://en.wikipedia.org/wiki/HDMI (inglés).
+      14. https://en.wikipedia.org/wiki/Unified_Display_Interface (inglés).
+      15. https://en.wikipedia.org/wiki/DisplayPort (inglés).
+      16. https://en.wikipedia.org/wiki/HDBaseT (inglés).
+      https://es.wikipedia.org/wiki/HDBaseT (castelano).
+      17. https://en.wikipedia.org/wiki/DMS-59 (inglés).
+     https://es.wikipedia.org/wiki/DMS-59 (castellano).
+     18. https://en.wikipedia.org/wiki/List_of_interface_bit_rates#Computer_buses (inglés).
+     https://en.wikipedia.org/wiki/Video_card#Motherboard_interfaces (inglés).
+     https://es.wikipedia.org/wiki/Tarjeta_gr%C3%A1fica#Interfaces_con_la_placa_base
+(castellano.)
+     19. https://en.wikipedia.org/wiki/S-100_bus (inglés).
+     20. https://en.wikipedia.org/wiki/Industry_Standard_Architecture (inglés).
+     21. https://en.wikipedia.org/wiki/Amiga_Zorro_II (inglés).
+     22. https://en.wikipedia.org/wiki/NuBus (inglés).
+     23. https://en.wikipedia.org/wiki/Micro_Channel_architecture (inglés).
+     24. https://en.wikipedia.org/wiki/Extended_Industry_Standard_Architecture (inglés).
+     25. https://en.wikipedia.org/wiki/Amiga_Zorro_III (inglés).
+     26. https://en.wikipedia.org/wiki/VESA_Local_Bus (inglés).
+     27. https://en.wikipedia.org/wiki/Conventional_PCI (inglés).
+     28. https://es.wikipedia.org/wiki/Ultra_Port_Architecture
+     29. https://en.wikipedia.org/wiki/Accelerated_Graphics_Port
+     30. https://en.wikipedia.org/wiki/PCI-X
+     31. https://en.wikipedia.org/wiki/PCI_Express
+     PCIe x32: https://www.supermicro.com/products/motherboard/Xeon/C600/X9DRW-
+CTF31.cfm
+     nubus 90 https://en.wikipedia.org/wiki/NuBus#Implementations
+     https://www.profesionalreview.com/2018/11/26/pci-express-4-0/
+     https://www.muycomputerpro.com/movilidad-profesional/wp-content/uploads/
+2017/09/PCI-Express_2.jpg
+     Primer SSD con la interfaz PCIe 4.0:
+https://elchapuzasinformatico.com/2019/01/gracias-al-amd-ryzen-3000-llega-la-primera-
+prueba-de-un-ssd-pci-express-4-0/
+     PCIe 5.0: https://www.tomshardware.com/news/pcie-4.0-5.0-pci-sig-
+specification,38460.html
+      Memoria 1 GB: https://www.pccomponentes.com/msi-geforce-gt710-1gb-ddr3-low-
+profile
+      Memoria 24 GB: https://www.pccomponentes.com/nvidia-titan-rtx-24gb-gddr6
+      VGA: https://en.wikipedia.org/wiki/VGA_connector
+      DVI: https://en.wikipedia.org/wiki/Digital_Visual_Interface#Connector
+      HDMI: https://en.wikipedia.org/wiki/HDMI
+      DisplayPort: https://en.wikipedia.org/wiki/DisplayPort
+      DB13W3: https://en.wikipedia.org/wiki/DB13W3
+      DMS-59: https://en.wikipedia.org/wiki/DMS-59
+      Composite Video: https://www.hardwaresecrets.com/video-connectors-tutorial/3/
+      S-Video: https://www.hardwaresecrets.com/video-connectors-tutorial/4/
+      Mini-DisplayPort: https://www.hardwaresecrets.com/video-connectors-tutorial/9/
+      VESA Enhanced Video Conector:
+http://www.stuartconnections.com/en/graphics/2193-Dell-ATI-32MB-RAGE128-AGP-EVC-
+Video-Graphics-Card-1028110402-1098110000-4E732.html y
+13/15                                                              Ramos de Diego, Miguel
+Fundamentos de hardware                                             Las tarjetas gráficas
+https://en.wikipedia.org/wiki/VESA_Enhanced_Video_Connector
+      UDI: https://en.wikipedia.org/wiki/Unified_Display_Interface
+      HDBaseT: https://www.tweaktown.com/news/60160/advoli-first-hdbaset-certified-pcie-
+x16-graphics-card/index.html y https://es.wikipedia.org/wiki/HDBaseT y
+https://en.wikipedia.org/wiki/HDBaseT
+      Lista de conectores de vídeo:
+https://en.wikipedia.org/wiki/List_of_video_connectors#Physical_connectors
+      Fabricantes y ensambladores de tarjetas gráficas:
+https://es.wikipedia.org/wiki/Tarjeta_gr%C3%A1fica#Dise
+%C3%B1adores,_fabricantes_y_ensambladores
+      Intel tarjetas gráficas: https://www.adslzone.net/2018/02/19/intel-prototipo-tarjeta-
+grafica/
+      Ensamblador KFA2 Nvidia: https://www.pccomponentes.com/kfa2-geforce-rtx-2060-
+oc-1-click-6gb-gddr6
+      VirtualLink RTX: https://www.roadtovr.com/nvidia-geforce-rtx-virtuallink-vr-connector/
+      Monitor 8K: https://www.dell.com/en-us/shop/accessories/apd/210-alez
+      GDDR6: https://en.wikipedia.org/wiki/GDDR6_SDRAM
+      Renderizado 3D: https://www.cocoschool.com/que-es-renderizado-3d/
+      Relación del renderizado con las tarjetas gráficas:
+https://www.iscarnet.com/2018/06/renderizar-con-gpu-cpu-o-ambos/
+14/15                                                              Ramos de Diego, Miguel
+Fundamentos de hardware  Las tarjetas gráficas
+15/15                   Ramos de Diego, Miguel

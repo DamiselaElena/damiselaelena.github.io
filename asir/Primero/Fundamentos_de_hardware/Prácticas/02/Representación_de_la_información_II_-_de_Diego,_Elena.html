@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="de Diego, Elena">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Práctica 2: Representación de la información II</title>
+</head>
+<body>
+<div class="pagina">
+<header>
+    <h6>
+        <span id="asignatura"></span>
+        <span>Representación de la información II</span>
+    </h6>
+</header>
+<h1>Práctica 2: Representación de la información II</h1>
+<div id="console"></div>
+<div id="toc">
+	<h3>Índice</h3>
+	<noscript>Para poder visualizar el índice y que la página tenga plena funcionalidad, por favor, habilite el uso de JavaScript en su navegador.</noscript>
+</div>
+<hr/>
+<div id="contents">
+<h2>Realiza un esquema de transformación para conseguir los siguientes cambios de base: de binario a decimal, octal y hexadecimal, y viceversa</h2>
+	<ul>
+		<li>Para convertir un número <b>de binario a decimal</b>, hay que asignarle un valor a cada cifra del número binario. De derecha a izquierda, se le asignarán las potencias de <span class="codigo">2</span> —partiendo de <span class="codigo">2<sup>0</sup></span> de manera ascendente— hasta que no queden más cifras en el número binario. Después, se multiplicará cada cifra binaria con su correspondiente potencia y se sumarán todos los resultados. El número que resulte, será el número decimal de dicho número binario. <b>Por ejemplo</b>, el número <span class="codigo">10110011<sub>(2</sub></span> tiene 8 cifras (<span class="codigo">1 0 1 1 0 0 1 1</span>), por lo que le asignaremos tantas potencias de <span class="codigo">2</span> como cifras tenga, de derecha a izquierda de manera ascendente. Lo colocamos en forma de tabla y procedemos a multiplicar las cifras con su correspondiente potencia:</li>
+		<li class="no_dot">
+			<table style="margin-bottom:17px;">
+				<tbody>
+					<tr>
+						<td><span class="codigo">1</span></td>
+						<td><span class="codigo">0</span></td>
+						<td><span class="codigo">1</span></td>
+						<td><span class="codigo">1</span></td>
+						<td><span class="codigo">0</span></td>
+						<td><span class="codigo">0</span></td>
+						<td><span class="codigo">1</span></td>
+						<td><span class="codigo">1</span></td>
+					</tr>
+					<tr>
+						<td><span class="codigo">2<sup>7</sup></span></td>
+						<td><span class="codigo">2<sup>6</sup></span></td>
+						<td><span class="codigo">2<sup>5</sup></span></td>
+						<td><span class="codigo">2<sup>4</sup></span></td>
+						<td><span class="codigo">2<sup>3</sup></span></td>
+						<td><span class="codigo">2<sup>2</sup></span></td>
+						<td><span class="codigo">2<sup>1</sup></span></td>
+						<td><span class="codigo">2<sup>0</sup></span></td>
+					</tr>
+					<tr>
+						<td><span class="codigo">128 * 1 = <b>128</b></span></td>
+						<td><span class="codigo">64 * 0 = <b>0</b></span></td>
+						<td><span class="codigo">32 * 1 = <b>32</b></span></td>
+						<td><span class="codigo">16 * 1 = <b>16</b></span></td>
+						<td><span class="codigo">8 * 0 = <b>0</b></span></td>
+						<td><span class="codigo">4 * 0 = <b>0</b></span></td>
+						<td><span class="codigo">2 * 1 = <b>2</b></span></td>
+						<td><span class="codigo">1 * 1 = <b>1</b></span></td>
+					</tr>
+				</tbody>
+			</table>
+		</li>
+		<li class="no_dot">Por último, procedemos a sumar todos los resultados y, si hemos efectuado las operaciones correctamente, resultará el número decimal buscado:</li>
+		<li class="no_dot" style="margin-bottom:18px;"><span class="codigo">128 + 0 + 32 + 16 + 0 + 0 + 2 + 1 = <b>179<sub>(10</sub></b></span></li>
+		<li>Para convertir un número <b>de decimal a binario</b>, aplicaremos el proceso contrario, pero tanteando. Es decir, se buscará en las potencias de <span class="codigo">2</span> qué número es el que más se aproxima al número decimal que queremos transformar. Podrán aparecer dos números, uno mayor y otro menor, pero se escogerá el número menor, ya que las cifras faltantes se irán completando con el resto de potencias. Se realizará la misma secuencia hasta que nuestro número se haya visto reducido a <span class="codigo">0</span>. Cuando el número se haya visto reducido a <span class="codigo">0</span>, todas las potencias siguientes tendrán un <span class="codigo">0</span> asignado. <b>Por ejemplo</b>, el número <span class="codigo">97<sub>(10</sub></span> se aproxima tanto al número <span class="codigo">64</span> como al número <span class="codigo">128</span>, pero cogeremos aquel que es menor, el <span class="codigo">64</span>. El número <span class="codigo">64</span> sabemos que es <span class="codigo">2<sup>6</sup></span>, por lo que haremos otra tabla con todas las potencias de <span class="codigo">2<sup>6</sup></span> (la máxima) a <span class="codigo">2<sup>0</sup></span> (la mínima) en la primera fila y, en la segunda, pondremos <span class="codigo">1</span> o <span class="codigo">0</span> en función de si nos pasamos o no del número a convertir (<span class="codigo">97</span>):</li>
+		<li class="no_dot">
+			<table style="margin-bottom:17px;">
+				<tbody>
+					<tr>
+						<td><span class="codigo">64 = 2<sup>6</sup></span></td>
+						<td><span class="codigo">32</span></td>
+						<td><span class="codigo">16</span></td>
+						<td><span class="codigo">8</span></td>
+						<td><span class="codigo">4</span></td>
+						<td><span class="codigo">2</span></td>
+						<td><span class="codigo">1 = 2<sup>0</sup></span></td>
+					</tr>
+					<tr>
+						<td><span class="codigo"><b>1</b></span></td>
+						<td><span class="codigo"><b>1</b></span></td>
+						<td><span class="codigo"><b>0</b></span></td>
+						<td><span class="codigo"><b>0</b></span></td>
+						<td><span class="codigo"><b>0</b></span></td>
+						<td><span class="codigo"><b>0</b></span></td>
+						<td><span class="codigo"><b>1</b></span></td>
+					</tr>
+				</tbody>
+			</table>
+		</li>
+		<li class="no_dot" style="margin-bottom:18px;">El número <span class="codigo">64</span> es la potencia de <span class="codigo">2</span> inferior a nuestro número a convertir (<span class="codigo">97</span>), por lo que se le asignará el primer <span class="codigo">1</span>. Hay que proceder a restarle dicha potencia al número decimal para poder continuar con las siguientes cifras (<span class="codigo">97 – 64 = 33</span>), por lo que ahora necesitaremos una potencia de <span class="codigo">2</span> menor a <span class="codigo">64</span> (<span class="codigo">2<sup>6</sup></span>) que no se pase del número resultante, el <span class="codigo">33</span>. Como el número <span class="codigo">32</span> puede cubrir dicha posición sin pasarse, le asignaremos un <span class="codigo">1</span>, y restaremos nuestro resultado con esta potencia (<span class="codigo">33 – 32 = 1</span>). El número <span class="codigo">16</span> no lo podemos poner ya que nos pasamos del número <span class="codigo">1</span>, así que se le asignará un <span class="codigo">0</span>. Esto mismo ocurre con los números <span class="codigo">8</span>, <span class="codigo">4</span> y <span class="codigo">2</span>, por lo que también asignaremos un <span class="codigo">0</span> a cada uno de ellos. El <span class="codigo">1</span> (<span class="codigo">2<sup>0</sup></span>) puede cubrir el <span class="codigo">1</span> resultante, así que pondremos un <span class="codigo">1</span> y efectuamos la resta (<span class="codigo">1 – 1 = 0</span>). Como ya ha resultado <span class="codigo">0</span>, concatenaríamos todas las cifras de <span class="codigo">1</span> y <span class="codigo">0</span> de izquierda a derecha y ya habríamos acabado nuestra conversión. Por tanto, el número resultante es el <span class="codigo"><b>1100001<sub>(2</sub></b></span>.</li>
+		<li>Para convertir un número <b>de binario a octal</b>, dividiremos el número binario en cifras de tres, de derecha a izquierda, ya que sabemos que <span class="codigo">2<sup>3</sup></span> es <span class="codigo">8</span> —el número de valores en base octal, del <span class="codigo">0</span> al <span class="codigo">7</span>—, una potencia de la base que estamos tratando. De derecha a izquierda nuevamente, iremos convirtiendo cada grupo de tres cifras a decimal, que será el mismo número en octal, ya que lo máximo que caben en tres cifras binarias es <span class="codigo">7</span> en ambas bases. Una vez convertido cada grupo, concatenaremos todas las cifras resultantes. En caso de que no podamos formar un grupo de tres porque ya no hay más números, se añadirán tantos ceros por la izquierda como sean necesarios para llegar a tres cifras. <b>Por ejemplo</b>, tenemos el número <span class="codigo">10111001<sub>2</sub></span> que queremos convertir a base octal. Para ello, procedemos a formar grupos de tres cifras: <span class="codigo">10  111  001</span>. Como resultan solo dos cifras en la primera división, le añadimos un <span class="codigo">0</span> a la izquierda para formar tres: <span class="codigo">010  111  001</span>. Ahora hay que convertir dichos grupos en cifras en base decimal —que serán igual en base octal—:</li>
+		<li class="no_dot" style="margin-bottom:15px;"><span class="codigo">010 = 2; 111 = 7; 001 = 1</span></li>
+		<li class="no_dot" style="margin-bottom:18px;">Resultan las cifras <span class="codigo">2</span>, <span class="codigo">7</span> y <span class="codigo">1</span>, por lo que las concatenamos y nuestro número buscado es el <span class="codigo"><b>271<sub>(8</sub></b></span>.</li>
+		<li>Para convertir un número <b>de octal a binario</b>, aplicaremos el proceso contrario, es decir, que a cada cifra en base octal le asignaremos su valor en base binaria, asignándole a cada una siempre tres cifras. <b>Por ejemplo</b>, el número <span class="codigo">731<sub>(8</sub></span> lo vamos a descomponer de manera binaria, ya que es muy sencillo convertir los números del <span class="codigo">0</span> al <span class="codigo">7</span> a dicha base, asignándole tres cifras binarias a cada cifra octal:</li>
+		<li class="no_dot" style="margin-bottom:15px;"><span class="codigo">7 = 111; 3 = 011; 1 = 001</span></li>
+		<li class="no_dot" style="margin-bottom:18px;">Concatenamos todas nuestras cifras binarias y resulta nuestro número binario, el <span class="codigo"><b>111011001<sub>(2</sub></b></span>.</li>
+		<li>Para convertir un número <b>de binario a hexadecimal</b>, seguiremos la misma mecánica que de binario a octal, solo que en vez de dividir las cifras en grupos de tres de derecha a izquierda, las dividiremos en cuatro, ya que sabemos que <span class="codigo">2<sup>4</sup></span> es <span class="codigo">16</span> —el número de valores en base hexadecimal, del <span class="codigo">0</span> a la <span class="codigo">F</span> (<span class="codigo">15<sub>(10</sub></span>)—. De derecha a izquierda nuevamente, iremos convirtiendo cada grupo de cuatro cifras a decimal, teniendo en cuenta que <span class="codigo">A</span>, <span class="codigo">B</span>, <span class="codigo">C</span>, <span class="codigo">D</span>, <span class="codigo">E</span> y <span class="codigo">F</span> en base hexadecimal se corresponden con <span class="codigo">10</span>, <span class="codigo">11</span>, <span class="codigo">12</span>, <span class="codigo">13</span>, <span class="codigo">14</span> y <span class="codigo">15</span> en base decimal, respectivamente. Una vez convertido cada grupo, concatenaremos todas las cifras (números y/o letras) resultantes. En caso de que no podamos formar un grupo de cuatro porque no hay más cifras, se añadirán tantos ceros por la izquierda como sean necesarios para que haya cuatro. <b>Por ejemplo</b>, tenemos el número <span class="codigo">1010111001<sub>(2</sub></span> que queremos convertir a base hexadecimal. Para ello, procedemos a formar grupos de cuatro cifras:  <span class="codigo">10  1011  1001</span>. Como resultan solo dos cifras a la izquierda, añadimos dos ceros para formar cuatro: <span class="codigo">0010  1011  1001</span>. Ahora hay que convertir dichos grupos en cifras de base hexadecimal:</li>
+		<li class="no_dot" style="margin-bottom:15px;"><span class="codigo">0010 = 2; 1011 = B; 1001 = 9</span></li>
+		<li class="no_dot" style="margin-bottom:18px;">Resultan las cifras <span class="codigo">2</span>, <span class="codigo">B</span> —recordemos que se corresponde con <span class="codigo">11<sub>(10</sub></span>— y <span class="codigo">9</span>, por lo que las concatenamos y nuestro número buscado es el <span class="codigo"><b>2B9<sub>(16</sub></b></span>.</li>
+		<li>Para convertir un número <b>de hexadecimal a binario</b>, aplicaremos el proceso contrario, es decir, a cada cifra en base hexadecimal le asignaremos su valor en base binaria, asignándole a cada una siempre cuatro cifras. <b>Por ejemplo</b>, el número <span class="codigo">C1A<sub>(16</sub></span> lo vamos a descomponer de manera binaria, asignándole cuatro cifras binarias a cada cifra hexadecimal:</li>
+		<li class="no_dot" style="margin-bottom:15px;"><span class="codigo">C = 1100; 1 = 0001; A = 1010</span></li>
+		<li class="no_dot">Concatenamos todas nuestras cifras binarias y resulta el número <span class="codigo"><b>110000011010<sub>(2</sub></b></span>.</li>
+	</ul>
+<h2>Realiza los siguientes cambios a binario:</h2>
+<h3><span class="codigo">1030<sub>(10</sub></span></h3>
+<p><span class="codigo">1030<sub>(10</sub> a <sub>(2</sub> → 1030 mod 1024 <span class="aclaracion">(2<sup>10</sup>)</span> = 6; 6 mod 4 <span class="aclaracion">(2<sup>2</sup>)</span> = 2; 2 mod 2 <span class="aclaracion">(2<sup>1</sup>)</span> = 0; 1030<sub>(10</sub> = <b>10000000110<sub>(2</sub></b></span></p>
+<h3><span class="codigo">7301<sub>(8</sub></span></h3>
+<p><span class="codigo">7301<sub>(8</sub> a <sub>(2</sub> = <b>111 011 000 001<sub>(2</sub></b></span></p>
+<h3><span class="codigo">FE0<sub>(16</sub></span></h3>
+<p><span class="codigo">FE0<sub>(16</sub> a <sub>(2</sub> = <b>1111 1110 0000<sub>(2</sub></b></span></p>
+<h2>Transforma el número binario <span class="codigo">1111100000</span> en:</h2>
+<h3>Decimal</h3>
+<p><span class="codigo">1111100000<sub>(2</sub> a <sub>(10</sub> → 512 <span class="aclaracion">(2<sup>9</sup>)</span> + 256 <span class="aclaracion">(2<sup>8</sup>)</span> + 128 <span class="aclaracion">(2<sup>7</sup>)</span> + 64 <span class="aclaracion">(2<sup>6</sup>)</span> + 32 <span class="aclaracion">(2<sup>5</sup>)</span> = <b>992<sub>(10</sub></b></span></p>
+<h3>Octal</h3>
+<p><span class="codigo">1 111 100 000<sub>(2</sub> a <sub>(8</sub> = <b>1740<sub>(8</sub></b></span></p>
+<h3>Hexadecimal</h3>
+<p><span class="codigo">11 1110 0000<sub>(2</sub> a <sub>(16</sub> = <b>3E0<sub>(16</sub></b></span></p>
+<h2>Transforma los números hexadecimales <span class="codigo">45A0</span>, <span class="codigo">CF</span> y <span class="codigo">3020</span> en binario, octal y decimal</h2>
+<table>
+    <tbody>
+        <tr>
+			<td><b>Hexadecimal</b></td>
+			<td><b>Binario</b></td>
+			<td><b>Octal</b></td>
+            <td><b>Decimal</b></td>
+        </tr>
+        <tr>
+            <td><span class="codigo">45A0</span></td>
+            <td><span class="codigo">0100 0101 1010 0000</span></td>
+			<td><span class="codigo">42640</span></td>
+			<td><span class="codigo">17824</span></td>
+        </tr>
+        <tr>
+            <td><span class="codigo">CF</span></td>
+            <td><span class="codigo">1100 1111</span></td>
+			<td><span class="codigo">317</span></td>
+			<td><span class="codigo">207</span></td>
+        </tr>
+        <tr>
+            <td><span class="codigo">3020</span></td>
+            <td><span class="codigo">0011 0000 0010 0000</span></td>
+			<td><span class="codigo">30040</span></td>
+			<td><span class="codigo">12320</span></td>
+        </tr>
+    </tbody>
+</table>
+<h2>Transforma los números octales <span class="codigo">457</span>, <span class="codigo">53</span>, y <span class="codigo">302</span> en binario, hexadecimal y decimal</h2>
+<table>
+    <tbody>
+        <tr>
+            <td><b>Octal</b></td>
+            <td><b>Binario</b></td>
+			<td><b>Hexadecimal</b></td>
+			<td><b>Decimal</b></td>
+        </tr>
+        <tr>
+            <td><span class="codigo">457</span></td>
+            <td><span class="codigo">100 101 111</span></td>
+			<td><span class="codigo">12F</span></td>
+			<td><span class="codigo">303</span></td>
+        </tr>
+        <tr>
+            <td><span class="codigo">53</span></td>
+            <td><span class="codigo">101 011</span></td>
+			<td><span class="codigo">2B</span></td>
+			<td><span class="codigo">43</span></td>
+        </tr>
+        <tr>
+            <td><span class="codigo">302</span></td>
+            <td><span class="codigo">011 000 010</span></td>
+			<td><span class="codigo">C2</span></td>
+			<td><span class="codigo">194</span></td>
+        </tr>
+    </tbody>
+</table>
+<h2>Con 8 bits:</h2>
+<h3>¿Cuántos números distintos se pueden escribir con 8 bits?</h3>
+<p>Con 8 bits se podrán formar <span class="codigo">2<sup>8</sup></span> combinaciones posibles, es decir, <span class="codigo"><b>256</b></span> números distintos —el número de combinaciones del número (<span class="codigo">0</span> y <span class="codigo">1</span>, que forman <span class="codigo">2</span> combinaciones posibles) elevado al número de casillas o espacios a rellenar (<span class="codigo">8</span>)—.</p>
+<h3>Escribe el número más pequeño que se puede escribir con 8 bits y convertirlo a decimal</h3>
+<p>El número más pequeño que se puede escribir con 8 bits es <span class="codigo">00000000<sub>(2</sub></span>, el cual es <span class="codigo"><b>0<sub>(10</sub></b></span>.</p>
+<h3>Escribe el número más grande que se puede escribir con 8 bits y convertirlo a decimal</h3>
+<p>El número más grande que se puede escribir con 8 bits es <span class="codigo">11111111<sub>(2</sub></span>, el cual es <span class="codigo"><b>255<sub>(10</sub></b></span>.</p>
+<h2>¿En qué consiste el código ASCII extendido y Unicode?</h2>
+<ul>
+    <li>El <b>código ASCII</b> (<i>American Standard Code for Information Interchange</i>, código estándar estadounidense para el intercambio de información) <b>extendido</b> es un estándar de codificación de caracteres que consiste en la representación de texto de <b>255 caracteres</b> distintos gracias a la combinación de 8 bits (1 byte). <a href="https://web.archive.org/web/20201028153639/https://www.ascii-code.com/" target="_blank" class="inglés">Tabla de caracteres ASCII extendido<span class="fa fa-external-link"></span></a>.</li>
+    <li>El <b>código Unicode</b> es un estándar de codificación de caracteres que contiene a su vez los estándares de UTF-8 (8-bit Unicode <i>Transformation Format</i>, 
+		formato de transformación Unicode de 8 bits), UTF-16 y UTF-32, entre otros. Estos estándares pueden representar muchos más caracteres que ASCII extendido gracias a que usan un byte para la menor codificación, y cuatro para la mayor —en el caso de UTF-8, para el resto esta cifra va en aumento a medida que hablamos de un UTF mayor—, mientras que ASCII extendido usa solo un byte. En la actualidad, Unicode (versión 12.1) logra soportar más de <b>137 000 caracteres</b><a href="#referencia1"><sup>1</sup></a>, pudiendo en el futuro seguir ampliando este número gracias a sus combinaciones tan bien planificadas. Añadir también que Unicode puede entender ASCII extendido, ya que parte de esos 255 caracteres, con el mismo valor binario. <a href="https://web.archive.org/web/20201101113457/https://www.utf8-chartable.de/unicode-utf8-table.pl?utf8=bin" target="_blank" class="inglés">Tabla de caracteres Unicode (UTF-8)<span class="fa fa-external-link"></span></a>.</li>
+</ul>
+<h2>Realiza una tabla de correspondencia como la siguiente entre los sistemas decimal, binario, octal y hexadecimal</h2>
+<table>
+	<tbody>
+		<tr>
+			<td><b>Decimal</b></td>
+			<td><b>Binario</b></td>
+			<td><b>Octal</b></td>
+			<td><b>Hexadecimal</b></td>
+			<td><b>Decimal</b></td>
+			<td><b>Binario</b></td>
+			<td><b>Octal</b></td>
+			<td><b>Hexadecimal</b></td>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td>00000</td>
+			<td>0</td>
+			<td>0</td>
+			<td>16</td>
+			<td><span class="codigo">10000</span></td>
+			<td><span class="codigo">20</span></td>
+			<td><span class="codigo">10</span></td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td><span class="codigo">00001</span></td>
+			<td><span class="codigo">1</span></td>
+			<td><span class="codigo">1</span></td>
+			<td>17</td>
+			<td><span class="codigo">10001</span></td>
+			<td><span class="codigo">21</span></td>
+			<td><span class="codigo">11</span></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td><span class="codigo">00010</span></td>
+			<td><span class="codigo">2</span></td>
+			<td><span class="codigo">2</span></td>
+			<td>18</td>
+			<td><span class="codigo">10010</span></td>
+			<td><span class="codigo">22</span></td>
+			<td><span class="codigo">12</span></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td><span class="codigo">00011</span></td>
+			<td><span class="codigo">3</span></td>
+			<td><span class="codigo">3</span></td>
+			<td>19</td>
+			<td><span class="codigo">10011</span></td>
+			<td><span class="codigo">23</span></td>
+			<td><span class="codigo">13</span></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td><span class="codigo">00100</span></td>
+			<td><span class="codigo">4</span></td>
+			<td><span class="codigo">4</span></td>
+			<td>20</td>
+			<td><span class="codigo">10100</span></td>
+			<td><span class="codigo">24</span></td>
+			<td><span class="codigo">14</span></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td><span class="codigo">00101</span></td>
+			<td><span class="codigo">5</span></td>
+			<td><span class="codigo">5</span></td>
+			<td>21</td>
+			<td><span class="codigo">10101</span></td>
+			<td><span class="codigo">25</span></td>
+			<td><span class="codigo">15</span></td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td><span class="codigo">00110</span></td>
+			<td><span class="codigo">6</span></td>
+			<td><span class="codigo">6</span></td>
+			<td>22</td>
+			<td><span class="codigo">10110</span></td>
+			<td><span class="codigo">26</span></td>
+			<td><span class="codigo">16</span></td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td><span class="codigo">00111</span></td>
+			<td><span class="codigo">7</span></td>
+			<td><span class="codigo">7</span></td>
+			<td>23</td>
+			<td><span class="codigo">10111</span></td>
+			<td><span class="codigo">27</span></td>
+			<td><span class="codigo">17</span></td>
+		</tr>
+		<tr>
+			<td>8</td>
+			<td><span class="codigo">01000</span></td>
+			<td><span class="codigo">10</span></td>
+			<td><span class="codigo">8</span></td>
+			<td>24</td>
+			<td><span class="codigo">11000</span></td>
+			<td><span class="codigo">30</span></td>
+			<td><span class="codigo">18</span></td>
+		</tr>
+		<tr>
+			<td>9</td>
+			<td><span class="codigo">01001</span></td>
+			<td><span class="codigo">11</span></td>
+			<td><span class="codigo">9</span></td>
+			<td>25</td>
+			<td><span class="codigo">11001</span></td>
+			<td><span class="codigo">31</span></td>
+			<td><span class="codigo">19</span></td>
+		</tr>
+		<tr>
+			<td>10</td>
+			<td><span class="codigo">01010</span></td>
+			<td><span class="codigo">12</span></td>
+			<td><span class="codigo">A</span></td>
+			<td>26</td>
+			<td><span class="codigo">11010</span></td>
+			<td><span class="codigo">32</span></td>
+			<td><span class="codigo">1A</span></td>
+		</tr>
+		<tr>
+			<td>11</td>
+			<td><span class="codigo">01011</span></td>
+			<td><span class="codigo">13</span></td>
+			<td><span class="codigo">B</span></td>
+			<td>27</td>
+			<td><span class="codigo">11011</span></td>
+			<td><span class="codigo">33</span></td>
+			<td><span class="codigo">1B</span></td>
+		</tr>
+		<tr>
+			<td>12</td>
+			<td><span class="codigo">01100</span></td>
+			<td><span class="codigo">14</span></td>
+			<td><span class="codigo">C</span></td>
+			<td>28</td>
+			<td><span class="codigo">11100</span></td>
+			<td><span class="codigo">34</span></td>
+			<td><span class="codigo">1C</span></td>
+		</tr>
+		<tr>
+			<td>13</td>
+			<td><span class="codigo">01101</span></td>
+			<td><span class="codigo">15</span></td>
+			<td><span class="codigo">D</span></td>
+			<td>29</td>
+			<td><span class="codigo">11101</span></td>
+			<td><span class="codigo">35</span></td>
+			<td><span class="codigo">1D</span></td>
+		</tr>
+		<tr>
+			<td>14</td>
+			<td><span class="codigo">01110</span></td>
+			<td><span class="codigo">16</span></td>
+			<td><span class="codigo">E</span></td>
+			<td>30</td>
+			<td><span class="codigo">11110</span></td>
+			<td><span class="codigo">36</span></td>
+			<td><span class="codigo">1E</span></td>
+		</tr>
+		<tr>
+			<td>15</td>
+			<td><span class="codigo">01111</span></td>
+			<td><span class="codigo">17</span></td>
+			<td><span class="codigo">F</span></td>
+			<td>31</td>
+			<td><span class="codigo">11111</span></td>
+			<td><span class="codigo">37</span></td>
+			<td><span class="codigo">1F</span></td>
+		</tr>
+	</tbody>
+</table>
+<h2>Referencias</h2>
+<div class="referencias">
+    <ol>
+        <li id="referencia1" class="inglés"><a href="https://web.archive.org/web/20201101113448/https://stackoverflow.com/questions/5924105/how-many-characters-can-be-mapped-with-unicode/5928054" target="_blank">¿Cuántos caracteres se pueden asignar con Unicode?<span class="fa fa-external-link"></span></a></li>
+    </ol>
+</div>
+<footer>
+	<span class="last-modified"><span id="modify"></span></span>
+    <span class="author">Elena de Diego</span>
+</footer>
+</div>
+</div>
+<script src="../functions.js"></script>
+</body>
+</html>

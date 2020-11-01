@@ -1,0 +1,1 @@
+Hay que actualizar la BIOS de algunas placas para que sean compatibles plenamente con los chipsets/procesadores.

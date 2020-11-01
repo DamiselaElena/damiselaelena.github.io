@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="de Diego, Elena">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Práctica 13: Las tarjetas de expansión</title>
+</head>
+<body>
+<div class="pagina">
+<header>
+    <h6>
+        <span id="asignatura"></span>
+        <span>Las tarjetas de expansión</span>
+    </h6>
+</header>
+<h1>Práctica 13: Las tarjetas de expansión</h1>
+<div id="console"></div>
+<div id="toc">
+	<h3>Índice</h3>
+	<noscript>Para poder visualizar el índice y que la página tenga plena funcionalidad, por favor, habilite el uso de JavaScript en su navegador.</noscript>
+</div>
+<hr/>
+<div id="contents">
+<h2>Clasifica los siguientes elementos en las columnas correspondientes: AGP, <i>FireWire</i>, IDE, ISA, memoria RAM, PCI, PCIe, puerto serie, SATA, eSATA, SCSI, USB y puerto paralelo:</h2>
+<table>
+    <tbody>
+        <tr>
+            <th>Ranuras de expansión</th>
+            <th>Conexiones exteriores</th>
+            <th>Conexiones internas de almacenamiento</th>
+        </tr>
+        <tr>
+            <td>AGP</td>
+            <td><i>FireWire</i><sup>1</sup></td>
+            <td>IDE</td>
+        </tr>
+        <tr>
+            <td>ISA</td>
+            <td>Puerto serie</td>
+            <td>Memoria RAM</td>
+        </tr>
+        <tr>
+            <td>PCI</td>
+            <td>eSATA</td>
+            <td>SATA</td>
+        </tr>
+        <tr>
+            <td>PCIe</td>
+            <td>USB</td>
+            <td>SCSI</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Puerto paralelo</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+<h2>Contesta a las siguientes preguntas:</h2>
+<h3>¿Cuántos píxeles tiene la pantalla de tu ordenador en este momento? ¿Y megapíxeles?</h3>
+<p>La resolución actual de la pantalla de mi ordenador portátil es de 1920 x 1080 px, lo que hace un total de 2 073 600 px, o lo que es lo mismo, de 2.07 Mpx (1 Mpx es igual a 1 000 000 px).</p>
+<h3>Tu cámara de fotos (la del móvil o la normal), ¿de cuántos megapíxeles es?</h3>
+<p>La resolución de la cámara de mi móvil es de 4160 x 3120 px, lo que hace un total de 12 983 360 px, o lo que es lo mismo, de 13 Mpx.</p>
+<h3>¿Qué resolución es mejor?</h3>
+<p>Es mejor la resolución de la cámara de mi móvil que la de la pantalla de mi ordenador portátil, ya que la cámara tiene una mayor resolución y, por tanto, contiene más información.</p>
+<h2>Contesta a las siguientes preguntas:</h2>
+<h3>Si tuviéramos una cámara de 2000 píxeles de resolución horizontal y 1500 píxeles de resolución vertical, ¿qué resolución tendría?</h3>
+<p>Una cámara con una resolución de 2000 x 1500 px tiene un total de 3 000 000 px, o lo que es lo mismo, de 3 Mpx.</p>
+<h3>Si hacemos una foto, en formato sin compresión, (bmp o raw) a 24 bits                de colores, ¿cuánto ocupa la foto en MB?</h3>
+<p>Con un total de 3 000 000 px, si la foto se hace con 24 bits de colores, el tamaño total en bits resultaría del producto de estos dos valores, lo que da un total de 72 000 000 bits. 1 byte son 8 bits, por lo que dividimos 72 000 000 entre 8, que da 9 000 000 bytes. Ahora, para pasar los bytes a megabytes, dividimos entre 1024 dos veces, por lo que 9 000 000 entre 1024 da 8789.0625 KB y,  8789.0625 entre 1024 da 8.583 MB, que es lo que ocupará la foto en un formato sin compresión.</p>
+<h3>Crear en Paint una imagen con estas características, y guárdala como .bmp. ¿Cuánto ocupa?</h3>
+<figure id="figura1">
+    <a href="pictures/01.png" target="_blank"><img src="pictures/01.png" title="Imagen 2000 x 1500 px" alt="Imagen 2000 x 1500 px" /></a>
+    <figcaption><b>Figura 1</b>: Imagen de 2000 x 1500 px creada. Tiene un tamaño total de 8.6 MiB</figcaption>
+</figure>
+<h2>Elige verdadero o falso en base a las afirmaciones dadas</h2>
+<table>
+    <tbody>
+        <tr>
+            <th>✓</th>
+            <th>✗</th>
+			<th>Afirmación</th>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+			<td>Los conectores de salida de la tarjeta gráfica pueden ser digitales o analógicos. <span class="aclaracion">La señal transportada puede ser digital o analógica</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+			<td>Los datos que manda la CPU a la tarjeta gráfica, pueden ser digitales o analógicos. <span class="falso">Los datos que envía la CPU a la tarjeta gráfica son siempre digitales, pero la salida hacia el monitor puede ser digital o analógica. Es esto que era frecuente la inclusión de un RAMDAC [convertidor de digital a analógico] en las tarjetas gráficas</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+			<td>Las únicas marcas de tarjetas gráficas son Nvidia y ATI-AMD. <span class="falso">Esos son los fabricantes de las GPU, pero de tarjetas gráficas [ensambladores] puede haber más, como Asus, MSI...)</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+			<td>Todas las tarjetas gráficas solo tienen una GPU. <span class="falso">Las buenas tarjetas gráficas llevan más de una GPU</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+			<td>Crossfire es una tecnología de Nvidia. <span class="falso">Crossfire es una tecnología de AMD</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+			<td>Las únicas marcas de GPU son Nvidia y ATI-AMD. <span class="falso">Intel también las fabrica, aunque integradas</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+			<td>Una pantalla de ordenador de 14 pulgadas y otra de 22 pulgadas con igual resolución, a la vista del ojo humano tendrán el mismo pixelado. <span class="falso">Depende de qué resolución sea y la distancia a la que estemos. Este tema es muy extenso, pero resumiéndolo mucho, con una resolución baja o media [menos de 1920x1080 píxeles] y a una distancia estándar [50 cm], el ojo humano aprecia la diferencia de resoluciones. Pero, con la misma distancia, si nos vamos a resoluciones más altas, como el 2K, 4K u 8K, seguramente el ojo humano no aprecie ninguna diferencia2. Caso diferente es en el de por ejemplo la realidad virtual, en el que tenemos las pantallas de los visores pegadas a nuestros ojos, lo que hace que se aprecie un efecto rejilla3 muy acusado con las resoluciones actuales, el cual lo intentan paliar por software, ya que es la forma más económica de hacerlo</span></td>
+        </tr>
+    </tbody>
+</table>
+<h2>Rellena:</h2>
+<table>
+    <tbody>
+        <tr>
+			<td>Los conectores de salida analógicos de la tarjeta gráfica actuales son: <span class="aclaracion">Actualmente ya no se usan conectores analógicos de salida en las tarjetas gráficas, aunque sí en las placas base. A día de hoy, en venta, pueden encontrarse tarjetas gráficas como la Nvidia GT 7104 que incluyen puerto VGA, el cual es analógico. El puerto DVI también puede ser analógico (DVI-A [solo analógico] o DVI-I [analógico y digital]), pero al parecer incluyen la versión DVI-D, que es digital</span></td>
+        </tr>
+        <tr>
+			<td>La tecnología de tarjetas en paralelo de Nvidia se llama: <span class="aclaracion">SLI (Scalable Link Interface)</span></td>
+        </tr>
+        <tr>
+			<td>El componente de la tarjeta gráfica que se encarga de la conversión digital a analógica de la señal de vídeo cuando es necesario, se denomina: <span class="aclaracion">RAMDAC (Random-Access-Memory Digital-to-Analog Converter [‘convertidor digital-analógico de memoria de acceso aleatorio’])</span></td>
+        </tr>
+        <tr>
+			<td>Las tarjetas más potentes actuales utilizan memoria: <span class="aclaracion">GDDR65 y HBM26 y, las anteriores, GDDR5X7 y GDDR58</span></td>
+        </tr>
+        <tr>
+			<td>La <span class="aclaracion">GPU</span> es como la CPU de la tarjeta gráfica</td>
+        </tr>
+        <tr>
+			<td>Los conectores de salida digitales de las tarjetas gráficas actuales son: <span class="aclaracion">DVI, HDMI, DisplayPort y, el más reciente y menos expandido, HDBaseT</span></td>
+        </tr>
+    </tbody>
+</table>
+<h2>Ejercicio 6</h2>
+<h3>¿Qué es la conexión eSATA y para qué sirve?</h3>
+<p>La conexión eSATA<sup>9</sup> (<i>External SATA</i>) es una conexión SATA externa creada y estandarizada en 2004. Usa un conector más robusto, habitualmente de color rojo, cables más largos apantallados (también llamado <i>blindaje</i>) y unos estándares eléctricos más estrictos (pero compatibles) que SATA. El protocolo y el transporte de datos son idénticos a las conexiones SATA internas. Esta interfaz fue creada para competir con otras conexiones que ya existían entonces, como las de USB o <i>FireWire</i>, ya que ofrece algunas mejoras con respecto a estas.</p>
+<p>La gran ventaja de eSATA es que se consigue el mismo rendimiento que un disco duro interno, pero de forma externa, superando así el desempeño de los dispositivos de almacenamiento con conexión USB 2.0 actuales. Como desventajas nos encontramos con que la placa base ha de tener esta conexión, que no es tan frecuente como la de USB, y también que solo transmite datos y no alimentación eléctrica para los dispositivos, cosa que USB o <i>FireWire</i> sí pueden hacer, por lo que habrá que alimentar a la unidad conectada por eSATA externamente.</p>
+<p>Las diferencias entre eSATA y SATA son:</p>
+<ul>
+    <li>Amplitud de transmisión mínima aumentada: El rango está entre 500–600 mV en vez de 400–600 mV.</li>
+    <li>Amplitud de recepción mínima disminuida: El rango está entre 240–600 mV en vez de 325–600 mV.</li>
+    <li>Máxima longitud del cable aumentada de 1 metro a 2 metros.</li>
+    <li>El cable y conector de eSATA son similares a los de SATA 1.0a, con las siguientes excepciones:
+        <ul>
+            <li>El conector eSATA es mecánicamente diferente para prevenir que los cables internos sin blindaje se utilicen externamente. El conector eSATA no tiene forma de «L» y cambia la posición y el tamaño de las guías.</li>
+            <li>La profundidad de la inserción del conector eSATA es de 6.6 mm en vez de 5 mm. La posición de los contactos también está cambiada.</li>
+            <li>El cable de eSATA tiene un blindaje extra para reducir la interferencia electromagnética y así seguir la normativa de la FCC (<i>Federal Communications Commission</i>) y la CE. Los cables internos no necesitan el blindaje extra ya que están dentro de una envoltura apantallada.</li>
+            <li>El conector eSATA utiliza resortes de metal para el contacto de la pantalla y la retención mecánica.</li>
+            <li>El conector eSATA tiene una vida útil de 5000 acoplamientos (las veces que se quita y pone), mientras que en el conector SATA solo se especifican 50.</li>
+        </ul>
+    </li>
+</ul>
+<h3>Describe para qué sirve FireWire. ¿Qué otro nombre recibe FireWire? ¿Cuáles son las diferencias de velocidad entre USB y FireWire?</h3>
+<p>La conexión IEEE 1394<sup>1</sup>, <i>FireWire</i> (denominada así por Apple), i.LINK (por Sony) o Lynx (por Texas Instruments) es un tipo de conexión diseñada por Apple y la organización estandarizadora  IEEE (<i>Institute of Electrical and Electronics Engineers</i>) en 1986 y producida desde 1994 a 2013, destinada a la entrada y salida de datos en serie a gran velocidad. Su longitud máxima es de 4.5 metros y puede transportar alimentación para los dispositivos. Existen diferentes versiones, de 4, 6 y 9 pines, y hay versiones de cable Cat 5 y fibra óptica. No transmite señal de vídeo ni tampoco de audio. Actualmente no es muy usado, ya que ha sido desplazado por interfaces como USB 2.0, USB 3.0, o su evolución, <i>Thunderbolt</i>.</p>
+<p>La máxima velocidad que ha alcanzado <i>FireWire</i> es en concreto la versión de 2007<sup>10</sup>, llegando hasta los 393.216 MB/s, un resultado no muy lejano al alcanzado por USB 3.0, que es de 600 MB/s, como vimos en la práctica 9.</p>
+<h2>En las televisiones actuales hay una transición de tecnología de Full HD a 4K (Ultra HD). Busca en internet la resolución y, después, calcula el total de megapíxeles:</h2>
+<p>Full HD<sup>10</sup> corresponde a 1920 * 1080 píxeles, por tanto 2.07 megapíxeles</p>
+<p>4K o Ultra HD<sup>11</sup> corresponde a 3840 * 2160 píxeles, por tanto 8.29 megapíxeles</p>
+<h2>Ejercicio 8:</h2>
+<h3>Haz una tabla de tarjetas LAN con nombres de estándar y sus velocidades</h3>
+<table>
+    <tbody>
+        <tr>
+            <th colspan="2">Tarjetas de red LAN</th>
+        </tr>
+        <tr>
+            <th>Nombre de estándar</th>
+            <th>Velocidad</th>
+        </tr>
+        <tr>
+            <td>Ethernet</td>
+            <td>10 Mbps</td>
+        </tr>
+        <tr>
+            <td>Fast Ethernet</td>
+            <td>100 Mbps</td>
+        </tr>
+        <tr>
+            <td>Gigabit Ethernet</td>
+            <td>1000 Mbps</td>
+        </tr>
+    </tbody>
+</table>
+<h3>Haz otra tabla de tarjetas de red wifi con estándares, velocidades y frecuencia</h3>
+<table>
+    <tbody>
+        <tr>
+            <th colspan="4">Tarjetas de red wifi<sup>13</sup></th>
+        </tr>
+        <tr>
+            <th>Nombre de estándar</th>
+            <th>Año</th>
+            <th>Frecuencia</th>
+            <th>Velocidad</th>
+        </tr>
+        <tr>
+            <td>802.11</td>
+            <td>1997</td>
+            <td>2.4 GHz</td>
+            <td>2 Mbps</td>
+        </tr>
+        <tr>
+            <td>802.11b</td>
+            <td>1999</td>
+            <td>2.4 GHz</td>
+            <td>11 Mbps</td>
+        </tr>
+        <tr>
+            <td>802.11a</td>
+            <td>1999</td>
+            <td>5 GHz</td>
+            <td>54 Mbps</td>
+        </tr>
+        <tr>
+            <td>802.11g</td>
+            <td>2003</td>
+            <td>2.4 GHz</td>
+            <td>54 Mbps</td>
+        </tr>
+        <tr>
+            <td>802.11n</td>
+            <td>2009</td>
+            <td>2.4/5 GHz</td>
+            <td>600 Mbps</td>
+        </tr>
+        <tr>
+            <td>802.11ac</td>
+            <td>2014</td>
+            <td>5 GHz</td>
+            <td>6.8 Gbps</td>
+        </tr>
+        <tr>
+            <td>802.11ax</td>
+            <td>2019 (esperado)</td>
+            <td>2.4/5 GHz</td>
+            <td>10 Gbps</td>
+        </tr>
+    </tbody>
+</table>
+<h2>Ejercicio 9:</h2>
+<h3>Busca el máximo de conectores de sonido y vídeo e incluye una foto y nombre de cada uno</h3>
+<p></p>
+<h3>Distingue en cada uno si lleva solo sonido, si lleva solo vídeo o si transporta ambos</h3>
+<p></p>
+<h3>En el caso de la imagen, distingue si es analógica o digital</h3>
+<table>
+    <tbody>
+        <tr>
+            <th>Imagen</th>
+            <th>Conector de sonido</th>
+            <th>Transporte</th>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_1d0c7e4604e5bea6.jpg" alt="" width="203" height="118" name="Imagen3" align="left" hspace="36" /> <br clear="left" /> </td>
+            <td>DB-25<sup>17</sup></td>
+            <td>Sonido</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_f415a7f87a51b4f3.jpg" alt="" width="203" height="243" name="Imagen4" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>Euroblock/Phoenix connector<sup>18</sup></td>
+            <td>Sonido</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_d702b10b5449586d.gif" alt="" width="203" height="201" name="Imagen5" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>Multi-Channel/SACD cable<sup>19</sup></td>
+            <td>Sonido</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_4bd53b15dd1f97ac.jpg" alt="" width="203" height="96" name="Imagen6" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>RCA<sup>20</sup> blanco y rojo</td>
+            <td>Sonido</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_f312de0d4876004e.jpg" alt="" width="203" height="183" name="Imagen7" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>RCA<sup>20</sup> naranja (S/PDIF coaxial<sup>2</sup><sup>1</sup>)</td>
+            <td>Sonido</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_c67492c90409f685.jpg" alt="" width="203" height="104" name="Imagen8" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>Speakon<sup>2</sup><sup>2</sup></td>
+            <td>Sonido</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_b1946d5d7fe41e1d.jpg" alt="" width="203" height="134" name="Imagen9" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>TOSLINK<sup>2</sup><sup>3</sup></td>
+            <td>Sonido</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_be68dffc775baf4.jpg" alt="" width="203" height="187" name="Imagen10" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>TRS/TRRS/Audio jack<sup>24</sup></td>
+            <td>Sonido</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_e87891f0a55109c4.jpg" alt="" width="203" height="118" name="Imagen11" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>XLR<sup>25</sup></td>
+            <td>Sonido</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_7a490b504bba35e7.jpg" alt="" width="203" height="165" name="Imagen12" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>AV Multi<sup>26</sup></td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_b8a01a4580df3fae.jpg" alt="" width="203" height="134" name="Imagen13" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>DiiVA<sup>27</sup></td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_8ee235d924e1728f.jpg" alt="" width="203" height="154" name="Imagen14" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>Mini-DIN 5-pin<sup>28</sup></td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_1c567719cf3582a0.jpg" alt="" width="175" height="105" name="Imagen15" align="left" border="0" hspace="36" vspace="4" /></td>
+            <td>DisplayPort<sup>2</sup><sup>9</sup></td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_4742b85bd2f47ca0.jpg" alt="" width="203" height="134" name="Imagen16" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>FireWire/IEEE 1394<sup>1</sup></td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_53c44e476a1d6e22.jpg" alt="" width="203" height="150" name="Imagen17" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>8P8C<sup>3</sup><sup>0</sup> (HDBaseT<sup>3</sup><sup>1)</sup></td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_2e632985f0cbadff.jpg" alt="" width="203" height="273" name="Imagen18" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>HDI-45<sup>32</sup></td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_16585e3417eb71a4.jpg" alt="" width="203" height="113" name="Imagen19" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>HDMI<sup>33</sup></td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_fb18d38264bebac8.jpg" alt="" width="203" height="143" name="Imagen20" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>MHL<sup>3</sup><sup>4</sup></td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_179b85023caf80c6.jpg" alt="" width="203" height="151" name="Imagen21" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>SCART/Euroconector<sup>35</sup></td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu13326pd0ohx.tmp/lu13326pd0oje_tmp_fb48bdb09fd20e61.jpg" alt="" width="203" height="151" name="Imagen22" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>VESA Enhanced Video Conector<sup>3</sup><sup>6</sup></td>
+            <td>Sonido y vídeo</td>
+        </tr>
+    </tbody>
+</table>
+<hr/>
+<table>
+    <tbody>
+        <tr>
+            <th>Imagen</th>
+            <th>Conector de vídeo</th>
+            <th>Tipo de señal</th>
+            <th>Transporte</th>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_cd563fca9ff9aedd.jpg" alt="" width="151" height="190" name="Imagen23" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>D-Terminal<sup>37</sup></td>
+            <td>Analógica</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_f6beaf3540c8b672.jpg" alt="" width="151" height="112" name="Imagen24" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>DA-15F<sup>38</sup></td>
+            <td>Analógica</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_968c7feae41dbad6.jpg" alt="" width="151" height="115" name="Imagen25" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>DB-13W3<sup>39</sup></td>
+            <td>Analógica</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_d1e1524def8c9501.jpg" alt="" width="151" height="84" name="Imagen26" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>DB-23<sup>40</sup></td>
+            <td>Analógica</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_def4bf8d32b9004.jpg" alt="" width="151" height="107" name="Imagen27" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>DE-15 (VGA)<sup>41</sup></td>
+            <td>Analógica</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_726bc98d07507adf.jpg" alt="" width="151" height="112" name="Imagen28" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>Mini-DIN 4-pin (S-Video)<sup>42</sup></td>
+            <td>Analógica</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_7ff7b1d92a3cf81f.jpg" alt="" width="151" height="149" name="Imagen29" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>Mini-DIN 9-pin (VIVO)<sup>43</sup></td>
+            <td>Analógica</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_213903b08254805c.jpg" alt="" width="151" height="106" name="Imagen30" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>RCA<sup>20</sup> amarillo (Composite video<sup>44</sup>)</td>
+            <td>Analógica</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_d1faf8d837e8b184.jpg" alt="" width="151" height="81" name="Imagen31" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>RF coaxial (Musa)<sup>45</sup></td>
+            <td>Analógica</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_6540eb37c0405a7e.jpg" alt="" width="151" height="112" name="Imagen32" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>BNC (CoaXPress)<sup>46</sup></td>
+            <td>Digital</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_9c549dc3d43d1c07.jpg" alt="" width="151" height="94" name="Imagen33" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>BNC (SDI)<sup>47</sup></td>
+            <td>Digital</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_7393668d465566a9.jpg" alt="" width="151" height="110" name="Imagen34" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>DE-9<sup>48</sup> (CGA<sup>49</sup>, EGA<sup>50</sup>, HGC<sup>51</sup>, MDA<sup>52</sup>)</td>
+            <td>Digital</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_5ac32f2e40219dc9.jpg" alt="" width="151" height="149" name="Imagen35" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>DMS-59<sup>53</sup></td>
+            <td>Digital</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_60e330dc194a1cc3.jpg" alt="" width="151" height="149" name="Imagen37" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>GVIF<sup>54</sup></td>
+            <td>Digital</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_7a4bcb08dc1446d4.jpg" alt="" width="151" height="82" name="Imagen38" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>MDR36 (OpenLDI)<sup>55</sup></td>
+            <td>Digital</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_925d0b88900b2e74.jpg" alt="" width="151" height="110" name="Imagen39" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>UDI<sup>56</sup></td>
+            <td>Digital</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_533a1b799f08a27a.jpg" alt="" width="151" height="119" name="Imagen40" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>VESA Digital Flat Panel<sup>57</sup></td>
+            <td>Digital</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_f75d324a47b001e7.jpg" alt="" width="151" height="92" name="Imagen41" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>ADC<sup>58</sup></td>
+            <td>Analógica y digital</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_e45d4b8d0d956cca.jpg" alt="" width="151" height="119" name="Imagen42" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>DVI<sup>59</sup></td>
+            <td>Analógica y digital</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_5fc76e9066ad37bb.jpg" alt="" width="151" height="116" name="Imagen43" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>RCA<sup>20</sup> rojo, azul y verde (Component video<sup>60</sup>)</td>
+            <td>Analógica y digital</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_6f8cffff3b40b7a2.jpg" alt="" width="151" height="121" name="Imagen44" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>RF coaxial (Belling-Lee)<sup>61</sup></td>
+            <td>Analógica y digital</td>
+            <td>Vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_7a490b504bba35e7.jpg" alt="" width="151" height="122" name="Imagen45" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>AV Multi<sup>26</sup></td>
+            <td>Analógica</td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_2e632985f0cbadff.jpg" alt="" width="151" height="202" name="Imagen46" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>HDI-45<sup>32</sup></td>
+            <td>Analógica</td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_179b85023caf80c6.jpg" alt="" width="151" height="112" name="Imagen47" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>SCART/Euroconector<sup>35</sup></td>
+            <td>Analógica</td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_53c44e476a1d6e22.jpg" alt="" width="151" height="111" name="Imagen48" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>8P8C<sup>30</sup> (HDBaseT<sup>31</sup>)</td>
+            <td>Digital</td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_b8a01a4580df3fae.jpg" alt="" width="151" height="99" name="Imagen49" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>DiiVA<sup>27</sup></td>
+            <td>Digital</td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_1c567719cf3582a0.jpg" alt="" width="151" height="90" name="Imagen50" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>DisplayPort<sup>29</sup></td>
+            <td>Digital</td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_4742b85bd2f47ca0.jpg" alt="" width="151" height="99" name="Imagen51" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>FireWire/IEEE 1394<sup>1</sup></td>
+            <td>Digital</td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_16585e3417eb71a4.jpg" alt="" width="151" height="84" name="Imagen52" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>HDMI<sup>33</sup></td>
+            <td>Digital</td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_fb18d38264bebac8.jpg" alt="" width="151" height="106" name="Imagen53" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>MHL<sup>3</sup><sup>4</sup></td>
+            <td>Digital</td>
+            <td>Sonido y vídeo</td>
+        </tr>
+        <tr>
+            <td><img src="file:///tmp/lu6964pbjkgq.tmp/lu6964pbjki9_tmp_fb48bdb09fd20e61.jpg" alt="" width="151" height="112" name="Imagen54" align="left" border="0" hspace="36" vspace="4" /> </td>
+            <td>VESA Enhanced Video Conector<sup>36</sup></td>
+            <td>Analógica y digital</td>
+            <td>Sonido y vídeo</td>
+        </tr>
+    </tbody>
+</table>
+<h2>En una máquina virtual de Windows, sigue los siguientes pasos, haciendo pantallazos el los puntos 1, 2 y 3:</h2>
+<h3>Crea una instantánea. Pon el nombre de «Antes 2 monitores»</h3>
+<figure id="figura1">
+    <a href="pictures/01.png" target="_blank"><img src="pictures/01.png" title="Imagen 2000 x 1500 px" alt="Imagen 2000 x 1500 px" /></a>
+    <figcaption><b>Figura 1</b>: Imagen de 2000 x 1500 px creada. Tiene un tamaño total de 8.6 MiB</figcaption>
+</figure>
+<h3>Configura en VirtualBox que esa máquina tiene 2 monitores</h3>
+<figure id="figura1">
+    <a href="pictures/01.png" target="_blank"><img src="pictures/01.png" title="Imagen 2000 x 1500 px" alt="Imagen 2000 x 1500 px" /></a>
+    <figcaption><b>Figura 1</b>: Imagen de 2000 x 1500 px creada. Tiene un tamaño total de 8.6 MiB</figcaption>
+</figure>
+<h3>Inicia después la máquina y configura escritorio extendido</h3>
+<figure id="figura1">
+    <a href="pictures/01.png" target="_blank"><img src="pictures/01.png" title="Imagen 2000 x 1500 px" alt="Imagen 2000 x 1500 px" /></a>
+    <figcaption><b>Figura 1</b>: Imagen de 2000 x 1500 px creada. Tiene un tamaño total de 8.6 MiB</figcaption>
+</figure>
+<h3>Después de comprobar funcionamiento, apaga la máquina y:</h3>
+<h4>Restaura la instantánea</h4>
+<h4>Configura un solo monitor</h4>
+<figure id="figura1">
+    <a href="pictures/01.png" target="_blank"><img src="pictures/01.png" title="Imagen 2000 x 1500 px" alt="Imagen 2000 x 1500 px" /></a>
+    <figcaption><b>Figura 1</b>: Imagen de 2000 x 1500 px creada. Tiene un tamaño total de 8.6 MiB</figcaption>
+</figure>
+<h2>Referencias</h2>
+<div class="referencias">
+    <ol>
+        <li id="referencia1" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia2" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia3" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia4" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia5" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia6" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia7" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia8" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia9" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia10" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia11" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia12" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia13" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia14" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia15" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia16" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia17" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia18" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia19" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia20" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia21" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia22" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia23" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia24" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia25" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia26" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia27" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia28" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia29" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia30" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia31" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia32" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia33" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia34" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia35" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia36" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia37" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia38" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia39" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia40" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia41" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia42" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia43" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia44" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia45" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia46" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia47" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia48" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia49" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia50" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia51" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia52" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia53" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia54" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia55" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia56" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia57" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia58" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia59" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia60" class="inglés"><a href="http" target="_blank">Título<span class="fa fa-external-link"></span></a></li>
+        
+        
+        <li id="referencia4"><span class="contains-ul">Memoria de vídeo en las tarjetas gráficas</span><span class="colon">:</span>
+            <ul>
+                <li class="inglés"><a href="https://en.wikipedia.org/wiki/Video_card#Video_memory" target="_blank">Memoria de vídeo en las tarjetas gráficas<span class="fa fa-external-link"></span></a></li>
+                <li class="español"><a href="https://es.wikipedia.org/wiki/Tarjeta_gr%C3%A1fica#GRAM" target="_blank">Memoria de vídeo en las tarjetas gráficas<span class="fa fa-external-link"></span></a></li>
+            </ul>
+        </li>
+    </ol>
+</div>
+<footer>
+	<span class="last-modified"><span id="modify"></span></span>
+    <span class="author">Elena de Diego</span>
+</footer>
+</div>
+</div>
+<script src="../functions.js"></script>
+</body>
+</html>

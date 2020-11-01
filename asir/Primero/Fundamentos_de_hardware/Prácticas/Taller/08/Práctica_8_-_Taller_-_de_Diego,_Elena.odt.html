@@ -1,0 +1,61 @@
+<p>Práctica 8: Taller – Instalación         de RAID 0</p>
+<h2 id="section"></h2>
+<h1 id="entrar-en-la-bios-y-configurar-la-opción-de-discos-sata-como-raid"><span id="anchor"></span>1. Entrar en la BIOS y con<strong>figurar </strong>la opción de discos SATA como RAID</h1>
+<figure>
+<img src="Pictures/100000000000104000000C30D9DB8D93564484A5.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Una vez que hemos abierto el ordenador y conectados los discos correctamente (en la placa base Gigabyte GBB36X estos se han de conectar en los conectores SATA blancos), accedemos a la BIOS (tecla «Supr») y, en el apartado de «Integrated Peripherals», nos vamos a la opción de «Onboard SATA/IDE Ctrl Mode» y cambiamos el estado «IDE» por el de «RAID/IDE»</figcaption>
+</figure>
+<figure>
+<img src="Pictures/100000000000104000000C30A6C0AB7C5CCB30C1.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Opción «RAID/IDE» establecida correctamente. Ahora, guardamos los cambios y salimos de la con<strong>figuraci</strong>ón</figcaption>
+</figure>
+<h1 id="section-1"></h1>
+<h1 id="guardar-cambios.-al-reiniciar-pulsar-ctrl-g-para-entrar-en-la-configuración-de-raid.-en-la-pantalla-que-aparece-crear-raid-0.-observar-los-parámetros-principales-discos-que-forman-del-raid-tamaño-final-del-raid-nombre-y-tamaño-de-cada-trozo-size-striped.-guardar-cambios."><span id="anchor-1"></span>2. Guardar cambios. Al reiniciar, pulsar «Ctrl» + «G» para entrar en la con<strong>figuraci</strong>ón de RAID. En la pantalla que aparece, crear RAID 0. Observar los parámetros principales: discos que forman del RAID, tamaño final del RAID, nombre y tamaño de cada trozo (<em>size striped</em>). Guardar cambios.</h1>
+<p><strong>a) ¿Cuál es el tamaño del disco original?</strong> Cada disco es de 164 GB.</p>
+<p><strong>b) ¿Cuál es el tamaño final de disco?</strong> El RAID de discos es de 329 GB (el doble).</p>
+<figure>
+<img src="Pictures/100000000000104000000C300EF92DBDC8005CA1.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Una vez reiniciado el ordenador, accedemos a la con<strong>figuraci</strong>ón de RAID con la combinación de teclado «Ctrl» + «G». En ella, podemos comprobar la lista de discos que detecta, y crearemos el RAID haciendo uso de la opción «Create RAID Disk Drive», siempre y cuando la lista de RAID esté vacía (si no, tendremos que revertir el estado de los discos a «Non-RAID» y, después, eliminar los RAID que tengamos)</figcaption>
+</figure>
+<figure>
+<img src="Pictures/100000000000104000000C30128B61ECE08A8E33.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Ventana de creación de RAID. En ella, podemos nombrar al RAID como queramos, seleccionar el nivel de RAID (en este caso, la placa base solo permite RAID 0 [«stripping»] y 1 [«mirror»]), el tamaño de bloque y el tamaño total del RAID</figcaption>
+</figure>
+<figure>
+<img src="Pictures/100000000000104000000C30C716A19725056B3D.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Una vez confirmada la creación del RAID, nos aparecerá en la lista de RAID un resumen de aquel que vamos a crear. Guardamos y cerramos el asistente, y posteriormente se reiniciará el ordenador</figcaption>
+</figure>
+<h1 id="instalar-windows-con-el-pendrive.-al-iniciar-la-instalación-dice-que-no-hay-ningún-disco-duro.-hay-que-instalar-el-driver-de-la-controladora-raid-de-la-placa-gigabyte.-pulsar-para-ello-examinar-y-seleccionar-el-driver-que-se-encuentra-en-la-carpeta-driversraid-del-pendrive"><span id="anchor-2"></span>4. Instalar Windows con el <em>pendrive</em>. Al iniciar la instalación, dice que no hay ningún disco duro. Hay que instalar el <em>driver</em> de la controladora RAID de la placa Gigabyte. Pulsar para ello «Examinar» y seleccionar el <em>driver</em>, que se encuentra en la carpeta «DriversRAID» del <em>pendrive</em></h1>
+<figure>
+<img src="Pictures/100000000000104000000C3058A38123EE5525A2.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Una vez que hayamos reiniciado el ordenador y antes de que se intente cargar el sistema operativo (que no hay ninguno), en la pantalla de la BIOS accedemos al arranque de los dispositivos e iniciamos desde el «pendrive», que previamente hemos de poner. Desde el mismo, escogemos la imagen de Windows 10 y procedemos a su instalación. En la gestión avanzada de los discos, vemos que no se detecta nuestra RAID creado, ya que se requiere de un controlador</figcaption>
+</figure>
+<figure>
+<img src="Pictures/100000000000104000000C30E77EE629B2D82003.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Como se requiere de un controlador, seleccionamos «Carga controlador» y, desde la segunda partición del «pendrive», lo localizamos y lo añadimos</figcaption>
+</figure>
+<h1 id="section-2"></h1>
+<h1 id="una-vez-instalado-el-driver-realizar-la-instalación-de-windows-normal"><span id="anchor-3"></span>5. Una vez instalado el <em>driver</em>, realizar la instalación de Windows normal</h1>
+<figure>
+<img src="Pictures/100000000000104000000C30EFCD196F8441B253.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Una vez añadido, el RAID se detecta correctamente y ahora podemos particionar el disco a nuestro gusto</figcaption>
+</figure>
+<figure>
+<img src="Pictures/100000000000104000000C30C6E87D097AC3E2EA.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Con el disco ya particionado, instalamos el sistema operativo</figcaption>
+</figure>
+<figure>
+<img src="Pictures/100000000000104000000C30A7048D5E7C9A8AF7.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Tras esperar un rato y sorteando la engorrosa configuración inicial de la mano de Cortana, listo, ya tenemos Windows 10 instalado</figcaption>
+</figure>
+<h1 id="section-3"></h1>
+<h1 id="poner-captura-del-administrador-de-discos"><span id="anchor-4"></span>6. Poner captura del administrador de discos</h1>
+<figure>
+<img src="Pictures/100000000000104000000C3029CDAFC84F407B66.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: El administrador de discos, como era de esperar, ve la unidad de RAID como una sola y, como es un RAID 0, el tamaño de los discos se suma en la unidad RAID (concretamente, esta captura no es de mi ordenador, sino de un compañero, ya que a mí se me olvidó hacerla, pero al fin y al cabo el resultado es el mismo)</figcaption>
+</figure>
+<h1 id="medir-la-velocidad-del-raid-con-hd-tach"><span id="anchor-5"></span>7. Medir la velocidad del RAID con HD-Tach</h1>
+<figure>
+<img src="Pictures/100000000000104000000C30D3AB5CE8F097BE2E.jpg" style="width:17.403cm;height:13.051cm" alt="" /><figcaption><br />
+<strong>Figura </strong>: Análisis de la velocidad del RAID con el programa HD-Tach. En contraste con el análisis que hicimos de un disco HDD solo, vemos que la velocidad es algo mayor, pero tiene dos acusadas decaídas. Al acabar, reiniciamos el ordenador y deshacemos el RAID, luego, con el ordenador apagado, desconectamos los discos y lo dejamos conectado tal y como estaba</figcaption>
+</figure>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="de Diego, Elena">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Práctica 10: Los discos duros II</title>
+</head>
+<body>
+<div class="pagina">
+<header>
+    <h6>
+        <span id="asignatura"></span>
+        <span>Los discos duros II</span>
+    </h6>
+</header>
+<h1>Práctica 10: Los discos duros II</h1>
+<div id="console"></div>
+<div id="toc">
+	<h3>Índice</h3>
+	<noscript>Para poder visualizar el índice y que la página tenga plena funcionalidad, por favor, habilite el uso de JavaScript en su navegador.</noscript>
+</div>
+<hr/>
+<div id="contents">
+<h2>Describe los siguientes conceptos:</h2>
+<h3>Tiempo de acceso</h3>
+<p>Es el tiempo que necesitan los cabezales de lectura y escritura para situarse sobre el sector en el que tienen que leer o escribir. Este varía entre 9 y 12 milisegundos, ya que las pistas interiores están más lejos que las exteriores —respecto al cabezal—.</p>
+<h3>Tiempo de búsqueda</h3>
+<p>Es el tiempo imprescindible para desplazar los cabezales de una pista a otra, comprendido entre 8 y 12 ms.</p>
+<h3>Latencia rotacional</h3>
+<p>Es el tiempo indispensable para que, estando en la pista adecuada, el cabezal pase al sector requerido.</p>
+<h3>Escribe la fórmula que las relaciona</h3>
+<p><span class="codigo">Tiempo de acceso = Tiempo de búsqueda + Latencia</span></p>
+<h2>Comprueba cuántos minutos tarda en leerse un CD de 700 MB con una velocidad de 1x</h2>
+<p>Al tener la unidad óptica una velocidad de lectura de 1x, lee a <span class="codigo"><b>150 kB/s</b></span>. Por tanto, si se necesitan leer <span class="codigo">700 MB</span> —<span class="codigo">716 800 KB</span>—, la unidad tardará <span class="codigo">716 800 kB / 150 kB/s</span>, que da como resultado <span class="codigo">4778,67 segundos</span>, o lo que es lo mismo, <span class="codigo"><b>79,64 minutos</b></span> —casi <span class="codigo"><b>1 hora y 20 minutos</b></span>—.</p>
+<h2>Busca en internet precios y características de los siguientes discos duros e incluye el vínculo de la página web:</h2>
+<h3>Disco duro interno de 3.5" con 2 TB</h3>
+<p><a href="https://www.pccomponentes.com/seagate-barracuda-35-2tb-sata3" target="_blank">65,27 €.<span class="fa fa-external-link"></span></a></p>
+<h3>Disco duro interno de 2.5" con 1 TB</h3>
+<p><a href="https://www.pccomponentes.com/seagate-barracuda-25-1tb-sata3" target="_blank">51,59 €.<span class="fa fa-external-link"></span></a></p>
+<h3>Disco duro SSD con 250GB</h3>
+<p><a href="https://www.pccomponentes.com/samsung-860-evo-basic-ssd-250gb-sata3" target="_blank">57,99 €.<span class="fa fa-external-link"></span></a></p>
+<h3>Disco duro SSD con 1TB</h3>
+<p><a href="https://www.pccomponentes.com/samsung-860-evo-basic-ssd-1tb-sata3" target="_blank">175,99 €.<span class="fa fa-external-link"></span></a></p>
+<h3>Disco duro externo 2.5" con 1 TB</h3>
+<p><a href="https://www.pccomponentes.com/seagate-expansion-1tb-25-usb-30-negro" target="_blank">60 €.<span class="fa fa-external-link"></span></a></p>
+<h2>Un disco duro mecánico magnético (HDD), ¿tiene la misma velocidad en todo el dispositivo? Si no fuese así, explica por qué razonadamente. Y si el disco duro fuese una unidad SSD, ¿tendría la misma velocidad? Razona la respuesta</h2>
+<p>La respuesta de esta pregunta puede encontrarse en la <a href="../09/Los_discos_duros_I_-_de_Diego,_Elena.html#Un_disco_duro_mecánico_magnético_(HDD),_¿tiene_la_misma_velocidad_en_todo_el_dispositivo?_Si_no_fuese_así,_explica_por_qué_razonadamente._Si_el_disco_duro_fuese_una_unidad_SSD,_¿tendría_la_misma_velocidad?_Razona_la_respuesta" target="_blank">práctica anterior</a>.</p>
+<h2>Rellena la siguiente tabla con las velocidades máximas de los distintos modos de transferencia</h2>
+<table>
+    <tbody>
+        <tr>
+            <th>Modo transferencia</th>
+            <th>Velocidad máxima (MB/s)</th>
+        </tr>
+        <tr>
+            <td>PIO</td>
+            <td>Desde 5,2 hasta 16,6 MB/s</td>
+        </tr>
+        <tr>
+            <td>DMA – UDMA</td>
+            <td>Desde 16 hasta 133 MB/s</td>
+        </tr>
+        <tr>
+            <td>SCSI</td>
+            <td>320 MB/s</td>
+        </tr>
+        <tr>
+            <td>SATA I</td>
+            <td>150 MB/s</td>
+        </tr>
+        <tr>
+            <td>SATA II</td>
+            <td>300 MB/s</td>
+        </tr>
+        <tr>
+            <td>SATA III</td>
+            <td>600 MB/s</td>
+        </tr>
+    </tbody>
+</table>
+<h2>Con ayuda de esta <a href="http://usb.userbenchmark.com/" target="_blank">página web<span class="fa fa-external-link"></span></a>, contesta a los siguientes apartados:</h2>
+<h3>Busca el precio del <i>pendrive</i> más rápido en lectura</h3>
+<p>En dicha página no se pueden filtrar por velocidad de lectura los <i>pendrives</i>, hay que ir mirando las unidades una a una para poder verla. No obstante, uno de los más rápidos es el <a href="https://usb.userbenchmark.com/SpeedTest/236544/SanDisk-Extreme-Pro" target="_blank">SanDisk Extreme Pro de 128 GB<span class="fa fa-external-link"></span></a>, con una media de velocidad secuencial de <b>153 MB/s</b>, y picos de hasta los <b>297 MB/s</b>. Su precio es de <a href="https://www.amazon.es/Memoria-SanDisk-Extreme-velocidades-Lectura/dp/B01MU8TZRV/" target="_blank">70,99 €<span class="fa fa-external-link"></span></a>.</p>
+<h3>Busca el precio del <i>pendrive</i> más rápido en escritura</h3>
+<p>En cuanto a la velocidad de escritura, el más rápido —que tenga precio— es el mismo nuevamente es el <a href="https://usb.userbenchmark.com/SpeedTest/236544/SanDisk-Extreme-Pro" target="_blank">SanDisk Extreme Pro de 128 GB<span class="fa fa-external-link"></span></a>. Tiene una media de velocidad secuencial de escritura de <b>101 MB/s</b>, alcanzando hasta los <b>250 MB/s</b>.</p>
+<h2>Busca en internet los precios de la tarjeta más rápida de:</h2>
+<h3>XQD</h3>
+<p>Tarjeta Sony QDG64E/J de 64 GB por <a href="https://www.amazon.es/Sony-QDG64E-64GB-memoria-flash/dp/B01I2NR9U0/" target="_blank">169,99 €<span class="fa fa-external-link"></span></a> con una velocidad de lectura de <b>440 MB/s</b> y escritura de <b>400 MB/s</b>, según el fabricante.</p>
+<h3>SD</h3>
+<p>Tarjeta Sony UHS-II de 64 GB por <a href="https://www.amazon.es/Sony-UHS-II-Clase-Memoria-Flash/dp/B06ZYNN6JP/" target="_blank">139,99 €<span class="fa fa-external-link"></span></a> con una velocidad de lectura de <b>300 MB/s</b> y escritura de <b>299 MB/s</b>, según el fabricante.</p>
+<h3>Memory Stick</h3>
+<p>Tarjeta Sony MSHX32B Pro Duo de 32 GB por <a href="https://www.amazon.es/Sony-MSHX8B-Tarjeta-memoria-Memory/dp/B003F8SUMO/" target="_blank">45,18 €<span class="fa fa-external-link"></span></a> con una velocidad de lectura de <b>50 MB/s</b>, según el fabricante.</p>
+<h3>Averigua los tamaños de los discos duros comercializados en la actualidad</h3>
+<p>La respuesta de esta pregunta puede encontrarse en la <a href="../09/Los_discos_duros_I_-_de_Diego,_Elena.html#Averiguar_los_tamaños_de_discos_duros_comercializados_en_la_actualidad" target="_blank">práctica anterior</a>.</p>
+<h2>Elige verdadero o falso en base a las afirmaciones dadas</h2>
+<table>
+    <tbody>
+        <tr>
+            <th>✓</th>
+            <th>✗</th>
+            <th>Afirmación</th>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>Si en <span class="codigo">Equipo</span>, aparecen <span class="codigo">C</span> y <span class="codigo">D</span>, podemos asegurar que son 2 unidades físicas. <span class="falso"> En una unidad física podemos tener varias particiones, las cuales tendrán distinta letra</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+            <td>Si en <span class="codigo">Equipo</span>, aparecen <span class="codigo">C</span> y <span class="codigo">D</span>, podemos asegurar que son 2 unidades lógicas.</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>Si en <span class="codigo">Equipo</span>, aparecen <span class="codigo">C</span> y <span class="codigo">D</span>, podemos asegurar que no hay ninguna partición más en el disco o discos. <span class="falso">Puede haber particiones ocultas, como las de Linux</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>En un disco duro con MBR puede haber 4 particiones primarias y 2 lógicas. <span class="falso">Puede haber como máximo 4 particiones primarias, o 3 primarias y 1 extendida, y dentro de la extendida, 2 lógicas</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>En un disco duro con MBR puede haber 3 particiones primarias y 10 lógicas. <span class="falso">Es falsa si no hay ninguna partición extendida que contenga las lógicas, pero verdadera en caso de que exista y las contenga</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+            <td>En un disco duro con MBR puede haber una partición primaria y una extendida</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>En un disco duro con GPT puede haber 3 particiones primarias y 10 lógicas. <span class="falso">En el particionamiento GPT solo hay particiones primarias</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>En un disco duro puede haber 2 particiones activas. <span class="falso">En MBR no</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>Una partición lógica puede ser la partición activa. <span class="falso">En MBR ha de ser una partición primaria</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>La mínima unidad física es el cilindro</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>La mínima unidad física es el <i>cluster</i></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+            <td>La mínima unidad física es el sector</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>La mínima unidad lógica es el sector. <span class="falso">Es el <i>cluster</i></span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+            <td>Son equivalentes pista y cilindro</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>Son equivalentes cabeza y cilindro</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>Son equivalentes superficie y cabeza. <span class="falso">Una superficie tiene dos cabezas o caras</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>En una tarjeta de memoria existen pistas</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>En una tarjeta de memoria existen sectores</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>El sector tiene un tamaño distinto según dispositivo. <span class="falso">Puede variar en los sistemas operativos, pero siempre es de 512 B</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>Es posible que un <i>cluster</i> ocupe 3 KB. <span class="falso">El <i>cluster</i> ha de ocupar un número de sectores que sea potencia de 2</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+            <td>Es posible que un <i>cluster</i> ocupe 2 kB</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>Un sector es un grupo de <i>cluster</i>. <span class="falso">Un <i>cluster</i> es un grupo contiguo de sectores</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>Todos los cables de datos de dispositivos IDE son de 40 hilos. <span class="falso">Los hay de 40 y 80 hilos</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>En un dispositivo IDE, la transferencia de datos es serie. <span class="falso">Es en paralelo</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>En un disco duro mecánico con direccionamiento LBA, la velocidad de lectura es mayor en las pistas interiores que en las exteriores. <span class="falso">La velocidad de lectura es la misma, pero los sectores exteriores contienen un mayor número de sectores, por lo que con una sola vuelta habrá leído más información en el exterior que en el interior</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>En un disco duro mecánico con direccionamiento CHS, la velocidad de lectura es mayor en las pistas exteriores que en las interiores</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+            <td>En un disco duro mecánico con direccionamiento LBA, la velocidad de lectura es mayor en las pistas exteriores que en las interiores</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+            <td>En un disco duro mecánico con direccionamiento CHS, la velocidad de lectura es igual en las pistas exteriores que en las interiores</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>En la actualidad, en un disco duro se utiliza direccionamiento CHS. <span class="falso">Se utiliza LBA</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>En una tarjeta de memoria se utiliza direccionamiento LBA</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>En un <i>pendrive</i> la velocidad al principio es mas rápida que al final. <span class="falso">Suele ser constante, al carecer de partes mecánicas</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>El tamaño de un <i>cluster</i> se decide al crear la partición</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+            <td>El tamaño de un <i>cluster</i> se decide al formatear la partición</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>La ventaja de un <i>cluster</i> grande, es que se pierde menos espacio que con un <i>cluster</i> pequeño</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+            <td>La ventaja de un <i>cluster</i> pequeño, es que se pierde menos espacio que con un <i>cluster</i> grande</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td><span class="codigo">Tiempo de búsqueda = Tiempo de acceso + Latencia</span>. <span class="falso">Tiempo de acceso = Tiempo de búsqueda + Latencia</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>La ventaja de un <i>cluster</i> pequeño es que el dispositivo es más rápido que con un <i>cluster</i> grande. <span class="falso">Será más rápido uno con un <i>cluster</i> grande, ya que no tendrá que ir a lectores más lejanos a buscar el archivo</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>Si una característica de un disco duro es que tiene 7200 RPM, eso quiere decir que el disco lee a 120 Mb/s. <span class="falso">Indica que el disco da 7200 vueltas por minuto</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>Si una característica de un disco duro es que tiene 7200 RPM, eso quiere decir que el disco da 120 vueltas por segundo</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+            <td>En un dispositivo SATA, la transferencia de datos es en serie</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>En una unidad de estado sólido, la velocidad de lectura es mayor al principio que al final. <span class="falso">Suele ser constante, al carecer de partes mecánicas</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+            <td>En una unidad de disco duro mecánico, la velocidad de lectura es mayor al principio que al final</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>En una tarjeta de memoria, la velocidad de lectura es mayor al principio que al final. <span class="falso">Suele ser constante, al carecer de partes mecánicas</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>En todo dispositivo, la velocidad de lectura suele ser parecida a la de escritura</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+            <td>En todo dispositivo, la velocidad de lectura suele ser mayor a la de escritura</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+            <td>La velocidad máxima de USB 3.0 es la misma que SATA III</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>La velocidad máxima de USB 2.0 es la misma que SATA II. <span class="falso">La velocidad de USB 2.0 es de 60 MB/s, y la de SATA II, de 300 MB/s</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>Un dispositivo SAS puede utilizar discos IDE</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+            <td>Una controladora SAS puede utilizar discos SATA</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>Los discos SATA han utilizado DMA</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>La interfaz SAS aprovecha las ventajas de IDE y SATA. <span class="falso">De SCSI y SATA</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>No se venden discos SAS, solo tarjetas controladoras SAS</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>La interfaz SAS aprovecha las ventajas de IDE y SCSI</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>Una controladora SATA puede utilizar discos SAS</td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>La capacidad de un disco duro es: <span class="codigo">Cabeza * Superficie * Sectores * 512 bytes</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>La capacidad de un disco duro es: <span class="codigo">Cabeza * Pista * Sectores * 512 bytes</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero">✓</span></td>
+            <td class="padding"><span class="falso"></span></td>
+            <td>La capacidad de un disco duro es: <span class="codigo">Cabeza * Cilindro * Sectores * 512 bytes</span></td>
+        </tr>
+        <tr>
+            <td class="padding"><span class="verdadero"></span></td>
+            <td class="padding"><span class="falso">✗</span></td>
+            <td>De las 3 preguntas anteriores, solo hay una cierta. Esto tiene sentido solo en MBR</td>
+        </tr>
+    <tbody>
+</table>
+<footer>
+	<span class="last-modified"><span id="modify"></span></span>
+    <span class="author">Elena de Diego</span>
+</footer>
+</div>
+</div>
+<script src="../functions.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="de Diego, Elena">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Práctica 7: El chipset</title>
+</head>
+<body>
+<div class="pagina">
+<header>
+    <h6>
+        <span id="asignatura"></span>
+        <span>El <i>chipset</i></span>
+    </h6>
+</header>
+<h1>Práctica 7: El <i>chipset</i></h1>
+<div id="console"></div>
+<div id="toc">
+	<h3>Índice</h3>
+	<noscript>Para poder visualizar el índice y que la página tenga plena funcionalidad, por favor, habilite el uso de JavaScript en su navegador.</noscript>
+</div>
+<hr/>
+<div id="contents">
+<h2>En la siguiente imagen se representan distintos elementos que maneja el <i>chipset</i>. Une cada elemento con el puente correspondiente, indicando el nombre de cada uno</h2>
+<figure id="figura1">
+    <a href="pictures/01.svg" target="_blank"><img src="pictures/01.svg" title="Funciones del chipset" alt="Funciones del chipset" /></a>
+    <figcaption><b>Figura 1</b>: Funciones del chipset (puente norte y puente sur) en un procesador antiguo<a href="#referencia1"><sup>1</sup></a></figcaption>
+</figure>
+<h2>En la siguiente imagen se representan diferentes elementos que maneja el <i>chipset</i></h2>
+<figure id="figura2">
+    <a href="pictures/02.png" target="_blank"><img src="pictures/02.png" title="Funciones del chipset" alt="Funciones del chipset" /></a>
+    <figcaption><b>Figura 2</b>: Funciones del chipset en un procesador moderno<a href="#referencia2"><sup>2</sup></a></figcaption>
+</figure>
+<h3>Indica las diferencias que encuentres comparando esta figura con la del ejercicio anterior</h3>
+<p>En comparación a la anterior figura, podemos observar que <b>el puente norte</b>, quien contiene todo lo relativo a las conexiones internas, se ha acabado <i>fusionando</i> con <b>el procesador</b> y ahora es este quien <b>se encarga tanto de sus funciones como de las del puente norte</b> —es decir, aquellas relacionadas con la tarjeta gráfica y la gestión de la memoria RAM—.
+Por otra parte, <b>el puente sur se mantiene casi igual</b>: se sigue encargando de casi todo lo referente al manejo de unidades externas, pero soportando tecnologías más modernas —USB 3.1, Thunderbolt o el reciente Intel Optane—.</p>
+<h3>Explica cómo han ido cambiando las funcionalidades asociadas al <i>chipset</i> con el paso de las diferentes versiones</h3>
+<p>Respecto a las funcionalidades asociadas al <i>chipset</i>, este ha ganado más importancia con el paso de los años y se encarga cada vez de un número mayor de dispositivos externos.</p>
+<h2>Enumera tres modelos de <i>chipset</i> de última generación, indica con qué procesadores son compatibles, qué limitaciones tienen y si hay que realizar alguna modificación para garantizar su funcionalidad</h2>
+<p style="text-indent:0px;">Antes de comparar los <i>chipsets</i> elegidos, vamos a aclarar algunos conceptos:</p>
+<ul>
+    <li><b><i>Overclocking</i></b>: Se refiere a la capacidad de poder aumentar la frecuencia de reloj del procesador, memoria o gráfica.</li>
+	<li><b>Opciones de integrados</b>: Indica aquellos productos que ofrecen una mayor disponibilidad de adquisición para sistemas inteligentes y soluciones integradas.</li>
+	<li><b>Número de DIMM por canal</b>: Indica la cantidad de módulos de memoria en línea dual admitidos por cada canal de memoria del procesador.</li>
+	<li><b>Bus PCIe</b>: Unidad básica del bus de PCIe que consta de dos pares de señalización diferencial, uno para la recepción de datos y otro para la transmisión. Es el número total de buses PCIe que admite el procesador.</li>
+	<li><b>LAN</b>: Se refiere a la presencia de puertos <i>ethernet</i> integrados en la placa del sistema.</li>
+</ul>
+<p>Tabla comparativa de compatibilidades de los <i>chipsets</i>: <a href="https://ark.intel.com/content/www/es/es/ark/products/98086/intel-b250-chipset.html" target="_blank" class="español">Intel B250<span class="fa fa-external-link"></span></a>, <a href="https://www.geektopia.es/es/product/amd/chipset-b350-amd/" target="_blank" class="español">AMD B350<span class="fa fa-external-link"></span></a> e <a href="https://ark.intel.com/content/www/es/es/ark/products/125903/intel-z370-chipset.html" target="_blank" class="español">Intel Z370<span class="fa fa-external-link"></span></a>:</p>
+<table>
+    <tbody>
+        <tr>
+            <td></td>
+            <th>Intel B250</th>
+            <th>AMD B350</th>
+            <th>Intel Z370</th>
+        </tr>
+        <tr>
+            <th>Generación</th>
+            <td>7.ª</td>
+            <td>Ryzen</td>
+            <td>8.ª</td>
+        </tr>
+        <tr>
+            <th><i>Overclocking</i></th>
+            <td>No</td>
+            <td>Sí</td>
+            <td>Sí</td>
+        </tr>
+        <tr>
+            <th>Opciones de integrados</th>
+            <td>No</td>
+            <td>N/A</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <th>N.º de DIMM por canal</th>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <th>N.º de pantallas admitidas</th>
+            <td>3</td>
+            <td>N/A</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <th>PCI</th>
+            <td>No</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <th>PCI Express (PCIe)</th>
+            <td>x1, x2, x4, x16</td>
+            <td>x1, x2, x4, x16</td>
+            <td>x1, x2, x4, x16</td>
+        </tr>
+        <tr>
+            <th>Versión PCIe</th>
+            <td>3.0</td>
+            <td>3.0</td>
+            <td>3.0</td>
+        </tr>
+        <tr>
+            <th>Buses PCIe</th>
+            <td>12</td>
+            <td>N/A</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <th>Puertos USB 3.0</th>
+            <td>6</td>
+            <td>8</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <th>Puertos USB 2.0</th>
+            <td>12</td>
+            <td>6</td>
+            <td>14</td>
+        </tr>
+        <tr>
+            <th>Versión USB</th>
+            <td>2.0 y 3.0</td>
+            <td>2.0 y 3.0</td>
+            <td>2.0 y 3.0</td>
+        </tr>
+        <tr>
+            <th>Puertos SATA 6 GB/s</th>
+            <td>6</td>
+            <td>6</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <th>LAN</th>
+            <td>Integrada</td>
+            <td>Integrada</td>
+            <td>Integrada</td>
+        </tr>
+        <tr>
+            <th>Intel Optane</th>
+            <td>Sí</td>
+            <td>No</td>
+            <td>Sí</td>
+        </tr>
+    </tbody>
+</table>
+<p>Sobre las limitaciones, estas serían las incluidas en la tabla comparativa. Si no cuentan con algún otro tipo de tecnologías no especificadas en ella, quiere decir que su límite sería no poder soportarlas, aparte de los máximos indicados en la tabla.</p>
+<p>Si hay que realizar alguna modificación para garantizar su funcionalidad, seguramente no haya que efectuar ninguna, pero se podría hacer <i>overclocking</i> en aquellos <i>chipsets</i> con los que sea compatible para así aumentar la frecuencia máxima del procesador, gráfica o memoria, aunque esto solo es recomendable para sistemas bien refrigerados y gente experimentada, no para usuarios novatos. En las placas antiguas sí había que realizar algunas modificaciones para que funcionaran distintos dispositivos, como aquellas realizadas con los <i>jumpers</i>, pero ahora todas estas se hacen vía <i>software</i>.</p>
+<h2>Referencias</h2>
+<div class="referencias">
+    <ol>
+        <li id="referencia1" class="inglés"><a href="http://www.ocworkbench.com/2004/sis/755fx/755fx-1.htm" target="_blank">SiS 755FX <i>Socket</i> 939<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia2" class="holandés"><a href="https://tweakers.net/reviews/5733/2/intel-coffee-lake-meer-cores-hogere-prestaties-het-platform.html" target="_blank">Análisis de Intel Coffee Lake<span class="fa fa-external-link"></span></a></li>
+    </ol>
+</div>
+<footer>
+	<span class="last-modified"><span id="modify"></span></span>
+    <span class="author">Elena de Diego</span>
+</footer>
+</div>
+</div>
+<script src="../functions.js"></script>
+</body>
+</html>

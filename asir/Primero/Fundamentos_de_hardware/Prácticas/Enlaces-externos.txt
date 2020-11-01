@@ -1,0 +1,9 @@
+(<a href="htt.[^<]+)(>)(.[^"]+)(</a>)
+
+<span class="externo">$1$2$3$4 </span>
+
+
+// fa-fa
+<span class="externo">(<a href="htt.[^<]+)(>)(.[^"]+)(</a>) </span>
+
+$1$2$3<span class="fa fa-external-link"></span>$4

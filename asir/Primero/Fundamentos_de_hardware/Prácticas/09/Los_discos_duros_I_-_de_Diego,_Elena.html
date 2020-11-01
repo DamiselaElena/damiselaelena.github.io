@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="de Diego, Elena">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Práctica 9: Los discos duros I</title>
+</head>
+<body>
+<div class="pagina">
+<header>
+    <h6>
+        <span id="asignatura"></span>
+        <span>Los discos duros I</span>
+    </h6>
+</header>
+<h1>Práctica 9: Los discos duros I</h1>
+<div id="console"></div>
+<div id="toc">
+	<h3>Índice</h3>
+	<noscript>Para poder visualizar el índice y que la página tenga plena funcionalidad, por favor, habilite el uso de JavaScript en su navegador.</noscript>
+</div>
+<hr/>
+<div id="contents">
+<h2>Actualmente casi todos los discos duros tienen interfaz SATA (Serial-ATA). Busca la velocidad de las siguientes interfaces (MB/s):</h2>
+<h3>SATA I</h3>
+<p><span class="codigo"><b>150 MB/s</b></span></p>
+<h3>SATA II</h3>
+<p><span class="codigo"><b>300 MB/s</b></span></p>
+<h3>SATA III</h3>
+<p><span class="codigo"><b>600 MB/s</b></span></p>
+<h3>¿Existe SATA IV?</h3>
+<p>La interfaz <b>SATA IV</b> aún no ha sido realizada. No obstante, existe la interfaz SATA <i>Express</i>, con velocidades de hasta 16 Gb/s<a href="#referencia1"><sup>1</sup></a>. Las velocidades del puerto SATA III a día de hoy no hay muchos dispositivos que superen esta cifra, por no hablar de que la tendencia actual está desplazando estos puertos por los M.2 o NVMe.</p>
+<h2>Si una placa base tiene dos conectores IDE, ¿cuántos dispositivos IDE se pueden instalar? ¿Qué nombre recibe cada uno de ellos?</h2>
+<p>Se podrán instalar hasta <b>cuatro</b> dispositivos IDE en dicha placa base: uno <b>maestro</b> y uno <b>esclavo</b> por cada cable, ya que estos tienen tres conectores —uno para la placa base y los otros dos para los discos—; por lo que si la placa tiene dos conectores, podrán conectarse dos cables y, por tanto, hasta cuatro dispositivos IDE.</p>
+<h2>En dispositivos IDE, hay que configurar un <i>jumper</i>. ¿Cómo se configura?</h2>
+<p>En los propios dispositivos IDE hay que hacer un puente en los conectores siguiendo las instrucciones indicadas en los propios dispositivos (<a href="#figura1">Figura 1</a>). Así, podrá asignarse uno como maestro y otro como esclavo, aunque el bus solo podrá utilizar uno a la vez, por lo que el maestro tendrá prioridad respecto al esclavo. Generalmente los dispositivos tienen cuatro posiciones: con una se determina qué disco es el maestro; con otra, el esclavo; otra permite a la placa base decidir cuál es el maestro y cuál el esclavo y, la última, sirve para que se memorice la posición del <i>jumper</i>.</p>
+<figure id="figura1">
+    <a href="pictures/01.jpg" target="_blank"><img src="pictures/01.jpg" title="Instrucciones jumpers" alt="Instrucciones jumpers" /></a>
+    <figcaption><b>Figura 1</b>: Instrucciones de los jumpers en un dispositivo IDE (disco duro) de la marca Maxtor<a href="#referencia2"><sup>2</sup></a></figcaption>
+</figure>
+<h2>Un disco duro mecánico magnético (HDD), ¿tiene la misma velocidad en todo el dispositivo? Si no fuese así, explica por qué razonadamente. Si el disco duro fuese una unidad SSD, ¿tendría la misma velocidad? Razona la respuesta</h2>
+<p>Un disco HDD <b>no tiene la misma velocidad en todo el dispositivo</b>: el tiempo que necesitan los cabezales de lectura y escritura para situarse sobre el sector en el que tienen que leer o escribir —<b>tiempo de acceso</b>— varía entre 9 y 12 milisegundos, ya que las pistas interiores están más lejos que las exteriores —respecto al cabezal—.</p>
+<p>Aparte de esto, existe el denominado <b>tiempo de búsqueda</b>, es decir, el tiempo necesario para desplazar los cabezales de una pista a otra, que varía entre 8 y 12 ms. </p>
+<p>La <b>latencia</b> es el tiempo necesario para que, estando en la pista adecuada, el cabezal pase al sector requerido. La fórmula que engloba los tres conceptos anteriores es la siguiente: <span class="codigo">Tiempo de acceso = Tiempo de búsqueda + Latencia</span>.</p>
+<p>En cuanto a la <b>velocidad de rotación</b> o <b>giro</b>, sí, es la misma. Para discos HDD de 3.5", el estándar son 7200 RPM (Revoluciones Por Minuto), mientras que para aquellos de 2.5", son 5400 RPM.</p>
+<p>Debido a estos factores, entre otros, la velocidad de escritura y lectura en un disco HDD nunca son constantes y pueden apreciarse notorias subidas y bajadas de velocidad (<a href="#figura2">Figura 2</a>).</p>
+<figure id="figura2">
+    <a href="pictures/02.png" target="_blank"><img src="pictures/02.png" title="Test de velocidad HDD" alt="Test de velocidad HDD" /></a>
+    <figcaption><b>Figura 2</b>: Variaciones de velocidad de lectura en un disco HDD SAMSUNG HD501LJ<a href="#referencia3"><sup>3</sup></a></figcaption>
+</figure>
+<p>En una unidad <b>SSD</b>, no hay retardos de movimientos mecánicos, ya que están constituidos por celdas de memoria. Debido a esto, su velocidad de lectura y escritura son mucho más estables que en los HDD (<a href="#figura3">Figura 3</a>).</p>
+<figure id="figura3">
+    <a href="pictures/03.gif" target="_blank"><img src="pictures/03.gif" title="Test de velocidad SSD" alt="Test de velocidad SSD" /></a>
+    <figcaption><b>Figura 3</b>: Variaciones de velocidad de lectura en diversas unidades SSD<a href="#referencia4"><sup>4</sup></a></figcaption>
+</figure>
+<h2>En conexiones USB, busca las velocidades de transmisión (en MB/s) de los siguientes tipos de USB:</h2>
+<h3>USB 1.0 y USB 1.1</h3>
+<p><span class="codigo">USB 1.0 y 1.1 → 12 Mb/s / 8 (bit a byte) → <b>1,5 MB/s</b></span></p>
+<h3>USB 2.0</h3>
+<p><span class="codigo">USB 2.0 → 480 Mb/s / 8 → <b>60 MB/s</b></span></p>
+<h3>USB 3.0</h3>
+<p><span class="codigo">USB 3.0 → 4800 Mb/s / 8 → <b>600 MB/s</b></span></p>
+<h2>Elige verdadero o falso, justificando tu respuesta</h2>
+<h3>¿Es un cuello de botella poner un disco SATA II externo en USB 2?</h3>
+<p>Es <b>verdadero</b>. Aprovechando los datos de los ejercicios anteriores, podemos observar que la interfaz SATA II tiene una velocidad de hasta 375 MB/s, mientras que la de USB 2.0, solamente alcanza los 60 MB/s. Teniendo en cuenta estas velocidades máximas teóricas, sí, hay un cuello de botella bastante abrupto cuando se conecta un disco duro externo SATA II en un puerto USB 2.0. Exactamente, la diferencia de velocidad entre ambos es de 315 MB/s.</p>
+<h3>¿Es un cuello de botella poner un disco SATA III externo en USB 3?</h3>
+<p>Es <b>falso</b>. La velocidad máxima teórica de la interfaz SATA III es de 600 MB/s, igual que la de USB 3.0.</p>
+<h2>Averigua los tamaños de discos duros comercializados en la actualidad</h2>
+<p>Los discos duros <b>HDD SATA de 3.5"</b> que se comercializan actualmente, generalmente de <b>7200 RPM</b>, suelen ser de <a href="https://www.pccomponentes.com/seagate-barracuda-35-1tb-sata3" target="_blank" class="español">1 TB<span class="fa fa-external-link"></span></a>. Pero los hay de mayor almacenamiento, llegando hasta los <a href="https://www.pccomponentes.com/toshiba-mg07aca14te-35-14tb-sata" target="_blank" class="español">14 TB<span class="fa fa-external-link"></span></a>. Por casi el mismo precio que los discos de 1 TB, pueden encontrarse aún discos de <a href="https://www.pccomponentes.com/toshiba-dt01aca050-500gb-7200-sata-3" target="_blank" class="español">500 GB<span class="fa fa-external-link"></span></a> en el mercado.</p>
+<p>En los discos duros <b>HDD SATA de 2.5"</b> —enfocados a los ordenadores portátiles, aunque pueden usarse en ordenadores de sobremesa—, aún hay más cantidad de discos de <a href="https://www.pccomponentes.com/toshiba-hdd-500gb-5400rpm-sata3" target="_blank" class="español">500 GB<span class="fa fa-external-link"></span></a> en el mercado respecto a los de 3.5", pero suelen ser de <b>5400 RPM</b>. Como ocurre también con los anteriores, el precio de <a href="https://www.pccomponentes.com/seagate-barracuda-25-1tb-sata3" target="_blank" class="español">1 TB<span class="fa fa-external-link"></span></a> es bastante similar al de los de 500 GB. Como capacidad máxima, los hay de <a href="https://www.pccomponentes.com/seagate-barracuda-25-2tb-sata3" target="_blank" class="español">2 TB<span class="fa fa-external-link"></span></a>. </p>
+<p>En cuanto al panorama de los <b>SDD SATA de 2.5"</b>, estos suelen ser válidos tanto para ordenadores de sobremesa como para ordenadores portátiles. Como capacidad máxima, pueden encontrarse unidades de estado sólido de hasta <a href="https://www.pccomponentes.com/samsung-860-evo-basic-ssd-4tb-sata3" target="_blank" class="español">4 TB<span class="fa fa-external-link"></span></a>, cuyo precio por GB/€ difiere bastante del precio de los discos HDD. Como capacidades estándar, predominan las de <a href="https://www.pccomponentes.com/kingston-a400-ssd-120-gb" target="_blank" class="español">120 GB<span class="fa fa-external-link"></span></a>, <a href="https://www.pccomponentes.com/toshiba-ocz-tr200-ssd-240gb-sata3" target="_blank" class="español">240 GB<span class="fa fa-external-link"></span></a> y <a href="https://www.pccomponentes.com/samsung-860-evo-basic-ssd-500gb-sata3" target="_blank" class="español">500 GB<span class="fa fa-external-link"></span></a>. </p>
+<p>También hay discos de otras interfaces de 2.5" aparte de la SATA, como <b>M.2</b>, <b>M.2 NVMe</b> o <b>PCIe</b><a href="#referencia5"><sup>5</sup></a>. Generalmente estas últimas son más rápidas, sí, pero también más caras. Del formato más predominante, del M.2 NVMe, podemos encontrar discos algo más caros que los SATA, como los de <a href="https://www.pccomponentes.com/corsair-force-series-mp300-120gb-ssd-m2-pcie-mvme" target="_blank" class="español">120 GB<span class="fa fa-external-link"></span></a>, <a href="https://www.pccomponentes.com/samsung-ssd-970-evo-nvme-m2-250-gb" target="_blank" class="español">250 GB<span class="fa fa-external-link"></span></a> o <a href="https://www.pccomponentes.com/samsung-ssd-970-evo-pci-e-nvme-m2-500-gb" target="_blank" class="español">500 GB<span class="fa fa-external-link"></span></a>. Como capacidad máxima, podemos encontrar unidades de hasta <a href="https://www.pccomponentes.com/samsung-ssd-970-evo-nvme-pci-e-m2-2-tb" target="_blank" class="español">2 TB<span class="fa fa-external-link"></span></a>.</p>
+<p>Aparte de todas estas unidades internas, podemos encontrar <b>discos externos</b>, que son muy parecidos a los internos, solo que se conectan desde el exterior por medio de la conexión USB, generalmente, y están metidos en una carcasa para protegerlos. A veces los fabricantes deciden soldar estas unidades externas a la carcasa, por lo que pierden su circuitería SATA. Esto hace que muchas veces no podamos simplemente quitarles la carcasa y conectarlos dentro de nuestro ordenador.</p>
+<p>Discos externos los hay tanto <b>SSD</b> como <b>HDD</b>, pero estos últimos interesan más a los consumidores, ya que la capacidad de almacenamiento es mucho mayor, y son más baratos, aunque a costa de no tener tanta velocidad como los discos SSD y que sean menos tolerantes a los golpes. Por tanto, las capacidades no varían tanto respecto a los HDD internos, únicamente que es más común en las unidades externas ver discos de 2.5" con 5400 RPM: podemos encontrarlos de <a href="https://www.pccomponentes.com/maxtor-m3-portable-500gb-usb-30-25" target="_blank" class="español">500 GB<span class="fa fa-external-link"></span></a> —cada vez menos comunes— y <a href="https://www.pccomponentes.com/maxtor-m3-portable-1tb-usb-30-25" target="_blank" class="español">1 TB<span class="fa fa-external-link"></span></a>, llegando hasta unidades externas de hasta <a href="https://www.pccomponentes.com/seagate-backup-plus-hub-10tb-35-usb-30" target="_blank" class="español">10 TB<span class="fa fa-external-link"></span></a> (de 3.5"). La conexión predominante es la de USB 3.0 y 3.1, pero también las hay de conexión <a href="https://www.pccomponentes.com/lacie-d2-6tb-35-thunderbolt-3-usb-31" target="_blank" class="español">Thunderbolt<span class="fa fa-external-link"></span></a> o de conexión <a href="https://www.pccomponentes.com/sandisk-extreme-portable-ssd-500gb-usb-31-type-c" target="_blank" class="español">USB-C<span class="fa fa-external-link"></span></a>, debido al gran auge de dispositivos —habitualmente móviles— que incorporan esta conexión. Si tienen otra conexión distinta a USB tipo A, suelen incluir alguna versión de esta —3.0 o 3.1— para tener una mayor compatibilidad con el resto de dispositivos.</p>
+<h2>Referencias</h2>
+<div class="referencias">
+    <ol>
+        <li id="referencia1" class="inglés"><a href="https://web.archive.org/web/20200814165119/https://www.neweggbusiness.com/smartbuyer/components/ssds-what-comes-after-sata-iii/" target="_blank">¿Qué viene después de SATA III en los discos SSD?<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia2" class="inglés"><a href="https://web.archive.org/web/20201101133925/https://www.tangible-technology.com/alesis/masterlink/DRIVE_NOTES.html" target="_blank">Opciones típicas de <i>jumpers</i> en los discos duros<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia3" class="inglés"><a href="https://web.archive.org/web/20201101134548/https://www.overclockers.com/forums/showthread.php/678783" target="_blank">Variación de velocidad de lectura en un disco HDD SAMSUNG HD501LJ<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia4" class="inglés"><a href="https://web.archive.org/web/20171123050204/http://techreport.com/review/26058/the-ssd-endurance-experiment-data-retention-after-600tb/2" target="_blank">Variación de velocidad en diversos discos SSD<span class="fa fa-external-link"></span></a></li>
+        <li id="referencia5" class="español""><a href="https://web.archive.org/web/20201101134509/https://naseros.com/2017/11/14/tipos-y-formatos-de-discos-ssd-m2-pcie-y-nvme/" target="_blank">Tipos y formatos de discos SSD M.2, PCIe y NVMe<span class="fa fa-external-link"></span></a></li>
+    </ol>
+</div>
+<footer>
+	<span class="last-modified"><span id="modify"></span></span>
+    <span class="author">Elena de Diego</span>
+</footer>
+</div>
+</div>
+<script src="../functions.js"></script>
+</body>
+</html>
